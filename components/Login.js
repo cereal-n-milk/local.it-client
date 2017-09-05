@@ -84,7 +84,9 @@ export default class App extends Component {
         }
         {/* login buttons */}
         <View style={styles.buttonContainer}>
-          <LoginForm/>
+          <TouchableOpacity style={styles.button} onPress={this.loginWithFacebook}>
+            <Text style={styles.buttonText}>Login with facebook</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -121,5 +123,15 @@ const styles = StyleSheet.create({
   buttonContainer: {
     margin: 20,
     marginBottom: 30,
+  },
+  button: {
+    backgroundColor: '#3B5998',
+    paddingVertical: 20
+  },
+  buttonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '700'
   }
 });
