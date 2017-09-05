@@ -5,10 +5,10 @@ import {
   StyleSheet,
   Platform,
   Text,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-// import SafariView from 'react-native-safari-view';
+import PropTypes from 'prop-types';
 
 export default class App extends Component {
 
@@ -45,9 +45,6 @@ export default class App extends Component {
   // Handle Login with Facebook button tap
   loginWithFacebook = () => this.openURL('http://localhost:3000/auth/facebook');
 
-  // Handle Login with Google button tap
-  loginWithGoogle = () => this.openURL('http://localhost:3000/auth/google');
-
   // Open URL in a browser
   openURL = (url) => {
     // Use SafariView on iOS
@@ -56,57 +53,50 @@ export default class App extends Component {
 
   render() {
     const { user } = this.state;
+    let pic = {
+      uri: 'https://i.imgur.com/wLw80Wv.png'
+    };
     return (
       <View style={styles.container}>
         { user
           ? // Show user info if already logged in
             <View style={styles.content}>
+              <View style={styles.avatar}>
+                <Image source={pic} style={styles.avatarImage} />
+              </View>
               <Text style={styles.header}>
                 Welcome {user.name}!
               </Text>
-              <View style={styles.avatar}>
-                <Image source={{ uri: user.avatar }} style={styles.avatarImage} />
-              </View>
             </View>
           : // Show Please log in message if not
             <View style={styles.content}>
+              <View style={styles.avatar}>
+                <Image source={pic} style={styles.avatarImage} />
+              </View>
               <Text style={styles.header}>
                 Welcome to Local.it!
               </Text>
-              <View style={styles.avatar}>
-                <Icon name="user-circle" size={100} color="rgba(0,0,0,.09)" />
-              </View>
               <Text style={styles.text}>
-                Please log in to continue {'\n'}
-                using Facebook
+                Please log in to begin {'\n'}
+                building your itinerary
               </Text>
             </View>
         }
         {/* Login buttons */}
-        <View style={styles.buttons}>
-          <Icon.Button
-            name="facebook"
-            backgroundColor="#3b5998"
-            onPress={this.loginWithFacebook}
-            {...iconStyles}
-          >
-            Login with Facebook
-          </Icon.Button>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={this.loginWithFacebook}>
+            <Text style={styles.buttonText}>Login with facebook</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
   }
 }
 
-const iconStyles = {
-  borderRadius: 10,
-  iconStyle: { paddingVertical: 5 },
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: '#7f8c8d',
   },
   content: {
     flex: 1,
@@ -117,7 +107,6 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   avatarImage: {
-    borderRadius: 50,
     height: 100,
     width: 100,
   },
@@ -131,8 +120,18 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 5,
   },
-  buttons: {
+  buttonContainer: {
     margin: 20,
     marginBottom: 30,
   },
+  button: {
+    backgroundColor: '#3B5998',
+    paddingVertical: 20
+  },
+  buttonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '700'
+  }
 });

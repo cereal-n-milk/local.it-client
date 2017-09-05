@@ -15,7 +15,6 @@ export default class App extends Component {
         justifyContent: 'flex-end'
       }}>
         <Login/>
-        <Text>This is the entry page for all components</Text>
       </View>
     );
   }
