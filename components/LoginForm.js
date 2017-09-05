@@ -5,9 +5,9 @@ export default class LoginForm extends Component {
   render() {
 
     return (
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.buttonContainer}>
-          <Text style={styles.buttonText}>Sign in with facebook</Text>
+      <View>
+        <TouchableOpacity style={styles.button} onPress={this.loginWithFacebook}>
+          <Text style={styles.buttonText}>Login with facebook</Text>
         </TouchableOpacity>
       </View>
     );
@@ -15,10 +15,7 @@ export default class LoginForm extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20
-  },
-  buttonContainer: {
+  button: {
     backgroundColor: '#3B5998',
     paddingVertical: 20
   },
