@@ -8,23 +8,23 @@ const Discover = () => (
   </Text>
 )
 
-const Saved = () => {
+const Saved = () => (
   <Text style={styles.toolbarTab}>
     Saved
   </Text>
-}
+)
 
-const Outings = () => {
+const Outings = () => (
   <Text style={styles.toolbarTab}>
     Outings
   </Text>
-}
+)
 
-const Profile = () => {
+const Profile = () => (
   <Text style={styles.toolbarTab}>
     Profile
   </Text>
-}
+)
 
 const Toolbar = () => (
   <NativeRouter>
@@ -36,9 +36,30 @@ const Toolbar = () => (
           style={styles.toolbarTab}>
             <Text>Discover</Text>
         </Link>
+        <Link
+          to="/saved"
+          underlayColor='#f0f4f7'
+          style={styles.toolbarTab}>
+            <Text>Saved</Text>
+        </Link>
+        <Link
+          to="/outings"
+          underlayColor='#f0f4f7'
+          style={styles.toolbarTab}>
+            <Text>Outings</Text>
+        </Link>
+        <Link
+          to="/profile"
+          underlayColor='#f0f4f7'
+          style={styles.toolbarTab}>
+            <Text>Profile</Text>
+        </Link>
       </View>
 
       <Route exact path="/" component={Discover}/>
+      <Route path="/saved" component={Saved}/>
+      <Route path="/outings" component={Outings}/>
+      <Route path="/profile" component={Profile}/>
     </View>
   </NativeRouter>
 )
