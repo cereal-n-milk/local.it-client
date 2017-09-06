@@ -8,7 +8,7 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-import LoginForm from './LoginForm';
+//import LoginForm from './LoginForm';
 
 export default class App extends Component {
 
