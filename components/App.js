@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
   add your components here
 */
 import Login from './Login';
+import Toolbar from './Toolbar';
 
 export default class App extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class App extends Component {
         flexDirection: 'column',
         justifyContent: 'flex-end'
       }}>
+        <Toolbar />
         <Login/>
       </View>
     );
