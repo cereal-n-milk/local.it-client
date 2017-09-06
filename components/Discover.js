@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { Link } from 'react-router-native';
 
 /* Import categories from API to categories array */
 
@@ -8,16 +9,24 @@ class Discover extends Component {
   constructor (props) {
     super(props);
 
-    this.state = { discoveries: ['Christine', 'Francis', 'Nick', 'Schaefer'] };
+    this.state = { discoveries: ['Moab', 'San Francisco', 'Boulder', 'Banff'] };
   }
 
   render () {
-    return (
-      <View>{this.state.discoveries.map(person => {
+    const locationsList =
+      this.state.discoveries.map(location => {
         return (
-        <View><Text>{person}</Text></View>
-        )
-      })}
+          <Link
+            to=""
+            underlayColor=''
+            style={styles.locationItem}>
+              <Text>{location}</Text>
+          </Link>
+        )})
+
+    return (
+      <View>
+        {locationsList}
       </View>
     )
   }
@@ -27,6 +36,14 @@ class Discover extends Component {
 const styles = StyleSheet.create({
   toolbarTab: {
     fontSize: 20
+  },
+  locationItem: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 15,
+    color: '#596A7F'
   }
 })
 
