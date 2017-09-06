@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import { NativeRouter, Route, Link } from 'react-router-native';
+import Discover from './Discover';
 
-const Discover = () => (
-  <Text style={styles.toolbarTab}>
-    Discover
-  </Text>
-)
+// const Discover = () => (
+//   <Text style={styles.toolbarTab}>
+//     Discover
+//   </Text>
+// )
 
 const Saved = () => (
   <Text style={styles.toolbarTab}>
