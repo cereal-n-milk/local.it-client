@@ -50,7 +50,7 @@ const Toolbar = () => (
         </Link>
         <Link
           to="/profile"
-          underlayColor='#f0f4f7'
+          underlayColor='#596A7F'
           style={styles.toolbarTab}>
             <Text>Profile</Text>
         </Link>
@@ -66,15 +66,18 @@ const Toolbar = () => (
 
 const styles = StyleSheet.create({
   toolbarTab: {
-    color: 'black'
+    flex: 1,
+    alignItems: 'center',
+    padding: 15,
+    color: '#596A7F'
   },
   container: {
-    padding: 10,
-    borderColor: 'black'
+    marginTop: 25,
+    padding: 15,
   },
   toolbar: {
-    padding: 10,
-    borderColor: 'black'
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   }
 })
 
