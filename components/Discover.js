@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, FlatList } from 'react-native';
 import { Link } from 'react-router-native';
 
-/* Import categories from API to categories array */
+/*
+  TODO:
+  Import categories from API to categories array
+  Initial state will be empty categories array
+  Create a fetchData function that does a call to Yelp API
+  The fetchData function will setState to list of categories from Yelp API
+  Categories props will passdown to its child components via Link component
+*/
 
 class Discover extends Component {
 
@@ -10,7 +17,7 @@ class Discover extends Component {
     super(props);
 
     this.state = {
-      discoveries: [
+      categories: [
         {
           title: 'Active Life'
         },
@@ -40,7 +47,7 @@ class Discover extends Component {
     return (
       <View style={styles.container}>
           <FlatList
-            data={this.state.discoveries}
+            data={this.state.categories}
             renderItem={({ item }) =>
             <Link to="" style={styles.locationItem}>
               <Text>{item.title}</Text>
