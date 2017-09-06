@@ -4,8 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 /*
   add your components here
 */
+
 import Login from './Login';
 import Toolbar from './Toolbar';
+import CategoryView from './CategoryView'
 
 export default class App extends Component {
   render() {
