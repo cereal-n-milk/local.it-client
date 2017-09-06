@@ -74,11 +74,11 @@ const styles = StyleSheet.create({
   },
   container: {
     marginTop: 25,
-    padding: 15,
   },
   toolbar: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    backgroundColor: '#EEE'
   }
 })
 
