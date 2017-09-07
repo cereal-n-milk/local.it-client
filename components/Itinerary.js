@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import { Tabs } from './config/router';
+export default class Itinerary extends Component {
 
-export default class App extends Component {
   render() {
     return (
-      <Tabs />
+      <View style={styles.container}>
+        <Text>This is the Itinerary page</Text>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 25,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
