@@ -86,18 +86,17 @@ export default class Discover extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
+        <View style={styles.container}>
           <FlatList
             data={this.state.categories}
             renderItem={({ item }) =>
             <Text style={styles.locationItem}>{item.title}</Text>
             }
           />
-      </View>
-    )
+        </View>
+      )
     }
   }
-}
 
 const styles = StyleSheet.create({
   container: {
