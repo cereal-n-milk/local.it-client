@@ -161,8 +161,4 @@ const styles = StyleSheet.create({
   }
 })
 
-//From Francis Ngo to Everyone: (07:39 PM)
-// {array.forEach((category) => { <Link to=“”><CategoryView/></Link> }
-    // <Text style={styles.toolbarTab}>
-    //   Discover
-    // </Text>
+export default Discover;
