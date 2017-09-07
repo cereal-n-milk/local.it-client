@@ -114,12 +114,6 @@ const Cards = [
     "display_phone": "",
     "distance": 5097.226532784
 }
-  // {text: 'Tomato', backgroundColor: 'red'},
-  // {text: 'Aubergine', backgroundColor: 'purple'},
-  // {text: 'Courgette', backgroundColor: 'green'},
-  // {text: 'Blueberry', backgroundColor: 'blue'},
-  // {text: 'Umm...', backgroundColor: 'cyan'},
-  // {text: 'orange', backgroundColor: 'orange'},
 ]
 
 export default React.createClass({

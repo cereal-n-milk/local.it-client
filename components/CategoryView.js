@@ -7,7 +7,7 @@ export default class CategoryView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: "Active Life",
+      category: "Testing Link",
       item: "Suggestion"
     }
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, FlatList } from 'react-native';
-import { Link } from 'react-router-native';
+import { AppRegistry, StyleSheet, Text, View, FlatList, Button } from 'react-native';
+import { NativeRouter, Route, Link } from 'react-router-native';
+import CategoryView from './CategoryView';
 
 /*
   TODO:
@@ -17,6 +18,7 @@ class Discover extends Component {
     super(props);
 
     this.state = {
+      mode: 'discover',
       categories: [
         {
           title: 'Active Life'
@@ -44,18 +46,32 @@ class Discover extends Component {
   }
 
   render () {
-    return (
-      <View style={styles.container}>
-          <FlatList
-            data={this.state.categories}
-            renderItem={({ item }) =>
-            <Link to="" style={styles.locationItem}>
-              <Text>{item.title}</Text>
-            </Link>
-            }
-          />
-      </View>
+    if (this.state.mode === 'discover') {
+      return (
+        <NativeRouter>
+        <View style={styles.container}>
+              <FlatList
+                data={this.state.categories}
+                renderItem={({ item }) =>
+                <Button
+                  onPress={() => {
+                    this.state.mode = 'category';
+                    this.forceUpdate();
+                  }}
+                  title={item.title}
+                  color="#841584"
+                />
+                }
+              />
+              <Route path="/CategoryView" component={CategoryView}/>
+        </View>
+        </NativeRouter>
+      )
+    } else if (this.state.mode === 'category') {
+      return (
+      <CategoryView/>
     )
+    }
   }
 }
 
