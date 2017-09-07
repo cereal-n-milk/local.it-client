@@ -80,6 +80,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: '#EEE'
   }
-})
+});
 
-export default Toolbar
+export default Toolbar;

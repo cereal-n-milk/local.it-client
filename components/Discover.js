@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, FlatList, Button } from 'react-native';
-import { NativeRouter, Route, Link } from 'react-router-native';
-import CategoryView from './CategoryView';
+import { AppRegistry, StyleSheet, Text, View, FlatList } from 'react-native';
+import { Link } from 'react-router-native';
+import { Icon } from 'react-native-elements';
 
 /*
   TODO:
@@ -10,9 +10,19 @@ import CategoryView from './CategoryView';
   Create a fetchData function that does a call to Yelp API
   The fetchData function will setState to list of categories from Yelp API
   Categories props will passdown to its child components via Link component
+
+  NOTE:
+  IMPORT modified categories list from YELP API
 */
 
-class Discover extends Component {
+export default class Discover extends Component {
+
+  static navigationOptions = {
+    tabBarLabel: 'Discover',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name="search" size={28} color={tintColor}/>
+    ),
+  };
 
   constructor (props) {
     super(props);
@@ -21,29 +31,67 @@ class Discover extends Component {
       mode: 'discover',
       categories: [
         {
-          title: 'Active Life'
+            "alias": "active",
+            "title": "Active Life",
+            "parents": []
         },
         {
-          title: 'Arts & Entertainment'
+            "alias": "arts",
+            "title": "Arts & Entertainment",
+            "parents": []
         },
         {
-          title: 'Beauty & Spa'
+            "alias": "beautysvc",
+            "title": "Beauty & Spas",
+            "parents": []
         },
         {
-          title: 'Local Flavor'
+            "alias": "coffee",
+            "title": "Coffee & Tea",
+            "parents": [
+                "food"
+            ]
         },
         {
-          title: 'Nightlife'
+            "alias": "food",
+            "title": "Food",
+            "parents": []
         },
         {
-          title: 'Restaurants'
+            "alias": "localflavor",
+            "title": "Local Flavor",
+            "parents": []
         },
         {
-          title: 'Shopping'
-        }
+            "alias": "nightlife",
+            "title": "Nightlife",
+            "parents": []
+        },
+        {
+            "alias": "restaurants",
+            "title": "Restaurants",
+            "parents": []
+        },
+        {
+            "alias": "shopping",
+            "title": "Shopping",
+            "parents": []
+        },
       ]
     };
   }
+
+  // fetchData() {
+  //   return fetch('https://facebook.github.io/react-native/movies.json')
+  //     .then((response) => response.json())
+  //     .then((responseJSON) => {
+  //       console.log(responseJSON);
+  //     });
+  // }
+  //
+  // componentDidMount() {
+  //   return fetchData();
+  // }
 
   render () {
     if (this.state.mode === 'discover') {
@@ -76,6 +124,9 @@ class Discover extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginTop: 25
+  },
   toolbarTab: {
     fontSize: 20
   },
@@ -83,15 +134,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
     padding: 25,
     color: '#596A7F',
     borderWidth: 0.5,
     borderColor: '#d6d7da',
   }
 })
-
-export default Discover;
 
 //From Francis Ngo to Everyone: (07:39 PM)
 // {array.forEach((category) => { <Link to=“”><CategoryView/></Link> }
