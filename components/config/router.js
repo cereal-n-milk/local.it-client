@@ -17,26 +17,50 @@ export const CategoryStack = StackNavigator({
   },
   CategoryView: {
     screen: CategoryView,
-    navigationOption: {
+    navigationOptions: {
       //TODO: Finish connecting CategoryView to Discover
-      //get data.title from Discover to display instead of hard code
-      //title: ({ state }) => `${state.params.title.toUpperCase()}`
-      title: 'Active Life'
+      // get data.title from Discover to display instead of hard code
+      // title: ({ state }) => `${state.params.title.toUpperCase()}`,
+      title: ({ state }) => `${state.params.title.toUpperCase()}`
     }
   },
 });
 
 export const Tabs = TabNavigator({
   Discover: {
-    screen: CategoryStack
+    screen: CategoryStack,
+    navigationOptions: {
+      tabBarLabel: 'Discover',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="search" size={28} color={tintColor}/>
+      ),
+    }
   },
   Saved : {
-    screen: Saved
+    screen: Saved,
+    navigationOptions: {
+      tabBarLabel: 'Saved',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="favorite" size={28} color={tintColor}/>
+      ),
+    }
   },
   Itinerary: {
-    screen: Itinerary
+    screen: Itinerary,
+    navigationOptions: {
+      tabBarLabel: 'Itinerary',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="work" size={28} color={tintColor}/>
+      ),
+    }
   },
   Profile: {
-    screen: Profile
+    screen: Profile,
+    navigationOptions: {
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="account-circle" size={28} color={tintColor}/>
+      ),
+    }
   }
 })

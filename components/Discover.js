@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, FlatList } from 'react-native';
-import { Link } from 'react-router-native';
-import { Icon } from 'react-native-elements';
 
 /*
   TODO:
@@ -16,13 +14,6 @@ import { Icon } from 'react-native-elements';
 */
 
 export default class Discover extends Component {
-
-  static navigationOptions = {
-    tabBarLabel: 'Discover',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="search" size={28} color={tintColor}/>
-    ),
-  };
 
   constructor (props) {
     super(props);
@@ -94,30 +85,15 @@ export default class Discover extends Component {
   // }
 
   render () {
-    if (this.state.mode === 'discover') {
-      return (
-        <NativeRouter>
-        <View style={styles.container}>
-              <FlatList
-                data={this.state.categories}
-                renderItem={({ item }) =>
-                <Button
-                  onPress={() => {
-                    this.state.mode = 'category';
-                    this.forceUpdate();
-                  }}
-                  title={item.title}
-                  color="#841584"
-                />
-                }
-              />
-              <Route path="/CategoryView" component={CategoryView}/>
-        </View>
-        </NativeRouter>
-      )
-    } else if (this.state.mode === 'category') {
-      return (
-      <CategoryView/>
+    return (
+      <View style={styles.container}>
+          <FlatList
+            data={this.state.categories}
+            renderItem={({ item }) =>
+            <Text style={styles.locationItem}>{item.title}</Text>
+            }
+          />
+      </View>
     )
     }
   }

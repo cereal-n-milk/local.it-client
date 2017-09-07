@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Icon } from 'react-native-elements';
 
 export default class Profile extends Component {
-
-  static navigationOptions = {
-    tabBarLabel: 'Profile',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="account-circle" size={28} color={tintColor}/>
-    ),
-  };
 
   render() {
     return (

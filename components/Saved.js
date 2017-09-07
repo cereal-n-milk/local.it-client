@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Icon } from 'react-native-elements';
 
 export default class Saved extends Component {
-
-  static navigationOptions = {
-    tabBarLabel: 'Saved',
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name="favorite" size={28} color={tintColor}/>
-    ),
-  };
 
   render() {
     return (
