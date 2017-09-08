@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, FlatList } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
 
 /*
   TODO:
@@ -14,6 +14,10 @@ import { AppRegistry, StyleSheet, Text, View, FlatList } from 'react-native';
 */
 
 export default class Discover extends Component {
+
+  viewCategory = () => {
+    this.props.navigation.navigate('CategoryView');
+  }
 
   constructor (props) {
     super(props);
@@ -90,7 +94,11 @@ export default class Discover extends Component {
           <FlatList
             data={this.state.categories}
             renderItem={({ item }) =>
-            <Text style={styles.locationItem}>{item.title}</Text>
+            <TouchableOpacity
+              style={styles.categoryItem}
+              onPress={() => this.viewCategory()}>
+              <Text>{item.title}</Text>
+            </TouchableOpacity>
             }
           />
         </View>
@@ -105,7 +113,7 @@ const styles = StyleSheet.create({
   toolbarTab: {
     fontSize: 20
   },
-  locationItem: {
+  categoryItem: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
