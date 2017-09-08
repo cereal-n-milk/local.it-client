@@ -17,11 +17,12 @@ export const CategoryStack = StackNavigator({
   },
   CategoryView: {
     screen: CategoryView,
-    navigationOptions: {
+    navigationOptions: ({navigation}) => {
+      console.log('navigation: ', navigation);
       //TODO: Finish connecting CategoryView to Discover
       // get data.title from Discover to display instead of hard code
       // title: ({ state }) => `${state.params.title.toUpperCase()}`,
-      title: ({ state }) => `${state.params.title.toUpperCase()}`
+      title: 'Category'
     }
   },
 });
@@ -29,6 +30,7 @@ export const CategoryStack = StackNavigator({
 export const Tabs = TabNavigator({
   Discover: {
     screen: CategoryStack,
+    title: 'Category',
     navigationOptions: {
       tabBarLabel: 'Discover',
       tabBarIcon: ({ tintColor }) => (
