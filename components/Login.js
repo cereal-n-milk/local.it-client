@@ -8,9 +8,9 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-//import LoginForm from './LoginForm';
+import { Tabs } from './config/router';
 
-export default class App extends Component {
+export default class Login extends Component {
 
   state = {
     user: undefined, // user has not logged in yet
@@ -60,14 +60,7 @@ export default class App extends Component {
       <View style={styles.container}>
         { user
           ? // show user info if already logged in
-            <View style={styles.content}>
-              <View style={styles.avatar}>
-                <Image source={pic} style={styles.avatarImage} />
-              </View>
-              <Text style={styles.header}>
-                Welcome {user.name}!
-              </Text>
-            </View>
+            <Tabs />
           : // show Please log in message if not
             <View style={styles.content}>
               <View style={styles.avatar}>
@@ -78,16 +71,15 @@ export default class App extends Component {
               </Text>
               <Text style={styles.text}>
                 Please log in to begin {'\n'}
-                building your itinerary
+                building your next adventure
               </Text>
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} onPress={this.loginWithFacebook}>
+                  <Text style={styles.buttonText}>Login with facebook</Text>
+                </TouchableOpacity>
+              </View>
             </View>
         }
-        {/* login buttons */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={this.loginWithFacebook}>
-            <Text style={styles.buttonText}>Login with facebook</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     );
   }
@@ -121,17 +113,16 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   buttonContainer: {
-    margin: 20,
-    marginBottom: 30,
+    margin: 20
   },
   button: {
     backgroundColor: '#3B5998',
-    paddingVertical: 20
+    padding: 20,
+    borderRadius: 4
   },
   buttonText: {
     color: '#fff',
     textAlign: 'center',
     fontSize: 16,
-    fontWeight: '700'
   }
 });

@@ -1223,6 +1223,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = localit;
 				PRODUCT_NAME = localit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1245,6 +1246,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = localit;
 				PRODUCT_NAME = localit;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
