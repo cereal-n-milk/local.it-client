@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-import { Tabs } from './config/router';
+// import { Tabs } from './config/router';
+import Login from './Login';
 
 export default class App extends Component {
   render() {
     return (
-      <Tabs />
+      // <Tabs />
+      <Login />
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
-})
