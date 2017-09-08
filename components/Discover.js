@@ -142,7 +142,7 @@ export default class Discover extends Component {
       )
     };
 
-  componentDidMount() {
+  componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({position});
@@ -152,7 +152,8 @@ export default class Discover extends Component {
     );
   }
 
-  fetchData() {
+  fetchData () {
+    console.log('FETCHING DATA //////////////////////');
     var lat = this.state.position.coords.latitude
     var lng = this.state.position.coords.longitude
     var latlng = 'll=' + String(lat) + '+' + String(lng)
@@ -164,20 +165,24 @@ export default class Discover extends Component {
       signatures: {
         api_key: 'TJCJBQCAAm_aB5D00Y6-UQ',
         shared_secret: '30V2TgQ4qQDWEpjsx5Nl4V7giHXppnodeGvbgyMWqXYxnZWRq5F70XKNx65BIDfe',
-        access_token: '1SYUbI8K6gdY8sSQMuJzdkQ82bKFslKYjx_QgKzXCZG9igJRHMMrZ2N1eh9FqRsu47vH-NHK0m9pT5YzEysB9FQrg53EKOWdGDu4iZBG5t5hggamw0Q5WbgvRW-oWXYx',
+        access_token: 'Bearer',
         access_secret: '1SYUbI8K6gdY8sSQMuJzdkQ82bKFslKYjx_QgKzXCZG9igJRHMMrZ2N1eh9FqRsu47vH-NHK0m9pT5YzEysB9FQrg53EKOWdGDu4iZBG5t5hggamw0Q5WbgvRW-oWXYx'
       }
     })
 
+    // WHere is .navigator coming from/saved to?
     var nav = this.props.navigator;
+
 
     fetch(request.signed_url, { method: 'GET' })
     .then((response) => { return response.json() })
-    .then((data) => { debugger
-      // nav.push({
-      //   identity: 'Results',
-      //   data: data
-      // })
+    .then((data) => {
+      // is this the best way to save/pass alongnewq    our data?
+      nav.push({
+        identity: 'Results',
+        data: data
+      })
+      console.log('THIS IS THE YELP DATA: ', nav.data);
     })
     .catch((error) => { console.log('Error: ', error) });
   }
