@@ -46,8 +46,17 @@ export default React.createClass({
     }
   },
   handleYup (card) {
-    console.log(`Yup for ${card.text}`)
-    //Edit to send post to database
+    //TODO: Get user id from local storage?
+    // Edit to send post to database
+    fetch('http://localhost:3000/api/59b1d6074203500e9a94b0fe', {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        liked: 'true',
+        city: `${card.location.city}, ${card.location.state}`,
+        business: card
+      })
+    })
   },
   handleNope (card) {
     console.log(`Nope for ${card.text}`)
