@@ -45,30 +45,19 @@ export default class Discover extends Component {
         shared_secret: consumerSecret,
         // access_token: token,
         // token_secret: tokenSecret
-      },
-      // headers: {
-      //   Authorization: token + tokenSecret
-      // },
-
+      }
     })
     console.log('request.signed_url', request);
 
     fetch(request.signed_url, {method: 'GET'})
-    .then((response) => {
-
-      if (response.status >= 200 && response.status < 300) {
-        return response.json()
-      } else {
-        let error = new Error(response.statusText);
-        error.response = response;
-        throw error;
-      }})
+    .then((response) => { return response.json() })
     .then((responseJSON) => {
-      if (response.status === 'OK') {
+      if (responseJSON.status === 'OK') {
         console.log('Data is: ' + JSON.stringify(responseJSON));
         this.setState({
           data: this.state.responseJSON
         });
+        console.log('THE STATE IS: ', this.state);
       }
     })
     .catch((error) => { console.log('WHOA. Error: ', error) });
