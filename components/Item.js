@@ -39,6 +39,55 @@ let NoMoreCards = React.createClass({
   }
 })
 
+export default React.createClass({
+  getInitialState() {
+    return {
+      cards: Cards
+    }
+  },
+  handleYup (card) {
+    //TODO: Get user id from local storage?
+    // Edit to send post to database
+    fetch('http://localhost:3000/api/59b1d6074203500e9a94b0fe', {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        liked: 'true',
+        city: `${card.location.city}, ${card.location.state}`,
+        business: card
+      })
+    })
+  },
+  handleNope (card) {
+    console.log(`Nope for ${card.text}`)
+    //Edit to send post to database
+  },
+  render() {
+    return (
+      <SwipeCards
+        cards={this.state.cards}
+
+        renderCard={(cardData) => <Card {...cardData} />}
+        renderNoMoreCards={() => <NoMoreCards />}
+
+        handleYup={this.handleYup}
+        handleNope={this.handleNope}
+      />
+    )
+  }
+})
+
+const styles = StyleSheet.create({
+  card: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 300,
+    height: 300,
+  }
+})
+
+
 const Cards = [
 {
     "id": "dinosaur-coffee-los-angeles",
@@ -115,45 +164,6 @@ const Cards = [
     "distance": 5097.226532784
 }
 ]
-
-export default React.createClass({
-  getInitialState() {
-    return {
-      cards: Cards
-    }
-  },
-  handleYup (card) {
-    console.log(`Yup for ${card.text}`)
-    //Edit to send post to database
-  },
-  handleNope (card) {
-    console.log(`Nope for ${card.text}`)
-    //Edit to send post to database
-  },
-  render() {
-    return (
-      <SwipeCards
-        cards={this.state.cards}
-
-        renderCard={(cardData) => <Card {...cardData} />}
-        renderNoMoreCards={() => <NoMoreCards />}
-
-        handleYup={this.handleYup}
-        handleNope={this.handleNope}
-      />
-    )
-  }
-})
-
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 300,
-    height: 300,
-  }
-})
 
 // export default class Item extends Component {
 //   constructor(props) {
