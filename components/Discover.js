@@ -27,14 +27,9 @@ export default class Discover extends Component {
     super(props);
 
     this.state = {
-<<<<<<< HEAD
       latitude: null,
       longitude: null,
       error: null,
-=======
-      data: '',
-      position: 'unknown',
->>>>>>> Erase previous attempts of gaining Yelp API data
       categories: [
         {
             "alias": "active",
@@ -128,6 +123,8 @@ export default class Discover extends Component {
     yelp.search(params)
       .then((data) => console.log(data))
       .catch((err) => err)
+
+    this.viewCategory();
   }
 
   render () {
