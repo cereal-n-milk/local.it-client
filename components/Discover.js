@@ -23,55 +23,18 @@ export default class Discover extends Component {
     this.props.navigation.navigate('CategoryView');
   }
 
-  fetchData = () => {
-    this.viewCategory();
-
-    var lat = this.state.position.coords.latitude
-    var lng = this.state.position.coords.longitude
-    var latlng = 'll=' + String(lat) + '+' + String(lng)
-
-    var consumerKey = 'TJCJBQCAAm_aB5D00Y6-UQ';
-    var consumerSecret = '30V2TgQ4qQDWEpjsx5Nl4V7giHXppnodeGvbgyMWqXYxnZWRq5F70XKNx65BIDfe';
-    var tokenSecret = '1SYUbI8K6gdY8sSQMuJzdkQ82bKFslKYjx_QgKzXCZG9igJRHMMrZ2N1eh9FqRsu47vH-NHK0m9pT5YzEysB9FQrg53EKOWdGDu4iZBG5t5hggamw0Q5WbgvRW-oWXYx';
-    var token = 'Bearer';
-
-    var oauth = new OAuthSimple(consumerKey, consumerSecret);
-    var request = oauth.sign({
-      // action: 'GET',
-      path: 'https://api.yelp.com/v2/search',
-      parameters: 'term=coffee&' + latlng,
-      signatures: {
-        consumer_key: consumerKey,
-        shared_secret: consumerSecret,
-        // access_token: token,
-        // token_secret: tokenSecret
-      }
-    })
-    console.log('request.signed_url', request);
-
-    fetch(request.signed_url, {method: 'GET'})
-    .then((response) => { return response.json() })
-    .then((responseJSON) => {
-      if (responseJSON.status === 'OK') {
-        console.log('Data is: ' + JSON.stringify(responseJSON));
-        this.setState({
-          data: this.state.responseJSON
-        });
-        console.log('THE STATE IS: ', this.state);
-      }
-    })
-    .catch((error) => { console.log('WHOA. Error: ', error) });
-  }
-
   constructor (props) {
     super(props);
 
-    this.fetchData = this.fetchData.bind(this);
-
     this.state = {
+<<<<<<< HEAD
       latitude: null,
       longitude: null,
       error: null,
+=======
+      data: '',
+      position: 'unknown',
+>>>>>>> Erase previous attempts of gaining Yelp API data
       categories: [
         {
             "alias": "active",
@@ -198,8 +161,6 @@ export default class Discover extends Component {
     );
   }
 }
-
-
 
 const styles = StyleSheet.create({
   toolbarTab: {
