@@ -38,8 +38,8 @@ export default class Discover extends Component {
     var oauth = new OAuthSimple(consumerKey, consumerSecret);
     var request = oauth.sign({
       // action: 'GET',
-      // path: 'https://api.yelp.com/v2/search',
-      // parameters: 'term=coffee&' + latlng,
+      path: 'https://api.yelp.com/v2/search',
+      parameters: 'term=coffee&' + latlng,
       signatures: {
         consumer_key: consumerKey,
         shared_secret: consumerSecret,
@@ -55,6 +55,7 @@ export default class Discover extends Component {
 
     fetch(request.signed_url, {method: 'GET'})
     .then((response) => {
+
       if (response.status >= 200 && response.status < 300) {
         return response.json()
       } else {
