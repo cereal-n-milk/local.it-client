@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
 import YelpApi from 'v3-yelp-api';
+import YelpConfig from '../auth/yelpConfig';
 
 /*
   TODO:
@@ -14,9 +15,6 @@ import YelpApi from 'v3-yelp-api';
   9/8:
   Using react-navigation, create props to pass down down to CategoryView
   REF: https://github.com/spencercarli/getting-started-react-navigation/blob/master/app/screens/UserDetail.js
-
-  NOTE:
-  IMPORT modified categories list from YELP API
 */
 
 export default class Discover extends Component {
@@ -25,6 +23,9 @@ export default class Discover extends Component {
     super(props);
 
     this.state = {
+      latitude: null,
+      longitude: null,
+      error: null,
       categories: [
         {
             "alias": "active",
@@ -84,26 +85,36 @@ export default class Discover extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        this.setState({position});
+        console.log('position: ', position);
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
       },
-      (error) => alert(error),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
   }
 
   fetchYelpData () {
+    console.log(YelpConfig);
     const credentials = {
-      appId: 'ENTER credentials',
-      appSecret: 'ENTER CREDEN'
+      appId: YelpConfig.appId,
+      appSecret: YelpConfig.appSecret
     }
     const yelp = new YelpApi(credentials);
-    var lat = this.state.position.coords.latitude;
-    var lng = this.state.position.coords.longitude;
+    var lat = this.state.latitude;
+    var lng = this.state.longitude;
+    console.log('=======================================')
+    console.log('lat: ', lat);
+    console.log('lng: ', lng);
+    console.log('=======================================')
     var latlng = String(lat) + ',' + String(lng);
     let params = {
-      term: 'sushi',
+      term: 'coffee',
       location: latlng,
-      limit: '30',
+      limit: '15',
     };
     yelp.search(params)
       .then((data) => console.log(data))
@@ -113,10 +124,10 @@ export default class Discover extends Component {
   render () {
     return (
         <View style={styles.container}>
-          <TouchableOpacity
+          <Button
+            title="Press here to see data"
             onPress={() => this.fetchYelpData()}>
-              <Text>Press here to see data</Text>
-          </TouchableOpacity>
+          </Button>
           <FlatList
             data={this.state.categories}
             keyExtractor={(category, index) => index }
