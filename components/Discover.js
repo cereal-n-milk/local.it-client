@@ -104,8 +104,8 @@ export default class Discover extends Component {
   fetchYelpData () {
     console.log(YelpConfig);
     const credentials = {
-      appId: YelpConfig.appId,
-      appSecret: YelpConfig.appSecret
+      appId: 'hm9ett-9Ql1GSG7ErN8vZg',
+      appSecret: 'j4p9jp2eagVP3KHa5paRMUMNn8UBFa1rnolGAXZKYnjMoWBBdTT4CUNUGpJHk06D'
     }
     const yelp = new YelpApi(credentials);
     var lat = this.state.latitude;
@@ -121,8 +121,14 @@ export default class Discover extends Component {
       limit: '15',
     };
     yelp.search(params)
-      .then((data) => console.log(data))
-      .catch((err) => err)
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          data: data.data
+        })
+        console.log(this.state);
+      })
+      .catch((err) => console.log(err))
 
     this.viewCategory();
   }
