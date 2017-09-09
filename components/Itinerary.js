@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import ItineraryByCity from './ItineraryByCity';
 
 export default class Itinerary extends Component {
 
@@ -131,5 +132,9 @@ const styles = StyleSheet.create({
     color: '#596A7F',
     borderWidth: 0.5,
     borderColor: '#d6d7da',
+  },
+  picker: {
+    width: 1000,
+    height: 1000,
   }
 })
