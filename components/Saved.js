@@ -3,8 +3,8 @@ import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native
 
 export default class Saved extends Component {
 
-  viewSavedCities = () => {
-    this.props.navigation.navigate('SavedCities');
+  viewInterestsByCity = () => {
+    this.props.navigation.navigate('InterestsByCity');
   }
 
   constructor (props) {
@@ -41,7 +41,7 @@ export default class Saved extends Component {
           renderItem={({ item }) =>
           <TouchableOpacity
             style={styles.cityItem}
-            onPress={() => this.viewSavedCities()}>
+            onPress={() => this.viewInterestsByCity()}>
               <Text
                 style={styles.cityText}>
                 {item.city}

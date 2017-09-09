@@ -7,7 +7,7 @@ import Saved from '../Saved';
 import Itinerary from '../Itinerary';
 import Profile from '../Profile';
 import CategoryView from '../CategoryView';
-import SavedCities from '../SavedCities';
+import InterestsByCity from '../InterestsByCity';
 
 export const CategoryStack = StackNavigator({
   Discover: {
@@ -35,10 +35,19 @@ export const SavedStack = StackNavigator({
       title: 'Cities'
     },
   },
-  SavedCities: {
-    screen: SavedCities,
+  InterestsByCity: {
+    screen: InterestsByCity,
     navigationOptions: ({navigation}) => {
       title: 'Cities'
+    }
+  }
+});
+
+export const ItineraryStack = StackNavigator({
+  Itinerary: {
+    screen: Itinerary,
+    navigationOptions: {
+      title: 'Itinerary'
     }
   }
 });
@@ -74,7 +83,7 @@ export const Tabs = TabNavigator({
     }
   },
   Itinerary: {
-    screen: Itinerary,
+    screen: ItineraryStack,
     title: 'Itinerary',
     navigationOptions: {
       tabBarLabel: 'Itinerary',
