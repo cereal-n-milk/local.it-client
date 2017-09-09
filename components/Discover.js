@@ -4,11 +4,16 @@ import YelpApi from 'v3-yelp-api';
 
 /*
   TODO:
+  9/7:
   Import categories from API to categories array
   Initial state will be empty categories array
   Create a fetchData function that does a call to Yelp API
   The fetchData function will setState to list of categories from Yelp API
   Categories props will passdown to its child components via Link component
+
+  9/8:
+  Using react-navigation, create props to pass down down to CategoryView
+  REF: https://github.com/spencercarli/getting-started-react-navigation/blob/master/app/screens/UserDetail.js
 
   NOTE:
   IMPORT modified categories list from YELP API
@@ -73,6 +78,10 @@ export default class Discover extends Component {
     };
   }
 
+  viewCategory () {
+    this.props.navigation.navigate('CategoryView');
+  }
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -102,20 +111,21 @@ export default class Discover extends Component {
       .catch((err) => err)
   }
 
-  viewCategory () {
-    this.props.navigation.navigate('CategoryView');
-  }
-
   render () {
     return (
         <View style={styles.container}>
+          <TouchableOpacity
+            onPress={() => this.fetchYelpData()}>
+              <Text>Press here to see data</Text>
+          </TouchableOpacity>
           <FlatList
             data={this.state.categories}
+            keyExtractor={(category, index) => index }
             renderItem={({ item }) =>
             <TouchableOpacity
               style={styles.categoryItem}
-              onPress={() => this.fetchYelpData()}>
-              <Text>{item.title}</Text>
+              onPress={() => this.viewCategory()}>
+              <Text style={styles.categoryText}>{item.title}</Text>
             </TouchableOpacity>
             }
           />
@@ -136,9 +146,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 25,
-    color: '#596A7F',
     borderWidth: 0.5,
     borderColor: '#d6d7da',
+  },
+  categoryText: {
+    color: '#596a7f',
   }
 })
 
