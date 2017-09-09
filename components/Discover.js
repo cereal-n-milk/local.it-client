@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
+import YelpApi from 'v3-yelp-api';
 
 /*
   TODO:
@@ -14,10 +15,6 @@ import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity
 */
 
 export default class Discover extends Component {
-
-  viewCategory = () => {
-    this.props.navigation.navigate('CategoryView');
-  }
 
   constructor (props) {
     super(props);
@@ -76,17 +73,38 @@ export default class Discover extends Component {
     };
   }
 
-  // fetchData() {
-  //   return fetch('https://facebook.github.io/react-native/movies.json')
-  //     .then((response) => response.json())
-  //     .then((responseJSON) => {
-  //       console.log(responseJSON);
-  //     });
-  // }
-  //
-  // componentDidMount() {
-  //   return fetchData();
-  // }
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({position});
+      },
+      (error) => alert(error),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
+  }
+
+  fetchYelpData () {
+    const credentials = {
+      appId: 'ENTER credentials',
+      appSecret: 'ENTER CREDEN'
+    }
+    const yelp = new YelpApi(credentials);
+    var lat = this.state.position.coords.latitude;
+    var lng = this.state.position.coords.longitude;
+    var latlng = String(lat) + ',' + String(lng);
+    let params = {
+      term: 'sushi',
+      location: latlng,
+      limit: '30',
+    };
+    yelp.search(params)
+      .then((data) => console.log(data))
+      .catch((err) => err)
+  }
+
+  viewCategory () {
+    this.props.navigation.navigate('CategoryView');
+  }
 
   render () {
     return (
@@ -96,7 +114,7 @@ export default class Discover extends Component {
             renderItem={({ item }) =>
             <TouchableOpacity
               style={styles.categoryItem}
-              onPress={() => this.viewCategory()}>
+              onPress={() => this.fetchYelpData()}>
               <Text>{item.title}</Text>
             </TouchableOpacity>
             }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
-import ItineraryByCity from './ItineraryByCity';
 
 export default class Itinerary extends Component {
 
