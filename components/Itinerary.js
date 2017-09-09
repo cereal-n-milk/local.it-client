@@ -100,11 +100,12 @@ export default class Itinerary extends Component {
       <View style={styles.container}>
         <FlatList
           data={this.state.itineraryData}
+          keyExtractor={(itinerary, index) => index }
           renderItem={({ item }) =>
             <TouchableOpacity
               style={styles.itineraryItem}
               onPress={() => this.viewItinerary()}>
-                <Text>{`Name of Itinerary: "${item.name}
+                <Text style={styles.itineraryText}>{`Name of Itinerary: "${item.name}
                 "City: ${item.city}`}
                 </Text>
             </TouchableOpacity>
@@ -127,9 +128,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 25,
-    color: '#596A7F',
     borderWidth: 0.5,
     borderColor: '#d6d7da',
+  },
+  itineraryText: {
+    color: '#596A7F',
   },
   picker: {
     width: 1000,
