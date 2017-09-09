@@ -25,7 +25,6 @@ export default class Discover extends Component {
     super(props);
 
     this.state = {
-      mode: 'discover',
       categories: [
         {
             "alias": "active",
@@ -125,7 +124,10 @@ export default class Discover extends Component {
             <TouchableOpacity
               style={styles.categoryItem}
               onPress={() => this.viewCategory()}>
-              <Text style={styles.categoryText}>{item.title}</Text>
+              <Text
+                style={styles.categoryText}>
+                {item.title}
+              </Text>
             </TouchableOpacity>
             }
           />
@@ -135,9 +137,6 @@ export default class Discover extends Component {
   }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 25
-  },
   toolbarTab: {
     fontSize: 20
   },
@@ -148,6 +147,7 @@ const styles = StyleSheet.create({
     padding: 25,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
+    backgroundColor: '#fff'
   },
   categoryText: {
     color: '#596a7f',

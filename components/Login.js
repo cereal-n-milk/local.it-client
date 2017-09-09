@@ -10,6 +10,13 @@ import {
 } from 'react-native';
 import { Tabs } from './config/router';
 
+
+/*
+TODO:
+Handle authentication so that it doesn't keep sending you to login page at each hard reload
+Look into AsyncStorage and saving tokens
+*/
+
 export default class Login extends Component {
 
   state = {
@@ -47,7 +54,6 @@ export default class Login extends Component {
 
   // open URL in a browser
   openURL = (url) => {
-    // use SafariView on iOS
     Linking.openURL(url);
   };
 

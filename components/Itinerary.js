@@ -117,7 +117,6 @@ export default class Itinerary extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
