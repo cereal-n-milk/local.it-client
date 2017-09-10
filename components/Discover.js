@@ -20,9 +20,7 @@ import YelpConfig from '../auth/yelpConfig';
 export default class Discover extends Component {
 
   viewCategory = (title) => {
-    //this.props.state({ data: 'Hello Christine' })
     this.props.navigation.navigate('CategoryView', {date: title});
-    console.log('State in Discover: ', this.props);
   }
 
   constructor (props) {
@@ -88,6 +86,7 @@ export default class Discover extends Component {
     this.props.navigation.navigate('CategoryView');
   }
 
+<<<<<<< HEAD
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -105,6 +104,9 @@ export default class Discover extends Component {
 
   fetchYelpData () {
     console.log(YelpConfig);
+=======
+  fetchYelpData (title) {
+>>>>>>> Pass down Yelp API data and category to CategoryView directly from Discover
     const credentials = {
       appId: 'hm9ett-9Ql1GSG7ErN8vZg',
       appSecret: 'j4p9jp2eagVP3KHa5paRMUMNn8UBFa1rnolGAXZKYnjMoWBBdTT4CUNUGpJHk06D'
@@ -125,15 +127,18 @@ export default class Discover extends Component {
     yelp.search(params)
       .then((data) => {
         console.log(data);
-        this.setState({
-          data: data.data
-        })
+        // this.setState({
+        //   data: data.businesses
+        // })
+        this.props.navigation.navigate('CategoryView', {
+          data: data.businesses,
+          category: title })\
         console.log(this.state);
       })
       .catch((err) => console.log(err))
 
-  //   this.viewCategory();
-  // }
+    this.viewCategory();
+  }
 
   render () {
     return (
@@ -144,11 +149,8 @@ export default class Discover extends Component {
             renderItem={({ item }) =>
             <TouchableOpacity
               style={styles.categoryItem}
-              onPress={() => this.viewCategory()}>
-              <Text
-                style={styles.categoryText}>
-                {item.title}
-              </Text>
+              onPress={ () =>  this.fetchYelpData(item.title) }>
+              <Text>{item.title}</Text>
             </TouchableOpacity>
             }
           />
