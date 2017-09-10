@@ -19,8 +19,10 @@ import YelpConfig from '../auth/yelpConfig';
 
 export default class Discover extends Component {
 
-  viewCategory = () => {
-    this.props.navigation.navigate('CategoryView');
+  viewCategory = (title) => {
+    //this.props.state({ data: 'Hello Christine' })
+    this.props.navigation.navigate('CategoryView', {date: title});
+    console.log('State in Discover: ', this.props);
   }
 
   constructor (props) {
@@ -130,8 +132,8 @@ export default class Discover extends Component {
       })
       .catch((err) => console.log(err))
 
-    this.viewCategory();
-  }
+  //   this.viewCategory();
+  // }
 
   render () {
     return (
@@ -154,6 +156,8 @@ export default class Discover extends Component {
       )
     };
 
+  /*() => this.fetchYelpData()*/
+  /* TODO: pass down "item.title" as props to categoryView and rentder categoryView*/
   componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       (position) => {

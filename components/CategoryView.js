@@ -4,6 +4,7 @@ import Item from './Item.js';
 
 /* TODO:
   consider moving fetchData into componentDidMount here
+  remove local state and move it to Discover?
  */
 
 export default class CategoryView extends Component {
@@ -11,11 +12,21 @@ export default class CategoryView extends Component {
     super(props);
     this.state = {
       category: "Testing Link",
-      item: "Suggestion"
+      item: "Suggestion",
+      data: ''
     }
+    console.log("State: ", this.state, "Props:", this.props);
+  }
+
+  componentDidMount () {
+    console.log(this.state);
+    // fetchYelpData here.
+    // load category change
   }
 
   render() {
+    // assign this.props.category to variables here
+    // use props variables inside Views below.
     return (
       <View style = {{
         flex: 2,
