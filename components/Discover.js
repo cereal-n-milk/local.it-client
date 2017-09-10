@@ -124,10 +124,6 @@ export default class Discover extends Component {
   render () {
     return (
         <View style={styles.container}>
-          <Button
-            title="Press here to see data"
-            onPress={() => this.fetchYelpData()}>
-          </Button>
           <FlatList
             data={this.state.categories}
             keyExtractor={(category, index) => index }
