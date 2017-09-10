@@ -7,6 +7,7 @@ import Saved from '../Saved';
 import Itinerary from '../Itinerary';
 import Profile from '../Profile';
 import CategoryView from '../CategoryView';
+import InterestsByCity from '../InterestsByCity';
 
 export const CategoryStack = StackNavigator({
   Discover: {
@@ -27,6 +28,39 @@ export const CategoryStack = StackNavigator({
   },
 });
 
+export const SavedStack = StackNavigator({
+  Saved: {
+    screen: Saved,
+    navigationOptions: {
+      title: 'Cities'
+    },
+  },
+  InterestsByCity: {
+    screen: InterestsByCity,
+    navigationOptions: ({navigation}) => {
+      title: 'Cities'
+    }
+  }
+});
+
+export const ItineraryStack = StackNavigator({
+  Itinerary: {
+    screen: Itinerary,
+    navigationOptions: {
+      title: 'Itinerary'
+    }
+  }
+});
+
+export const ProfileStack = StackNavigator({
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      title: 'Profile'
+    }
+  }
+});
+
 export const Tabs = TabNavigator({
   Discover: {
     screen: CategoryStack,
@@ -39,7 +73,8 @@ export const Tabs = TabNavigator({
     }
   },
   Saved : {
-    screen: Saved,
+    screen: SavedStack,
+    title: 'Saved',
     navigationOptions: {
       tabBarLabel: 'Saved',
       tabBarIcon: ({ tintColor }) => (
@@ -48,7 +83,8 @@ export const Tabs = TabNavigator({
     }
   },
   Itinerary: {
-    screen: Itinerary,
+    screen: ItineraryStack,
+    title: 'Itinerary',
     navigationOptions: {
       tabBarLabel: 'Itinerary',
       tabBarIcon: ({ tintColor }) => (
@@ -57,7 +93,8 @@ export const Tabs = TabNavigator({
     }
   },
   Profile: {
-    screen: Profile,
+    screen: ProfileStack,
+    title: 'Profile',
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({ tintColor }) => (

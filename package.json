@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@tonybadguy/call-me-maybe": "^2.0.1",
-    "oauthsimple": "0.0.1",
     "react": "16.0.0-alpha.12",
     "react-native": "0.48.1",
     "react-native-elements": "^0.16.0",

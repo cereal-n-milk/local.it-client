@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
 import YelpApi from 'v3-yelp-api';
+import YelpConfig from '../auth/yelpConfig';
 
 /*
   TODO:
+  9/7:
   Import categories from API to categories array
   Initial state will be empty categories array
   Create a fetchData function that does a call to Yelp API
   The fetchData function will setState to list of categories from Yelp API
   Categories props will passdown to its child components via Link component
 
-  NOTE:
-  IMPORT modified categories list from YELP API
+  9/8:
+  Using react-navigation, create props to pass down down to CategoryView
+  REF: https://github.com/spencercarli/getting-started-react-navigation/blob/master/app/screens/UserDetail.js
 */
 
 export default class Discover extends Component {
@@ -20,7 +23,9 @@ export default class Discover extends Component {
     super(props);
 
     this.state = {
-      mode: 'discover',
+      latitude: null,
+      longitude: null,
+      error: null,
       categories: [
         {
             "alias": "active",
@@ -73,37 +78,47 @@ export default class Discover extends Component {
     };
   }
 
+  viewCategory () {
+    this.props.navigation.navigate('CategoryView');
+  }
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        this.setState({position});
+        console.log('position: ', position);
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
       },
-      (error) => alert(error),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
   }
 
   fetchYelpData () {
+    console.log(YelpConfig);
     const credentials = {
-      appId: 'ENTER credentials',
-      appSecret: 'ENTER CREDEN'
+      appId: YelpConfig.appId,
+      appSecret: YelpConfig.appSecret
     }
     const yelp = new YelpApi(credentials);
-    var lat = this.state.position.coords.latitude;
-    var lng = this.state.position.coords.longitude;
+    var lat = this.state.latitude;
+    var lng = this.state.longitude;
+    console.log('=======================================')
+    console.log('lat: ', lat);
+    console.log('lng: ', lng);
+    console.log('=======================================')
     var latlng = String(lat) + ',' + String(lng);
     let params = {
-      term: 'sushi',
+      term: 'coffee',
       location: latlng,
-      limit: '30',
+      limit: '15',
     };
     yelp.search(params)
       .then((data) => console.log(data))
       .catch((err) => err)
-  }
-
-  viewCategory () {
-    this.props.navigation.navigate('CategoryView');
   }
 
   render () {
@@ -111,11 +126,15 @@ export default class Discover extends Component {
         <View style={styles.container}>
           <FlatList
             data={this.state.categories}
+            keyExtractor={(category, index) => index }
             renderItem={({ item }) =>
             <TouchableOpacity
               style={styles.categoryItem}
-              onPress={() => this.fetchYelpData()}>
-              <Text>{item.title}</Text>
+              onPress={() => this.viewCategory()}>
+              <Text
+                style={styles.categoryText}>
+                {item.title}
+              </Text>
             </TouchableOpacity>
             }
           />
@@ -125,9 +144,6 @@ export default class Discover extends Component {
   }
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 25
-  },
   toolbarTab: {
     fontSize: 20
   },
@@ -136,9 +152,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 25,
-    color: '#596A7F',
     borderWidth: 0.5,
     borderColor: '#d6d7da',
+    backgroundColor: '#fff'
+  },
+  categoryText: {
+    color: '#596a7f',
   }
 })
 
