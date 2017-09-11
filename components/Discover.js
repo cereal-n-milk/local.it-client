@@ -86,7 +86,6 @@ export default class Discover extends Component {
     this.props.navigation.navigate('CategoryView');
   }
 
-<<<<<<< HEAD
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -102,11 +101,8 @@ export default class Discover extends Component {
     );
   }
 
-  fetchYelpData () {
-    console.log(YelpConfig);
-=======
   fetchYelpData (title) {
->>>>>>> Pass down Yelp API data and category to CategoryView directly from Discover
+    console.log(YelpConfig);
     const credentials = {
       appId: 'hm9ett-9Ql1GSG7ErN8vZg',
       appSecret: 'j4p9jp2eagVP3KHa5paRMUMNn8UBFa1rnolGAXZKYnjMoWBBdTT4CUNUGpJHk06D'
