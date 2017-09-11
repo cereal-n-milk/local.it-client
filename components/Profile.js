@@ -3,6 +3,30 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 
 export default class Profile extends Component {
 
+  constructor (props) {
+    super (props);
+
+    this.state = {
+      user: null,
+      photo: null,
+    }
+  }
+
+  //TODO: WIP - fetch profile data via server's API endpoint
+  componentDidMount() {
+    //fetch fb profile on client side
+    fetch('http://54.215.198.189:3000/api/profile', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+    .then((response) => response.json())
+    .then((responseJSON) => console.log(responseJSON));
+    //then setState user, profile
+  }
+
   render() {
     const data = {
       user: 'Francis Ngo',
