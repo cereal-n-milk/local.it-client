@@ -11,12 +11,9 @@ export default class CategoryView extends Component {
       // keep item below?
       item: "Suggestion",
     }
-    //console.log('NAME: ', this.state.name);
   }
 
   render() {
-    // assign this.props.category to variables here
-    // use props variables inside Views below.
     const category = this.state.category;
     const data = this.state.data;
     return (

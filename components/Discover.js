@@ -64,18 +64,29 @@ export default class Discover extends Component {
     };
   }
 
-  componentDidMount() {
+  // componentDidMount() {
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       console.log('position: ', position);
+  //       this.setState({
+  //         latitude: position.coords.latitude,
+  //         longitude: position.coords.longitude,
+  //         error: null,
+  //       });
+  //     },
+  //     (error) => this.setState({ error: error.message }),
+  //     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+  //   );
+  // }
+
+  componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        //console.log('position: ', position);
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          error: null,
-        });
+        this.setState({position});
+        console.log('POSITION: ', position);
       },
-      (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      (error) => alert(error),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     );
   }
 
@@ -169,15 +180,6 @@ export default class Discover extends Component {
       )
     };
 
-  // componentDidMount () {
-  //   navigator.geolocation.getCurrentPosition(
-  //     (position) => {
-  //       this.setState({position});
-  //     },
-  //     (error) => alert(error),
-  //     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-  //   );
-  // }
 }
 
 const styles = StyleSheet.create({
