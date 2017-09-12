@@ -151,4 +151,3 @@ const styles = StyleSheet.create({
     color: '#596a7f',
   }
 })
-
