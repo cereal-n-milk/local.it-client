@@ -128,7 +128,7 @@ export default class Discover extends Component {
         // })
         this.props.navigation.navigate('CategoryView', {
           data: data.businesses,
-          category: title })\
+          category: title })
         console.log(this.state);
       })
       .catch((err) => console.log(err))
@@ -184,4 +184,3 @@ const styles = StyleSheet.create({
     color: '#596a7f',
   }
 })
-
