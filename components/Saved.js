@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
 export default class Saved extends Component {
 
@@ -111,11 +112,12 @@ export default class Saved extends Component {
   getInterestsByCity = () => {
   // onPress, fetch Saved Interests data from DB
   // navigate to InterestsByCity with params
-  axios.get('api/saved')
+  // TODO: make userID in url dynamic
+  axios.get('api/savedInterests/59b1d6074203500e9a94b0fe', { method: 'GET' })
     .then((data) => {
       this.props.navigation.navigate('InterestsByCity', {
-        city: '',
-        interests: ''
+        city: item.city,
+        interests: data.interests,
       });
     })
     .catch(err => console.log(err))
@@ -130,7 +132,7 @@ export default class Saved extends Component {
           renderItem={({ item }) =>
           <TouchableOpacity
             style={styles.cityItem}
-            onPress={ () => this.viewInterestsByCity(item.city) }>
+            onPress={ () => this.getInterestsByCity(item.city) }>
               <Text
                 style={styles.cityText}>
                 {item.city}

@@ -4,7 +4,6 @@ import SwipeCards from 'react-native-swipe-cards';
 
 const Card = (props) => {
   let card = props;
-  console.log('ITEM props:', card);
   return (
     <View style={styles.card}>
       <View style={
