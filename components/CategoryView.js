@@ -6,9 +6,9 @@ export default class CategoryView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: "Testing Link",
+      category: this.props.navigation.state.params.category,
       item: "Suggestion",
-      data: ''
+      data: this.props.navigation.state.params.data
     }
     console.log("CategoryView State: ", this.state, "CategoryView Props:", this.props);
   }
@@ -16,6 +16,8 @@ export default class CategoryView extends Component {
   render() {
     // assign this.props.category to variables here
     // use props variables inside Views below.
+    const category = this.state.category;
+    const data = this.state.data;
     return (
       <View style = {{
         flex: 2,
@@ -34,8 +36,8 @@ export default class CategoryView extends Component {
             fontWeight: 'bold',
             textAlign: 'center'}
         }
-        >{this.state.category}</Text>
-        <Item/>
+        >{ category }</Text>
+        <Item data={data}/>
       </View>
     );
   }

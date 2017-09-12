@@ -39,10 +39,11 @@ export default class Item extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      // yelp Data takes place of Cards?
-      cards: Cards
+      // yelp Data takes place of Cards
+      cards: this.props.data
     }
     console.log('Item state: ', this.state);
+    console.log('Item props!!!!!!!!!!!!: ', this.props);
   }
 
   handleYup (card) {
