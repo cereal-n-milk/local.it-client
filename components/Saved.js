@@ -14,17 +14,17 @@ export default class Saved extends Component {
       interestsByCity: [
         {
           interests: [],
-          dislikedInterets: [],
+          dislikedInterests: [],
           city: 'Los Angeles, CA',
         },
         {
           interests: [],
-          dislikedInterets: [],
+          dislikedInterests: [],
           city: 'San Francisco, CA',
         },
         {
           interests: [],
-          dislikedInterets: [],
+          dislikedInterests: [],
           city: 'San Diego, CA',
         },
       ]

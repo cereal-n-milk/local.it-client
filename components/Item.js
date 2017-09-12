@@ -9,8 +9,6 @@ const Card = (props) => {
     <View style={styles.card}>
       <View style={
         {
-          borderStyle: 'solid',
-          borderWidth: 5,
           marginTop: 20
         }
       }>

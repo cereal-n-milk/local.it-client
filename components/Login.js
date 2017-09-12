@@ -66,7 +66,7 @@ export default class Login extends Component {
       <View style={styles.container}>
         { user
           ? // show user info if already logged in
-            <Tabs />
+            <Tabs screenProps={this.state.user} />
           : // show Please log in message if not
             <View style={styles.content}>
               <View style={styles.avatar}>
