@@ -92,7 +92,7 @@ export default class Discover extends Component {
     var userdata = null;
     var userid = '59b8cec7a3d50cf21df07b1e'
     let params = {
-      term: 'coffee',
+      term: title,
       location: latlng,
       limit: '15',
     };
@@ -169,15 +169,15 @@ export default class Discover extends Component {
       )
     };
 
-  componentDidMount () {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({position});
-      },
-      (error) => alert(error),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    );
-  }
+  // componentDidMount () {
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       this.setState({position});
+  //     },
+  //     (error) => alert(error),
+  //     {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+  //   );
+  // }
 }
 
 const styles = StyleSheet.create({
