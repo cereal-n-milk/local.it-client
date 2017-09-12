@@ -2,6 +2,10 @@
 #
 .DS_Store
 
+# Yelp API codes
+#
+.env
+
 # Xcode
 #
 build/

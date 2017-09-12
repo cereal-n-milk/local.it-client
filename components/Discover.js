@@ -19,6 +19,10 @@ import YelpConfig from '../auth/yelpConfig';
 
 export default class Discover extends Component {
 
+  viewCategory = (title) => {
+    this.props.navigation.navigate('CategoryView', {date: title});
+  }
+
   constructor (props) {
     super(props);
 
@@ -97,11 +101,11 @@ export default class Discover extends Component {
     );
   }
 
-  fetchYelpData () {
+  fetchYelpData (title) {
     console.log(YelpConfig);
     const credentials = {
-      appId: YelpConfig.appId,
-      appSecret: YelpConfig.appSecret
+      appId: 'hm9ett-9Ql1GSG7ErN8vZg',
+      appSecret: 'j4p9jp2eagVP3KHa5paRMUMNn8UBFa1rnolGAXZKYnjMoWBBdTT4CUNUGpJHk06D'
     }
     const yelp = new YelpApi(credentials);
     var lat = this.state.latitude;
@@ -117,8 +121,19 @@ export default class Discover extends Component {
       limit: '15',
     };
     yelp.search(params)
-      .then((data) => console.log(data))
-      .catch((err) => err)
+      .then((data) => {
+        console.log(data);
+        // this.setState({
+        //   data: data.businesses
+        // })
+        this.props.navigation.navigate('CategoryView', {
+          data: data.businesses,
+          category: title })\
+        console.log(this.state);
+      })
+      .catch((err) => console.log(err))
+
+    this.viewCategory();
   }
 
   render () {
@@ -130,18 +145,27 @@ export default class Discover extends Component {
             renderItem={({ item }) =>
             <TouchableOpacity
               style={styles.categoryItem}
-              onPress={() => this.viewCategory()}>
-              <Text
-                style={styles.categoryText}>
-                {item.title}
-              </Text>
+              onPress={ () =>  this.fetchYelpData(item.title) }>
+              <Text>{item.title}</Text>
             </TouchableOpacity>
             }
           />
         </View>
       )
-    }
+    };
+
+  /*() => this.fetchYelpData()*/
+  /* TODO: pass down "item.title" as props to categoryView and rentder categoryView*/
+  componentDidMount () {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({position});
+      },
+      (error) => alert(error),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
   }
+}
 
 const styles = StyleSheet.create({
   toolbarTab: {
@@ -161,8 +185,3 @@ const styles = StyleSheet.create({
   }
 })
 
-//From Francis Ngo to Everyone: (07:39 PM)
-// {array.forEach((category) => { <Link to=“”><CategoryView/></Link> }
-    // <Text style={styles.toolbarTab}>
-    //   Discover
-    // </Text>

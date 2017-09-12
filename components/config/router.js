@@ -19,7 +19,7 @@ export const CategoryStack = StackNavigator({
   CategoryView: {
     screen: CategoryView,
     navigationOptions: ({navigation}) => {
-      console.log('navigation: ', navigation);
+      //console.log('navigation: ', navigation);
       //TODO: Finish connecting CategoryView to Discover
       // get data.title from Discover to display instead of hard code
       // title: ({ state }) => `${state.params.title.toUpperCase()}`,
