@@ -1,50 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-
 import SwipeCards from 'react-native-swipe-cards';
 
-let Card = React.createClass({
-  render() {
-    return (
-      <View style={[styles.card]}>
-        <View style={
-          {
-            borderStyle: 'solid',
-            borderWidth: 5,
-            marginTop: 20
-          }
-        }>
-          <Image
-          style={{width: 300, height: 300}}
-          source = {{ uri: this.props.image_url}}/>
-          <View>
-            <Text>{this.props.name}</Text>
-            <Text>Rating: {this.props.rating}</Text>
-            <Text>Distance: {this.props.distance}</Text>
-            <Text>Price: {this.props.price}</Text>
-          </View>
+const Card = (props) => {
+  let card = props;
+  console.log('ITEM props:', card);
+  return (
+    <View style={styles.card}>
+      <View style={
+        {
+          borderStyle: 'solid',
+          borderWidth: 5,
+          marginTop: 20
+        }
+      }>
+        <Image
+        style={{width: 300, height: 300}}
+        source={{ uri: card.image_url}} />
+        <View>
+          <Text>Rating: {card.rating}</Text>
+          <Text>Distance: {card.distance}</Text>
+          <Text>Price: {card.price}</Text>
         </View>
       </View>
-    )
-  }
-})
+    </View>
+  )
+}
 
-let NoMoreCards = React.createClass({
-  render() {
-    return (
-      <View style={styles.noMoreCards}>
-        <Text>No more cards</Text>
-      </View>
-    )
-  }
-})
+const NoMoreCards = () => {
+  return (
+    <View style={styles.noMoreCards}>
+      <Text>Nothing Else to See Here</Text>
+    </View>
+  )
+}
 
-export default React.createClass({
-  getInitialState() {
-    return {
-      cards: Cards
+export default class Item extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      // yelp Data takes place of Cards
+      cards: this.props.data
     }
-  },
+    console.log('Item state: ', this.state);
+    console.log('Item props!!!!!!!!!!!!: ', this.props);
+  }
+
   handleYup (card) {
     //TODO: Get user id from local storage?
     // Edit to send post to database
@@ -57,11 +58,13 @@ export default React.createClass({
         business: card
       })
     })
-  },
+  }
+
   handleNope (card) {
     console.log(`Nope for ${card.text}`)
     //Edit to send post to database
-  },
+  }
+
   render() {
     return (
       <SwipeCards
@@ -75,7 +78,7 @@ export default React.createClass({
       />
     )
   }
-})
+}
 
 const styles = StyleSheet.create({
   card: {

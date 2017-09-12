@@ -3,25 +3,7 @@ import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity
 import YelpApi from 'v3-yelp-api';
 import YelpConfig from '../auth/yelpConfig';
 
-/*
-  TODO:
-  9/7:
-  Import categories from API to categories array
-  Initial state will be empty categories array
-  Create a fetchData function that does a call to Yelp API
-  The fetchData function will setState to list of categories from Yelp API
-  Categories props will passdown to its child components via Link component
-
-  9/8:
-  Using react-navigation, create props to pass down down to CategoryView
-  REF: https://github.com/spencercarli/getting-started-react-navigation/blob/master/app/screens/UserDetail.js
-*/
-
 export default class Discover extends Component {
-
-  viewCategory = (title) => {
-    this.props.navigation.navigate('CategoryView', {date: title});
-  }
 
   constructor (props) {
     super(props);
@@ -82,14 +64,10 @@ export default class Discover extends Component {
     };
   }
 
-  viewCategory () {
-    this.props.navigation.navigate('CategoryView');
-  }
-
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log('position: ', position);
+        //console.log('position: ', position);
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -102,38 +80,29 @@ export default class Discover extends Component {
   }
 
   fetchYelpData (title) {
-    console.log(YelpConfig);
     const credentials = {
-      appId: 'hm9ett-9Ql1GSG7ErN8vZg',
-      appSecret: 'j4p9jp2eagVP3KHa5paRMUMNn8UBFa1rnolGAXZKYnjMoWBBdTT4CUNUGpJHk06D'
+      appId: YelpConfig.appId,
+      appSecret: YelpConfig.appSecret
     }
     const yelp = new YelpApi(credentials);
     var lat = this.state.latitude;
     var lng = this.state.longitude;
-    console.log('=======================================')
-    console.log('lat: ', lat);
-    console.log('lng: ', lng);
-    console.log('=======================================')
     var latlng = String(lat) + ',' + String(lng);
     let params = {
       term: 'coffee',
       location: latlng,
       limit: '15',
     };
+
     yelp.search(params)
       .then((data) => {
-        console.log(data);
-        // this.setState({
-        //   data: data.businesses
-        // })
         this.props.navigation.navigate('CategoryView', {
           data: data.businesses,
           category: title })
-        console.log(this.state);
+        //console.log('State: ',this.state);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
 
-    this.viewCategory();
   }
 
   render () {
@@ -154,8 +123,6 @@ export default class Discover extends Component {
       )
     };
 
-  /*() => this.fetchYelpData()*/
-  /* TODO: pass down "item.title" as props to categoryView and rentder categoryView*/
   componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       (position) => {
