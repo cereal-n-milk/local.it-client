@@ -11,10 +11,12 @@ const Card = (props) => {
           marginTop: 20
         }
       }>
+        <Text>{card.name}</Text>
         <Image
         style={{width: 300, height: 300}}
         source={{ uri: card.image_url}} />
         <View>
+          <Text>{card.name}</Text>
           <Text>Rating: {card.rating}</Text>
           <Text>Distance: {card.distance}</Text>
           <Text>Price: {card.price}</Text>

@@ -121,7 +121,6 @@ export default class Discover extends Component {
           //console.log('State: ',this.state);
         })
         .catch((err) => console.log(err));
-
       })
     })
   }
