@@ -20,19 +20,12 @@ export default class CategoryView extends Component {
     const data = this.state.data;
     return (
       <View style = {{
-        flex: 2,
-        borderStyle: 'solid',
-        borderWidth: 5,
+        flex: 1,
         backgroundColor: '#fff',
-        marginTop: 50,
       }}>
-        <Button
-          onPress={() => console.log('This button should return to the discover screen')}
-          title="Back"
-          color="#841584"
-        />
         <Text style={
-          { fontSize: 20,
+          { marginTop: 10,
+            fontSize: 20,
             fontWeight: 'bold',
             textAlign: 'center'}
         }

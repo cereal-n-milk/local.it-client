@@ -18,13 +18,13 @@ export const CategoryStack = StackNavigator({
   },
   CategoryView: {
     screen: CategoryView,
-    navigationOptions: ({navigation}) => {
+    navigationOptions: ({ navigation }) => ({
       //console.log('navigation: ', navigation);
       //TODO: Finish connecting CategoryView to Discover
       // get data.title from Discover to display instead of hard code
       // title: ({ state }) => `${state.params.title.toUpperCase()}`,
       title: 'Category'
-    }
+    })
   },
 });
 
@@ -37,9 +37,9 @@ export const SavedStack = StackNavigator({
   },
   InterestsByCity: {
     screen: InterestsByCity,
-    navigationOptions: ({navigation}) => {
+    navigationOptions: {
       title: 'Cities'
-    }
+    },
   }
 });
 
@@ -72,7 +72,7 @@ export const Tabs = TabNavigator({
       ),
     }
   },
-  Saved : {
+  Saved: {
     screen: SavedStack,
     title: 'Saved',
     navigationOptions: {
