@@ -89,7 +89,7 @@ export default class Discover extends Component {
     var lng = this.state.longitude;
     var latlng = String(lat) + ',' + String(lng);
     var userdata = null;
-    var userid = '59b8a29f99c340e0eb1e6d45'
+    var userid = '59b8cec7a3d50cf21df07b1e'
     let params = {
       term: 'coffee',
       location: latlng,
@@ -124,6 +124,8 @@ export default class Discover extends Component {
       })
     })
   }
+
+
 
   render () {
     return (
