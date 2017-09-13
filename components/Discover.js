@@ -79,6 +79,7 @@ export default class Discover extends Component {
     );
   }
 
+//Yelp Fetch that goes through Python
   fetchYelpData (title) {
     const credentials = {
       appId: YelpConfig.appId,
@@ -124,8 +125,32 @@ export default class Discover extends Component {
       })
     })
   }
+//Original yelp fetch
+  // fetchYelpData (title) {
+  //   const credentials = {
+  //     appId: YelpConfig.appId,
+  //     appSecret: YelpConfig.appSecret
+  //   }
+  //   const yelp = new YelpApi(credentials);
+  //   var lat = this.state.latitude;
+  //   var lng = this.state.longitude;
+  //   var latlng = String(lat) + ',' + String(lng);
+  //   let params = {
+  //     term: 'coffee',
+  //     location: latlng,
+  //     limit: '15',
+  //   };
 
+  //   yelp.search(params)
+  //     .then((data) => {
+  //       this.props.navigation.navigate('CategoryView', {
+  //         data: data.businesses,
+  //         category: title })
+  //       //console.log('State: ',this.state);
+  //     })
+  //     .catch((err) => console.log(err));
 
+  // }
 
   render () {
     return (
