@@ -64,18 +64,29 @@ export default class Discover extends Component {
     };
   }
 
-  componentDidMount() {
+  // componentDidMount() {
+  //   navigator.geolocation.getCurrentPosition(
+  //     (position) => {
+  //       console.log('position: ', position);
+  //       this.setState({
+  //         latitude: position.coords.latitude,
+  //         longitude: position.coords.longitude,
+  //         error: null,
+  //       });
+  //     },
+  //     (error) => this.setState({ error: error.message }),
+  //     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+  //   );
+  // }
+
+  componentDidMount () {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        //console.log('position: ', position);
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          error: null,
-        });
+        this.setState({position});
+        console.log('POSITION: ', position);
       },
-      (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      (error) => alert(error),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     );
   }
 
@@ -92,7 +103,7 @@ export default class Discover extends Component {
     var userdata = null;
     var userid = '59b8cec7a3d50cf21df07b1e'
     let params = {
-      term: 'coffee',
+      term: title,
       location: latlng,
       limit: '15',
     };
@@ -121,7 +132,6 @@ export default class Discover extends Component {
           //console.log('State: ',this.state);
         })
         .catch((err) => console.log(err));
-
       })
     })
   }
@@ -154,30 +164,20 @@ export default class Discover extends Component {
 
   render () {
     return (
-        <View style={styles.container}>
-          <FlatList
-            data={this.state.categories}
-            keyExtractor={(category, index) => index }
-            renderItem={({ item }) =>
-            <TouchableOpacity
-              style={styles.categoryItem}
-              onPress={ () =>  this.fetchYelpData(item.title) }>
-              <Text>{item.title}</Text>
-            </TouchableOpacity>
-            }
-          />
-        </View>
-      )
-    };
-
-  componentDidMount () {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({position});
-      },
-      (error) => alert(error),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    );
+      <View style={styles.container}>
+        <FlatList
+          data={this.state.categories}
+          keyExtractor={(category, index) => index }
+          renderItem={({ item }) =>
+          <TouchableOpacity
+            style={styles.categoryItem}
+            onPress={ () =>  this.fetchYelpData(item.title) }>
+            <Text>{item.title}</Text>
+          </TouchableOpacity>
+          }
+        />
+      </View>
+    )
   }
 }
 

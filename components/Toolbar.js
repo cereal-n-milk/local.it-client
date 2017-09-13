@@ -9,11 +9,11 @@ import Discover from './Discover';
 //   </Text>
 // )
 
-const Saved = () => (
-  <Text style={styles.toolbarTab}>
-    Saved
-  </Text>
-)
+// const Saved = () => (
+//   <Text style={styles.toolbarTab}>
+//     Saved
+//   </Text>
+//)
 
 const Outings = () => (
   <Text style={styles.toolbarTab}>
