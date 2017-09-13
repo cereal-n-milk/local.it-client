@@ -30,7 +30,7 @@ export default class CategoryView extends Component {
             textAlign: 'center'}
         }
         >{ category }</Text>
-        <Item data={data}/>
+        <Item userData={this.props.screenProps} data={data}/>
       </View>
     );
   }

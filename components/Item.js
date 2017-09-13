@@ -4,7 +4,6 @@ import SwipeCards from 'react-native-swipe-cards';
 
 const Card = (props) => {
   let card = props;
-  console.log('ITEM props:', card);
   return (
     <View style={styles.card}>
       <View style={
@@ -40,14 +39,11 @@ export default class Item extends Component {
       // yelp Data takes place of Cards
       cards: this.props.data
     }
-    console.log('Item state: ', this.state);
-    console.log('Item props!!!!!!!!!!!!: ', this.props);
   }
 
   handleYup (card) {
-    //TODO: Get user id from local storage?
-    // Edit to send post to database
-    fetch('http://localhost:3000/api/59b823c3c3912bbf3d739ce7', {
+    var userId = this.props.userData.fbID;
+    fetch('http://localhost:3000/api/' + userId, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -59,8 +55,16 @@ export default class Item extends Component {
   }
 
   handleNope (card) {
-    console.log(`Nope for ${card.text}`)
-    //Edit to send post to database
+    var userId = this.props.userData.fbID;
+    fetch('http://localhost:3000/api/' + userId, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        liked: 'false',
+        city: `${card.location.city}, ${card.location.state}`,
+        business: card
+      })
+    })
   }
 
   render() {
@@ -71,8 +75,8 @@ export default class Item extends Component {
         renderCard={(cardData) => <Card {...cardData} />}
         renderNoMoreCards={() => <NoMoreCards />}
 
-        handleYup={this.handleYup}
-        handleNope={this.handleNope}
+        handleYup={this.handleYup.bind(this)}
+        handleNope={this.handleNope.bind(this)}
       />
     )
   }
