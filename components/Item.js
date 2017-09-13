@@ -47,7 +47,7 @@ export default class Item extends Component {
   handleYup (card) {
     //TODO: Get user id from local storage?
     // Edit to send post to database
-    fetch('http://localhost:3000/api/59b1d6074203500e9a94b0fe', {
+    fetch('http://localhost:3000/api/59b823c3c3912bbf3d739ce7', {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
