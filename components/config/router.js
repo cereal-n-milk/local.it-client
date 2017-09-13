@@ -5,7 +5,7 @@ import { Icon } from 'react-native-elements';
 import Discover from '../Discover';
 import Saved from '../Saved';
 import Itinerary from '../Itinerary';
-//import Profile from '../Profile';
+import Profile from '../Profile';
 import CategoryView from '../CategoryView';
 import InterestsByCity from '../InterestsByCity';
 
@@ -52,14 +52,14 @@ export const ItineraryStack = StackNavigator({
   }
 });
 
-// export const ProfileStack = StackNavigator({
-//   Profile: {
-//     screen: Profile,
-//     navigationOptions: {
-//       title: 'Profile'
-//     }
-//   }
-// });
+export const ProfileStack = StackNavigator({
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      title: 'Profile'
+    }
+  }
+});
 
 export const Tabs = TabNavigator({
   Discover: {
@@ -92,14 +92,14 @@ export const Tabs = TabNavigator({
       ),
     }
   },
-  // Profile: {
-  //   screen: ProfileStack,
-  //   title: 'Profile',
-  //   navigationOptions: {
-  //     tabBarLabel: 'Profile',
-  //     tabBarIcon: ({ tintColor }) => (
-  //       <Icon name="account-circle" size={28} color={tintColor}/>
-  //     ),
-  //   }
-  // }
+  Profile: {
+    screen: ProfileStack,
+    title: 'Profile',
+    navigationOptions: {
+      tabBarLabel: 'Profile',
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="account-circle" size={28} color={tintColor}/>
+      ),
+    }
+  }
 })
