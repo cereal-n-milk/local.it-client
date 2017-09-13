@@ -9,8 +9,8 @@ export default class App extends Component {
   render() {
     return (
       //<Tabs />
-      //<Login />
-      <SaveMap />
+      <Login />
+      //<SaveMap />
     )
   }
 }
