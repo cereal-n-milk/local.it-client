@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
 export default class Profile extends Component {
 
@@ -21,6 +21,13 @@ export default class Profile extends Component {
           </View>
           <View style={styles.description}>
             <Text>Name: {this.props.screenProps.user}</Text>
+            <Text>Saved Interests: 3 </Text>
+            <Text>Saved Itineraries: 4</Text>
+          </View>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button} onPress={this.logout}>
+              <Text style={styles.buttonText}>Logout</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -44,8 +51,21 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   avatarImage: {
-    borderRadius: 75,
-    height: 150,
-    width: 150,
+    borderRadius: 100,
+    height: 200,
+    width: 200,
   },
-})
+  buttonContainer: {
+    margin: 20
+  },
+  button: {
+    backgroundColor: '#3B5998',
+    padding: 10,
+    borderRadius: 4
+  },
+  buttonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+  }
+});

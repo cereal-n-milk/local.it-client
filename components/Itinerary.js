@@ -105,9 +105,7 @@ export default class Itinerary extends Component {
             <TouchableOpacity
               style={styles.itineraryItem}
               onPress={() => this.viewItinerary()}>
-                <Text style={styles.itineraryText}>{`Name of Itinerary: "${item.name}
-                "City: ${item.city}`}
-                </Text>
+                <Text style={styles.itineraryText}>City: {item.city} {"\n"}Name of Itinerary: {item.name}</Text>
             </TouchableOpacity>
           }
         />
@@ -117,12 +115,6 @@ export default class Itinerary extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
   itineraryItem: {
     flex: 1,
     flexDirection: 'row',
@@ -130,6 +122,7 @@ const styles = StyleSheet.create({
     padding: 25,
     borderWidth: 0.5,
     borderColor: '#d6d7da',
+    backgroundColor: '#fff'
   },
   itineraryText: {
     color: '#596A7F',
