@@ -57,3 +57,6 @@ fastlane/Preview.html
 fastlane/screenshots
 
 auth/yelpConfig.js
+
+android
+ios
