@@ -96,14 +96,12 @@ export default class Discover extends Component {
       appId: YelpConfig.appId,
       appSecret: YelpConfig.appSecret
     }
-    console.log('props: ', this.props)
     const yelp = new YelpApi(credentials);
     var lat = this.state.latitude;
     var lng = this.state.longitude;
     var latlng = String(lat) + ',' + String(lng);
     var userdata = null;
-    //var userid = this.props.screenProps.fbID
-    var userid = "0100205207988687"
+    var userid = '59b8cec7a3d50cf21df07b1e'
     let params = {
       term: title,
       location: latlng,
@@ -111,7 +109,7 @@ export default class Discover extends Component {
     };
 
     fetch(`http://localhost:3000/api/${userid}`, {
-          method: 'GET',
+          method: 'PUT',
           headers: {'Content-Type': 'application/json'},
         })
     .then((response) => {
