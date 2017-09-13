@@ -21,12 +21,6 @@ export default class CategoryView extends Component {
         flex: 1,
         backgroundColor: '#fff',
       }}>
-        <Button
-          onPress={() => console.log('This button should return to the discover screen')}
-          // make this button say name of category?
-          title="Back"
-          color="#841584"
-        />
         <Text style={
           { marginTop: 10,
             fontSize: 20,
