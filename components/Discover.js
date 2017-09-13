@@ -164,22 +164,21 @@ export default class Discover extends Component {
 
   render () {
     return (
-        <View style={styles.container}>
-          <FlatList
-            data={this.state.categories}
-            keyExtractor={(category, index) => index }
-            renderItem={({ item }) =>
-            <TouchableOpacity
-              style={styles.categoryItem}
-              onPress={ () =>  this.fetchYelpData(item.title) }>
-              <Text>{item.title}</Text>
-            </TouchableOpacity>
-            }
-          />
-        </View>
-      )
-    };
-
+      <View style={styles.container}>
+        <FlatList
+          data={this.state.categories}
+          keyExtractor={(category, index) => index }
+          renderItem={({ item }) =>
+          <TouchableOpacity
+            style={styles.categoryItem}
+            onPress={ () =>  this.fetchYelpData(item.title) }>
+            <Text>{item.title}</Text>
+          </TouchableOpacity>
+          }
+        />
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { AppRegistry, StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
 export default class Saved extends Component {
@@ -107,20 +107,25 @@ export default class Saved extends Component {
         },
       ]
     }
+    //this.getInterestsByCity = this.getInterestsByCity.bind(this);
   }
 
-  getInterestsByCity = () => {
+  getInterestsByCity (city) {
   // onPress, fetch Saved Interests data from DB
   // navigate to InterestsByCity with params
   // TODO: make userID in url dynamic
-  axios.get('api/savedInterests/59b1d6074203500e9a94b0fe', { method: 'GET' })
+  // TODO: filter out the correct city data from response
+
+  axios.get('http://localhost:3000/api/savedInterests/59b1d6074203500e9a94b0fe/', { method: 'GET' })
     .then((data) => {
+      console.log('GETTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       this.props.navigation.navigate('InterestsByCity', {
-        city: item.city,
+        city: city,
         interests: data.interests,
       });
+      console.log('gotten: ', this.props);
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log('ERROR!', err))
   }
 
   render() {
@@ -133,8 +138,7 @@ export default class Saved extends Component {
           <TouchableOpacity
             style={styles.cityItem}
             onPress={ () => this.getInterestsByCity(item.city) }>
-              <Text
-                style={styles.cityText}>
+              <Text style={styles.cityText}>
                 {item.city}
               </Text>
           </TouchableOpacity>
