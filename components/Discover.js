@@ -33,25 +33,25 @@ export default class Discover extends Component {
     );
   }
 
-  //Yelp Fetch that goes through Python
+//Yelp Fetch that goes through Python
   // fetchYelpData (title) {
   //   const credentials = {
   //     appId: YelpConfig.appId,
   //     appSecret: YelpConfig.appSecret
   //   };
-  //   console.log('props: ', this.props);
   //   const yelp = new YelpApi(credentials);
-  //   let lat = this.state.latitude;
-  //   let lng = this.state.longitude;
-  //   let latlng = String(lat) + ',' + String(lng);
-  //   let userdata = null;
-  //   let userid = this.props.screenProps.fbID;
+  //   var lat = this.state.latitude;
+  //   var lng = this.state.longitude;
+  //   var latlng = String(lat) + ',' + String(lng);
+  //   var userdata = null;
+  //   var userid = '0100205207988687';
   //   let params = {
-  //     term: title,
+  //     term: 'coffee',
   //     location: latlng,
   //     limit: '15',
   //   };
-  //
+
+>>>>>>> Uncomment working yelp fetch request
   //   fetch(`http://localhost:3000/api/${userid}`, {
   //         method: 'GET',
   //         headers: {'Content-Type': 'application/json'},
@@ -92,12 +92,14 @@ export default class Discover extends Component {
   //     });
   //   });
   // }
+//Original yelp fetch
+>>>>>>> Uncomment working yelp fetch request
 
   fetchYelpData (title) {
     const credentials = {
       appId: YelpConfig.appId,
       appSecret: YelpConfig.appSecret
-    }
+    };
     const yelp = new YelpApi(credentials);
     var lat = this.state.latitude;
     var lng = this.state.longitude;
