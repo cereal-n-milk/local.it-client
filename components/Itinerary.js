@@ -9,8 +9,8 @@ export default class Itinerary extends Component {
       // We need live itinerary Data
       itineraryData: [
         {
-          city: 'Los Angeles',
-          name: 'Labor Day Fiesta',
+          city: 'San Francisco',
+          name: 'The Art Lover\'s Itinerary',
           itineraryList: [
             {
               "id": "venice-beach-venice",
