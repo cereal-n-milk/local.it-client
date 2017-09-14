@@ -92,7 +92,7 @@ export default class Itinerary extends Component {
   }
 
   viewItinerary = () => {
-    console.log('This is testing click on itinerary');
+    this.props.navigation.navigate('MapView');
   };
 
   render() {

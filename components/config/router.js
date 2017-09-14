@@ -8,6 +8,7 @@ import Itinerary from '../Itinerary';
 import Profile from '../Profile';
 import CategoryView from '../CategoryView';
 import InterestsByCity from '../InterestsByCity';
+import Map from '../Map';
 
 export const CategoryStack = StackNavigator({
   Discover: {
@@ -48,6 +49,12 @@ export const ItineraryStack = StackNavigator({
     screen: Itinerary,
     navigationOptions: {
       title: 'Itinerary'
+    }
+  },
+  MapView: {
+    screen: Map,
+    navigationOptions: {
+      title: 'Map'
     }
   }
 });
