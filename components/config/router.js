@@ -14,7 +14,7 @@ export const CategoryStack = StackNavigator({
   Discover: {
     screen: Discover,
     navigationOptions: {
-      title: 'Discover'
+      title: 'Discover San Francisco'
     },
   },
   CategoryView: {
