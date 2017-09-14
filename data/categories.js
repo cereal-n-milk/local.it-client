@@ -1,4 +1,4 @@
-[
+var categories = [
   {
       "alias": "active",
       "title": "Active Life",
@@ -41,4 +41,6 @@
       "title": "Shopping",
       "parents": []
   },
-]
+];
+
+module.exports = categories;
