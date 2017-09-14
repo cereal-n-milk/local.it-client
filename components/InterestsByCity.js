@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 
 export default class InterestByCity extends Component {
   constructor (props) {
@@ -12,7 +12,7 @@ export default class InterestByCity extends Component {
     let city = this.props.navigation.state.params.interests.city;
     let interests = this.props.navigation.state.params.interests[0].interests;
     return (
-      <View>
+      <ScrollView>
         <Text>{city}</Text>
         <FlatList
           data={interests}
@@ -33,7 +33,7 @@ export default class InterestByCity extends Component {
             </TouchableOpacity>
           }
         />
-      </View>
+      </ScrollView>
     )
   }
 }
