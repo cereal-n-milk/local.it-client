@@ -1,4 +1,4 @@
-[
+const itineraries = [
   {
     "id": "giorgiporgi-los-angeles",
     "name": "GiorgiPorgi",
@@ -696,4 +696,6 @@
     "display_phone": "(855) 711-3385",
     "distance": 8995.24697291983
   }
-]
+];
+
+module.exports = itineraries

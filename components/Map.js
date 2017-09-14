@@ -6,6 +6,7 @@ import {
   Dimensions
 } from 'react-native';
 import MapView from 'react-native-maps';
+import itinerary from '../data/itinerary-data.js';
 
 const { width, height } = Dimensions.get('window');
 
@@ -27,7 +28,7 @@ export default class Map extends React.Component {
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
       },
-      markers: [],
+      itineraries: itinerary,
     };
   }
 
@@ -40,15 +41,19 @@ export default class Map extends React.Component {
           initialRegion={this.state.region}
         >
           <MapView.Marker
+            title="This is a title"
+            description="This is a description"
+            coordinate={this.state.region}
+          />
+          {this.state.itineraries.map((itinerary, index) => (
+            <MapView.Marker
+              key={index}
               title="This is a title"
               description="This is a description"
-              coordinate={this.state.region}
-            />
-          {this.state.markers.map(marker => (
-            <MapView.Marker
-              key={marker.key}
-              coordinate={marker.coordinate}
-              pinColor={marker.color}
+              coordinate={{
+                latitude: itinerary.coordinates.latitude,
+                longitude: itinerary.coordinates.longitude,
+              }}
             />
           ))}
         </MapView>
