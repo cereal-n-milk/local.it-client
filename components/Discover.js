@@ -110,6 +110,7 @@ export default class Discover extends Component {
       </View>
     )
   }
+
 }
 
 const styles = StyleSheet.create({
