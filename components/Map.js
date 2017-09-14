@@ -41,15 +41,14 @@ export default class Map extends React.Component {
           initialRegion={this.state.region}
         >
           <MapView.Marker
-            title="This is a title"
-            description="This is a description"
+            title="Current Location"
             coordinate={this.state.region}
           />
           {this.state.itineraries.map((itinerary, index) => (
             <MapView.Marker
               key={index}
-              title="This is a title"
-              description="This is a description"
+              title={itinerary.name}
+              description={itinerary.categories[0].title}
               coordinate={{
                 latitude: itinerary.coordinates.latitude,
                 longitude: itinerary.coordinates.longitude,
