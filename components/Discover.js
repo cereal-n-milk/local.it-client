@@ -93,32 +93,6 @@ export default class Discover extends Component {
     });
   }
 
-  //Original yelp fetch
-  fetchYelpData (title) {
-    const credentials = {
-      appId: YelpConfig.appId,
-      appSecret: YelpConfig.appSecret
-    }
-    const yelp = new YelpApi(credentials);
-    var lat = this.state.latitude;
-    var lng = this.state.longitude;
-    var latlng = String(lat) + ',' + String(lng);
-    let params = {
-      term: title,
-      location: latlng,
-      limit: '30',
-    };
-
-    yelp.search(params)
-      .then((data) => {
-        this.props.navigation.navigate('CategoryView', {
-          data: data.businesses,
-          category: title })
-        //console.log('State: ',this.state);
-      })
-      .catch((err) => console.log(err));
-  }
-
   render () {
     return (
       <View style={styles.container}>
@@ -128,7 +102,7 @@ export default class Discover extends Component {
           renderItem={({ item }) =>
             <TouchableOpacity
               style={styles.categoryItem}
-              onPress={ () => this.fetchYelpData(item.title) }>
+              onPress={ () =>  this.fetchYelpData(item.title) }>
               <Text>{item.title}</Text>
             </TouchableOpacity>
           }
