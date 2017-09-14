@@ -11,8 +11,8 @@ import itinerary from '../data/itinerary-data.js';
 const { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 34.027373;
-const LONGITUDE = -118.409287;
+const LATITUDE = 37.733795;
+const LONGITUDE = -122.446747;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
