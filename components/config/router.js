@@ -14,7 +14,7 @@ export const CategoryStack = StackNavigator({
   Discover: {
     screen: Discover,
     navigationOptions: {
-      title: 'Choose Category'
+      title: 'Choose Category',
     },
   },
   CategoryView: {
