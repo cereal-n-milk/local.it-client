@@ -1,31 +1,40 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 
 export default class InterestByCity extends Component {
   constructor (props) {
     super(props);
-    this.state = {
-      city: this.props.city,
-      interests: this.props.interests,
-    }
+    this.state = {};
   }
   // TODO: render each interest individually
   // render a list of all Saved-Interrests
   render() {
-    let interest = props;
-    let city = props;
+    console.log(this.props);
+    let city = this.props.navigation.state.params.interests.city;
+    let interests = this.props.navigation.state.params.interests[0].interests;
+    console.log(interests);
     return (
-      <View style={styles.container}>
+      <View>
         <Text>{city}</Text>
-        <Image
-        style={{width: 100, height: 100}}
-        source={{ uri: interests.image_url}} />
-        <View>
-          <Text>{interests.name}</Text>
-          <Text>Rating: {interests.rating}</Text>
-          <Text>Distance: {interests.distance}</Text>
-          <Text>Price: {interests.price}</Text>
-        </View>
+        <FlatList
+          data={interests}
+          keyExtractor={(interest, index) => index }
+          renderItem={({ item }) =>
+            <TouchableOpacity
+              style={styles.interestItem}
+              onPress={ () => console.log('woot') }>
+                <View>
+                  <Image
+                    style={{width: 100, height: 100}}
+                    source={{ uri: item.image_url}} />
+                  <Text>{item.name}</Text>
+                  <Text>Rating: {item.rating}</Text>
+                  <Text>Distance: {item.distance}</Text>
+                  <Text>Price: {item.price}</Text>
+                </View>
+            </TouchableOpacity>
+          }
+        />
       </View>
     )
   }
@@ -37,5 +46,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  interestItem: {
+
   }
 })

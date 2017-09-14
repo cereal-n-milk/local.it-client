@@ -160,22 +160,67 @@ fetchYelpData (title) {
   //   var lat = this.state.latitude;
   //   var lng = this.state.longitude;
   //   var latlng = String(lat) + ',' + String(lng);
+  //   var userdata = null;
+  //   var userid = '59b8cec7a3d50cf21df07b1e'
   //   let params = {
-  //     term: 'coffee',
+  //     term: title,
   //     location: latlng,
   //     limit: '15',
   //   };
 
-  //   yelp.search(params)
+  //   fetch(`http://localhost:3000/api/${userid}`, {
+  //         method: 'PUT',
+  //         headers: {'Content-Type': 'application/json'},
+  //       })
+  //   .then((response) => {
+  //     userdata = response
+  //     yelp.search(params)
   //     .then((data) => {
-  //       this.props.navigation.navigate('CategoryView', {
-  //         data: data.businesses,
-  //         category: title })
-  //       //console.log('State: ',this.state);
+  //       console.log('yelp data: ', data)
+  //       fetch('http://localhost:3000/python', {
+  //         method: 'POST',
+  //         headers: {'Content-Type': 'application/json'},
+  //         body: JSON.stringify({yelp: data, user: userdata._bodyInit})
+  //       })
+  //       .then((data) => {
+  //         var target = JSON.parse(data._bodyInit)
+  //         target = JSON.parse(target[0])
+  //         console.log('retreived from python api: ', target)
+  //         this.props.navigation.navigate('CategoryView', {
+  //           data: target,
+  //           category: title })
+  //         //console.log('State: ',this.state);
+  //       })
+  //       .catch((err) => console.log(err));
   //     })
-  //     .catch((err) => console.log(err));
-
+  //   })
   // }
+//Original yelp fetch
+  fetchYelpData (title) {
+    const credentials = {
+      appId: YelpConfig.appId,
+      appSecret: YelpConfig.appSecret
+    }
+    const yelp = new YelpApi(credentials);
+    var lat = this.state.latitude;
+    var lng = this.state.longitude;
+    var latlng = String(lat) + ',' + String(lng);
+    let params = {
+      term: 'coffee',
+      location: latlng,
+      limit: '15',
+    };
+
+    yelp.search(params)
+      .then((data) => {
+        this.props.navigation.navigate('CategoryView', {
+          data: data.businesses,
+          category: title })
+        //console.log('State: ',this.state);
+      })
+      .catch((err) => console.log(err));
+
+  }
 
   render () {
     return (

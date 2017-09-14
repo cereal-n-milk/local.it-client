@@ -106,7 +106,7 @@ export default class Saved extends Component {
           city: 'San Diego, CA',
         },
       ]
-    }
+    };
     //this.getInterestsByCity = this.getInterestsByCity.bind(this);
   }
 
@@ -115,15 +115,18 @@ export default class Saved extends Component {
   // navigate to InterestsByCity with params
   // TODO: make userID in url dynamic
   // TODO: filter out the correct city data from response
-
-  axios.get('http://localhost:3000/api/savedInterests/59b1d6074203500e9a94b0fe/', { method: 'GET' })
+  let user = this.props.screenProps.fbID;
+  axios.get('http://localhost:3000/api/' + user, { method: 'GET' })
     .then((data) => {
-      console.log('GETTING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+      let savedInterest = data.data.interestsByCity.filter(element => {
+        if (element.city === city) {
+          return element;
+        }
+      });
       this.props.navigation.navigate('InterestsByCity', {
         city: city,
-        interests: data.interests,
+        interests: savedInterest,
       });
-      console.log('gotten: ', this.props);
     })
     .catch(err => console.log('ERROR!', err))
   }
@@ -135,13 +138,13 @@ export default class Saved extends Component {
           data={this.state.interestsByCity}
           keyExtractor={(city, index) => index }
           renderItem={({ item }) =>
-          <TouchableOpacity
-            style={styles.cityItem}
-            onPress={ () => this.getInterestsByCity(item.city) }>
-              <Text style={styles.cityText}>
-                {item.city}
-              </Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.cityItem}
+              onPress={ () => this.getInterestsByCity(item.city) }>
+                <Text style={styles.cityText}>
+                  {item.city}
+                </Text>
+            </TouchableOpacity>
           }
         />
       </View>
