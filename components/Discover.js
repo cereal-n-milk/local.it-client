@@ -200,7 +200,7 @@ fetchYelpData (title) {
     const credentials = {
       appId: YelpConfig.appId,
       appSecret: YelpConfig.appSecret
-    }
+    };
     const yelp = new YelpApi(credentials);
     var lat = this.state.latitude;
     var lng = this.state.longitude;
@@ -216,7 +216,6 @@ fetchYelpData (title) {
         this.props.navigation.navigate('CategoryView', {
           data: data.businesses,
           category: title })
-        //console.log('State: ',this.state);
       })
       .catch((err) => console.log(err));
 
@@ -229,11 +228,11 @@ fetchYelpData (title) {
           data={this.state.categories}
           keyExtractor={(category, index) => index }
           renderItem={({ item }) =>
-          <TouchableOpacity
-            style={styles.categoryItem}
-            onPress={ () =>  this.fetchYelpData(item.title) }>
-            <Text>{item.title}</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.categoryItem}
+              onPress={ () =>  this.fetchYelpData(item.title) }>
+              <Text>{item.title}</Text>
+            </TouchableOpacity>
           }
         />
       </View>

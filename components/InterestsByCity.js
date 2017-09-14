@@ -9,10 +9,8 @@ export default class InterestByCity extends Component {
   // TODO: render each interest individually
   // render a list of all Saved-Interrests
   render() {
-    console.log(this.props);
     let city = this.props.navigation.state.params.interests.city;
     let interests = this.props.navigation.state.params.interests[0].interests;
-    console.log(interests);
     return (
       <View>
         <Text>{city}</Text>

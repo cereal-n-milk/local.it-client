@@ -10,7 +10,7 @@ export default class CategoryView extends Component {
       data: this.props.navigation.state.params.data,
       // keep item below?
       item: "Suggestion",
-    }
+    };
   }
 
   render() {

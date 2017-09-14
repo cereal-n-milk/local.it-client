@@ -3,12 +3,6 @@ import { AppRegistry, StyleSheet, View, Text, FlatList, TouchableOpacity } from 
 import axios from 'axios';
 
 export default class Saved extends Component {
-
-  // viewInterestsByCity = () => {
-  //   this.props.navigation.navigate('InterestsByCity');
-  // }
-// component will focus/blur
-// async storage-a local storage
   constructor (props) {
     super(props);
 
@@ -107,14 +101,11 @@ export default class Saved extends Component {
         },
       ]
     };
-    //this.getInterestsByCity = this.getInterestsByCity.bind(this);
   }
 
-  getInterestsByCity (city) {
   // onPress, fetch Saved Interests data from DB
   // navigate to InterestsByCity with params
-  // TODO: make userID in url dynamic
-  // TODO: filter out the correct city data from response
+  getInterestsByCity (city) {
   let user = this.props.screenProps.fbID;
   axios.get('http://localhost:3000/api/' + user, { method: 'GET' })
     .then((data) => {
@@ -128,7 +119,7 @@ export default class Saved extends Component {
         interests: savedInterest,
       });
     })
-    .catch(err => console.log('ERROR!', err))
+    .catch(err => console.log('ERROR!', err));
   }
 
   render() {
