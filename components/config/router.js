@@ -14,7 +14,7 @@ export const CategoryStack = StackNavigator({
   Discover: {
     screen: Discover,
     navigationOptions: {
-      title: 'Discover: San Francisco'
+      title: 'Choose Category'
     },
   },
   CategoryView: {
@@ -39,7 +39,7 @@ export const SavedStack = StackNavigator({
   InterestsByCity: {
     screen: InterestsByCity,
     navigationOptions: {
-      title: 'Cities'
+      title: 'Create Itinerary'
     },
   }
 });
