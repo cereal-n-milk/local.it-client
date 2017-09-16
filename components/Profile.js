@@ -13,6 +13,7 @@ export default class Profile extends Component {
   }
 
   render() {
+    console.log(this.props.screenProps);
     return (
       <View style={styles.container}>
         <View style={styles.content}>
@@ -21,7 +22,7 @@ export default class Profile extends Component {
           </View>
           <View style={styles.description}>
             <Text>Name: {this.props.screenProps.user}</Text>
-            <Text>Saved Interests: 3 </Text>
+            <Text>Saved Cities: {this.props.screenProps.interestsByCity.length} </Text>
             <Text>Saved Itineraries: 4</Text>
           </View>
           <View style={styles.buttonContainer}>
