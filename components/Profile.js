@@ -23,7 +23,7 @@ export default class Profile extends Component {
           <View style={styles.description}>
             <Text>Name: {this.props.screenProps.user}</Text>
             <Text>Saved Cities: {this.props.screenProps.interestsByCity.length} </Text>
-            <Text>Saved Itineraries: 4</Text>
+            <Text>Saved Itineraries: {this.props.screenProps.itineraryByCity.length}</Text>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={this.logout}>
