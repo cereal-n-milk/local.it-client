@@ -7,10 +7,6 @@ export default class InterestByCity extends Component {
   constructor (props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-      checked: false
-    };
-=======
       selected: false
     };
 
@@ -19,7 +15,6 @@ export default class InterestByCity extends Component {
 
   toggle() {
     this.setState({selected: !this.state.selected});
->>>>>>> WIP - Toggle checkboxes in InterestsByCity
   }
 
   render() {
@@ -76,12 +71,6 @@ export default class InterestByCity extends Component {
                 />
               </View>
             </View>
-<<<<<<< HEAD
-            }
-          />
-        </ScrollView>
-      </View>
-=======
             <View style={{
               flex: 1,
               justifyContent: 'center',
@@ -99,7 +88,6 @@ export default class InterestByCity extends Component {
           }
         />
       </ScrollView>
->>>>>>> WIP - Toggle checkboxes in InterestsByCity
     )
   }
 }
