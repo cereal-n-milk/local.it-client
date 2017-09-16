@@ -57,3 +57,4 @@ fastlane/Preview.html
 fastlane/screenshots
 
 auth/yelpConfig.js
+auth/googleConfig.js
