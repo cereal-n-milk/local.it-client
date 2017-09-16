@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import SwipeCards from 'react-native-swipe-cards';
+import Saved from './Saved';
 
 const Card = (props) => {
   let card = props;
@@ -42,19 +43,6 @@ export default class Item extends Component {
     }
   }
 
-  handleYup (card) {
-    var userId = this.props.userData.fbID;
-    fetch('http://localhost:3000/api/' + userId, {
-      method: 'PUT',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        liked: 'true',
-        city: `${card.location.city}, ${card.location.state}`,
-        business: card
-      })
-    })
-  }
-
   handleNope (card) {
     var userId = this.props.userData.fbID;
     fetch('http://localhost:3000/api/' + userId, {
@@ -72,11 +60,9 @@ export default class Item extends Component {
     return (
       <SwipeCards
         cards={this.state.cards}
-
         renderCard={(cardData) => <Card {...cardData} />}
         renderNoMoreCards={() => <NoMoreCards />}
-
-        handleYup={this.handleYup.bind(this)}
+        handleYup={this.props.handleYup}
         handleNope={this.handleNope.bind(this)}
       />
     )

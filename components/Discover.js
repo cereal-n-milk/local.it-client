@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
 import YelpApi from 'v3-yelp-api';
+
 import YelpConfig from '../auth/yelpConfig';
 
 import categories from '../data/categories.js';
@@ -21,7 +22,10 @@ export default class Discover extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log('position: ', position);
+        let key = googleAPI.googleAPI;
+        var coordinatesData;
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -33,7 +37,7 @@ export default class Discover extends Component {
     );
   }
 
-  //Yelp Fetch that goes through Python
+    //Yelp Fetch that goes through Python
   // fetchYelpData (title) {
   //   const credentials = {
   //     appId: YelpConfig.appId,
@@ -134,7 +138,6 @@ export default class Discover extends Component {
       </View>
     )
   }
-
 }
 
 const styles = StyleSheet.create({
