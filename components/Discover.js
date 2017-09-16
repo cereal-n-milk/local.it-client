@@ -70,6 +70,8 @@ export default class Discover extends Component {
         console.log('userdata: ', usercheck);
         if (usercheck.interestsByCity.length > 0) {
           if (usercheck.interestsByCity[0].interests.length > 3 && usercheck.interestsByCity[0].dislikedInterests.length > 3) {
+              console.log('yelpdata: ', data);
+              console.log('userdata: ', usercheck);
               fetch('http://localhost:3000/python', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
