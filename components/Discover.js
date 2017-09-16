@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
 import YelpApi from 'v3-yelp-api';
+
 import YelpConfig from '../auth/yelpConfig';
+import googleAPI from '../auth/googleConfig';
 
 import categories from '../data/categories.js';
 
@@ -21,7 +23,20 @@ export default class Discover extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log('position: ', position);
+        let key = googleAPI.googleAPI;
+        var coordinatesData;
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${key}`, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+          })
+        .then((response) => {
+          coordinatesData = JSON.parse(response._bodyInit);
+          this.setState({
+            city: coordinatesData.results[7].address_components[3].long_name,
+          })
+        })
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -33,25 +48,25 @@ export default class Discover extends Component {
     );
   }
 
-//Yelp Fetch that goes through Python
+    //Yelp Fetch that goes through Python
   // fetchYelpData (title) {
   //   const credentials = {
   //     appId: YelpConfig.appId,
   //     appSecret: YelpConfig.appSecret
   //   };
+  //   console.log('props: ', this.props);
   //   const yelp = new YelpApi(credentials);
-  //   var lat = this.state.latitude;
-  //   var lng = this.state.longitude;
-  //   var latlng = String(lat) + ',' + String(lng);
-  //   var userdata = null;
-  //   var userid = '0100205207988687';
+  //   let lat = this.state.latitude;
+  //   let lng = this.state.longitude;
+  //   let latlng = String(lat) + ',' + String(lng);
+  //   let userdata = null;
+  //   let userid = this.props.screenProps.fbID;
   //   let params = {
-  //     term: 'coffee',
+  //     term: title,
   //     location: latlng,
   //     limit: '15',
   //   };
-
->>>>>>> Uncomment working yelp fetch request
+  //
   //   fetch(`http://localhost:3000/api/${userid}`, {
   //         method: 'GET',
   //         headers: {'Content-Type': 'application/json'},
@@ -92,14 +107,12 @@ export default class Discover extends Component {
   //     });
   //   });
   // }
-//Original yelp fetch
->>>>>>> Uncomment working yelp fetch request
 
   fetchYelpData (title) {
     const credentials = {
       appId: YelpConfig.appId,
       appSecret: YelpConfig.appSecret
-    };
+    }
     const yelp = new YelpApi(credentials);
     var lat = this.state.latitude;
     var lng = this.state.longitude;
@@ -136,7 +149,6 @@ export default class Discover extends Component {
       </View>
     )
   }
-
 }
 
 const styles = StyleSheet.create({

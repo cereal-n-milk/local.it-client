@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, TextInput, ScrollView, Linking } from 'react-native';
+import { Button, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, TextInput, ScrollView, Linking, DeviceEventEmitter } from 'react-native';
 import Item from './Item.js';
 
 export default class CategoryView extends Component {
@@ -11,6 +11,23 @@ export default class CategoryView extends Component {
       // keep item below?
       item: "Suggestion",
     };
+    this.handleYup = this.handleYup.bind(this);
+  }
+
+  handleYup (card) {
+    var userId = this.props.screenProps.fbID;
+    fetch('http://localhost:3000/api/' + userId, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        liked: 'true',
+        city: `${card.location.city}, ${card.location.state}`,
+        business: card
+      })
+    })
+    .then((result) => {
+      DeviceEventEmitter.emit('refreshFunc',  { data: result })
+    })
   }
 
   render() {
@@ -28,7 +45,7 @@ export default class CategoryView extends Component {
             textAlign: 'center'}
         }
         >{ category }</Text>
-        <Item userData={this.props.screenProps} data={data}/>
+        <Item handleYup={this.handleYup} userData={this.props.screenProps} data={data}/>
       </View>
     );
   }

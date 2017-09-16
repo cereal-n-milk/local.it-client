@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { AppRegistry, StyleSheet, View, Text, FlatList, TouchableOpacity, DeviceEventEmitter } from 'react-native';
 import axios from 'axios';
 
 export default class Saved extends Component {
@@ -7,18 +7,30 @@ export default class Saved extends Component {
     super(props);
 
     this.state = {
-      interestsByCity: [
-        {
-          interests: [],
-          dislikedInterests: [],
-          city: 'San Francisco, CA',
-        },
-      ]
+      user: {interestsByCity: []}
     };
   }
 
-  // onPress, fetch Saved Interests data from DB
-  // navigate to InterestsByCity with params
+  componentWillMount() {
+    this.getInitialData();
+    DeviceEventEmitter.addListener('refreshFunc', (event)=> {
+      var data = JSON.parse(event.data._bodyInit);
+      this.setState({
+        user: data
+      })
+    });
+  }
+
+  getInitialData () {
+    let user = this.props.screenProps.fbID;
+    axios.get('http://localhost:3000/api/' + user, { method: 'GET' })
+      .then((data) => {
+        this.setState({
+          user: data.data
+        })
+      })
+  }
+
   getInterestsByCity (city) {
   let user = this.props.screenProps.fbID;
   axios.get('http://localhost:3000/api/' + user, { method: 'GET' })
@@ -40,7 +52,7 @@ export default class Saved extends Component {
     return (
       <View style={styles.container}>
         <FlatList
-          data={this.state.interestsByCity}
+          data={this.state.user.interestsByCity}
           keyExtractor={(city, index) => index }
           renderItem={({ item }) =>
             <TouchableOpacity
