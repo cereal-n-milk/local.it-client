@@ -3,7 +3,6 @@ import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity
 import YelpApi from 'v3-yelp-api';
 
 import YelpConfig from '../auth/yelpConfig';
-import googleAPI from '../auth/googleConfig';
 
 import categories from '../data/categories.js';
 
@@ -27,16 +26,6 @@ export default class Discover extends Component {
         var coordinatesData;
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${key}`, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'},
-          })
-        .then((response) => {
-          coordinatesData = JSON.parse(response._bodyInit);
-          this.setState({
-            city: coordinatesData.results[7].address_components[3].long_name,
-          })
-        })
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
