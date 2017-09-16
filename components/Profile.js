@@ -21,13 +21,20 @@ export default class Profile extends Component {
             <Image source={{uri: this.props.screenProps.photo}} style={styles.avatarImage} />
           </View>
           <View style={styles.description}>
-            <Text>Name: {this.props.screenProps.user}</Text>
-            <Text>Saved Cities: {this.props.screenProps.interestsByCity.length} </Text>
-            <Text>Saved Itineraries: {this.props.screenProps.itineraryByCity.length}</Text>
+            <Text style={styles.text}>
+              {this.props.screenProps.user}
+            </Text>
+            <Text style={styles.text}>
+            </Text>
+            <Text style={styles.text}>
+              Saved: {this.props.screenProps.itineraryByCity.length}
+            </Text>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={this.logout}>
-              <Text style={styles.buttonText}>Logout</Text>
+              <Text style={styles.buttonText}>
+                Logout
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -68,5 +75,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 16,
+  },
+  text: { marginTop: 10,
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center'
   }
 });
