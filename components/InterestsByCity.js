@@ -7,8 +7,19 @@ export default class InterestByCity extends Component {
   constructor (props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       checked: false
     };
+=======
+      selected: false
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({selected: !this.state.selected});
+>>>>>>> WIP - Toggle checkboxes in InterestsByCity
   }
 
   render() {
@@ -65,10 +76,30 @@ export default class InterestByCity extends Component {
                 />
               </View>
             </View>
+<<<<<<< HEAD
             }
           />
         </ScrollView>
       </View>
+=======
+            <View style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: 50
+            }}>
+              <CheckBox
+                center
+                style={{backgroundColor: '#eaeaea'}}
+                onIconPress={this.toggle()}
+                checked={this.state.selected}
+              />
+            </View>
+          </View>
+          }
+        />
+      </ScrollView>
+>>>>>>> WIP - Toggle checkboxes in InterestsByCity
     )
   }
 }
