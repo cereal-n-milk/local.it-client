@@ -9,16 +9,25 @@ export default class InterestByCity extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      checked: false,
       text: ''
     };
-
     this.saveItinerary = this.saveItinerary.bind(this);
   }
 
   saveItinerary = () => {
+    let userId = this.props.screenProps.fbID;
     let input = this.state.text;
-    console.log('itinerary saved input=>', input);
+    fetch('http://localhost:3000/api/interests/' + userId, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        itineraryName: input
+      })
+    })
+    .then(console.log)
+    .catch(console.log);
+
+    //TODO: Check each item's state, if its changed to true, push them into an array. at submission, add array and input text to ItineraryList in data. Have API take care of adding info to db.
   }
 
   render() {

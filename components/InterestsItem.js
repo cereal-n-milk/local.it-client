@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Image, Flatlist, TouchableOpacity } from 'react
 import { CheckBox } from 'react-native-elements';
 
 export default class InterestsItem extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
