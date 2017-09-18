@@ -1,14 +1,33 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity, ScrollView } from 'react-native';
-import { CheckBox, FormLabel, FormInput, Button } from 'react-native-elements';
+import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { CheckBox, Button } from 'react-native-elements';
+
+import InterestsItem from './InterestsItem';
 
 export default class InterestByCity extends Component {
 
   constructor (props) {
     super(props);
     this.state = {
-      checked: false
+      text: ''
     };
+    this.saveItinerary = this.saveItinerary.bind(this);
+  }
+
+  saveItinerary = () => {
+    let userId = this.props.screenProps.fbID;
+    let input = this.state.text;
+    fetch('http://localhost:3000/api/interests/' + userId, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        itineraryName: input
+      })
+    })
+    .then(console.log)
+    .catch(console.log);
+
+    //TODO: Check each item's state, if its changed to true, push them into an array. at submission, add array and input text to ItineraryList in data. Have API take care of adding info to db.
   }
 
   render() {
@@ -17,14 +36,17 @@ export default class InterestByCity extends Component {
     console.log('this is interests ', interests)
     return (
       <View>
-        <View style={{backgroundColor: '#ffffff', marginTop: 5}}>
-          <FormInput
-            ref="form2"
-            placeholder="ex: The Art Lover's Itinerary..."
+        <View style={{backgroundColor: '#ffffff', marginBottom: 5}}>
+          <Text style={{marginLeft: 15, marginRight: 15, marginTop: 5, marginBottom: 5}}>Name your Itinerary</Text>
+          <TextInput
+            style={{height: 40, marginLeft: 15, marginRight: 15, borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}
+            onChangeText={(text) => this.setState({text})}
+            placeholder="ex. The Art Lover's Itinerary"
+            value={this.state.text}
           />
           <Button
-            style={{marginTop: 5, backgroundColor: '#B9F6CA'}}
-            onPress={() => console.log('yo')}
+            style={{marginTop: 5, marginBottom:5, backgroundColor: '#B9F6CA'}}
+            onPress={() => this.saveItinerary()}
             title="Save.it"
           />
         </View>
@@ -34,37 +56,7 @@ export default class InterestByCity extends Component {
             extraData={this.state}
             keyExtractor={(interest, index) => index }
             renderItem={ ({ item }) =>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <View style={{width: 100, height: 100}}>
-                <Image
-                  style={{width: 100, height: 100}}
-                  source={{ uri: item.image_url}}
-                />
-              </View>
-              <View style={{width: 200, marginLeft: 10}}>
-                <Text style={{fontWeight: 'bold'}}>{item.name}</Text>
-                <Text>{item.location.address1}</Text>
-                <Text>{item.location.city} {item.location.state}, {item.location.zip_code}</Text>
-                <Text>Rating: {item.rating}</Text>
-                <Text>Category: {item.categories[0].title}</Text>
-              </View>
-              <View style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: 50
-              }}>
-                <CheckBox
-                  center
-                  style={{backgroundColor: '#eaeaea'}}
-                  checked={this.state.checked}
-                  onPress={() => this.setState({
-                    checked: !this.state.checked
-                    })
-                  }
-                />
-              </View>
-            </View>
+              <InterestsItem item={item}/>
             }
           />
         </ScrollView>
