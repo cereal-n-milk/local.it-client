@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import Login from './Login';
 
 export default class Profile extends Component {
 
@@ -9,11 +10,19 @@ export default class Profile extends Component {
     this.state = {
       user: null,
       photo: null,
+      loggedIn: true,
     }
   }
 
+  // emit a logout event
+  logout () {
+    fetch('http://localhost:3000/logout')
+      .then(() => { DeviceEventEmitter.emit('logout'); })
+      .catch(console.log);
+  }
+
   render() {
-    console.log(this.props.screenProps);
+    let user = this.props.screenProps.fbID;
     return (
       <View style={styles.container}>
         <View style={styles.content}>
@@ -31,7 +40,7 @@ export default class Profile extends Component {
             </Text>
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={this.logout}>
+            <TouchableOpacity style={styles.button} onPress={ () => this.logout() }>
               <Text style={styles.buttonText}>
                 Logout
               </Text>

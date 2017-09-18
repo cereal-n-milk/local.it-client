@@ -6,7 +6,8 @@ import {
   Platform,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  DeviceEventEmitter
 } from 'react-native';
 import { Tabs } from './config/router';
 
@@ -35,6 +36,15 @@ export default class Login extends Component {
     });
   };
 
+  componentWillMount() {
+    // handles logout event
+    DeviceEventEmitter.addListener('logout', () => {
+      this.setState({
+        user: undefined,
+      });
+    });
+  };
+
   componentWillUnmount() {
     // remove event listener
     Linking.removeEventListener('url', this.handleOpenURL);
@@ -56,6 +66,8 @@ export default class Login extends Component {
   openURL = (url) => {
     Linking.openURL(url);
   };
+
+
 
   render() {
     const { user } = this.state;

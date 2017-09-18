@@ -8,6 +8,7 @@ import Itinerary from '../Itinerary';
 import Profile from '../Profile';
 import CategoryView from '../CategoryView';
 import InterestsByCity from '../InterestsByCity';
+import Login from '../Login';
 import Map from '../Map';
 
 export const CategoryStack = StackNavigator({
@@ -65,6 +66,9 @@ export const ProfileStack = StackNavigator({
     navigationOptions: {
       title: 'Profile'
     }
+  },
+  Login: {
+    screen: Login,
   }
 });
 
