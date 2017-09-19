@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, TextInput, ScrollView, Linking, DeviceEventEmitter } from 'react-native';
 import Item from './Item';
-import Modally from './Modal';
+import Hint from './Modal';
 
 export default class CategoryView extends Component {
   constructor(props) {
@@ -35,11 +35,8 @@ export default class CategoryView extends Component {
     const category = this.state.category;
     const data = this.state.data;
     return (
-      <View style = {{
-        flex: 1,
-        backgroundColor: '#fff',
-      }}>
-      <Modally />
+      <View style={styles.container}>
+      <Hint />
         <Text style={
           { marginTop: 10,
             fontSize: 20,
@@ -52,3 +49,10 @@ export default class CategoryView extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+})

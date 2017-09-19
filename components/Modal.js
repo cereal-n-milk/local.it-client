@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Text, View, TouchableHighlight, StyleSheet } from 'react-native';
 
-export default class Modally extends Component {
+export default class Hint extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -58,16 +58,30 @@ const styles = StyleSheet.create({
   },
   hint: {
     fontWeight: 'bold',
+    backgroundColor: '#F2F3F2',
+    padding: 10,
+    margin: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 1,
+    borderColor: 'black',
   },
   modalContent: {
     backgroundColor: 'white',
-    padding: 22,
+    paddingTop: 16,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 4,
+    borderRadius: 1,
     borderColor: 'black'
   },
   gotIt: {
     fontWeight: 'bold',
+    backgroundColor: '#F2F3F2',
+    padding: 10,
+    margin: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 1,
+    borderColor: 'black',
   }
 })
