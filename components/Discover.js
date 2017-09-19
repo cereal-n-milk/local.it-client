@@ -22,7 +22,7 @@ export default class Discover extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        //let key = googleAPI.googleAPI;
+        // let key = googleAPI.googleAPI;
         // var coordinatesData;
         // let lat = position.coords.latitude;
         // let long = position.coords.longitude;
@@ -37,7 +37,8 @@ export default class Discover extends Component {
     );
   }
 
-    // Yelp Fetch that goes through Python
+
+  //Yelp Fetch that goes through Python
   fetchYelpData (title) {
     console.log('line 38')
     const credentials = {
@@ -70,8 +71,6 @@ export default class Discover extends Component {
         console.log('userdata: ', usercheck);
         if (usercheck.interestsByCity.length > 0) {
           if (usercheck.interestsByCity[0].interests.length > 3 && usercheck.interestsByCity[0].dislikedInterests.length > 3) {
-              console.log('yelpdata: ', data);
-              console.log('userdata: ', usercheck);
               fetch('http://localhost:3000/python', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -99,29 +98,6 @@ export default class Discover extends Component {
       });
     });
   }
-
-//   fetchYelpData (title) {
-//     const credentials = {
-//      appId: YelpConfig.appId,
-//      appSecret: YelpConfig.appSecret
-//     };
-//     const yelp = new YelpApi(credentials);
-//     var lat = this.state.latitude;
-//     var lng = this.state.longitude;
-//     var latlng = String(lat) + ',' + String(lng);
-//     let params = {
-//      term: title,
-//      location: latlng,
-//      limit: '55',
-//     };
-//     yelp.search(params)
-//      .then((data) => {
-//       this.props.navigation.navigate('CategoryView', {
-//        data: data.businesses,
-//        category: title })
-//      })
-//      .catch((err) => console.log(err));
-//    }
 
   // fetchYelpData (title) {
   //   const credentials = {
