@@ -22,6 +22,10 @@ export default class Discover extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        //let key = googleAPI.googleAPI;
+        // var coordinatesData;
+        // let lat = position.coords.latitude;
+        // let long = position.coords.longitude;
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
@@ -52,31 +56,26 @@ export default class Discover extends Component {
       location: latlng,
       limit: '15',
     };
+
     fetch(`http://localhost:3000/api/${userid}`, {
           method: 'GET',
           headers: {'Content-Type': 'application/json'},
         })
     .then((response) => {
-      console.log('line 60')
       userdata = response;
       yelp.search(params)
       .then((data) => {
-        console.log('line 64')
         var usercheck = JSON.parse(userdata._bodyInit);
         console.log('yelp data: ', data);
         console.log('userdata: ', usercheck);
         if (usercheck.interestsByCity.length > 0) {
           if (usercheck.interestsByCity[0].interests.length > 3 && usercheck.interestsByCity[0].dislikedInterests.length > 3) {
-              console.log('yelpdata: ', data);
-              console.log('userdata: ', usercheck);
               fetch('http://localhost:3000/python', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({yelp: data, user: userdata._bodyInit})
               })
               .then((data) => {
-                console.log('line 78')
-                console.log('this is the data ', data)
                 var target = JSON.parse(data._bodyInit);
                 target = JSON.parse(target[0]);
                 console.log('retreived from python api: ', target);
@@ -98,6 +97,29 @@ export default class Discover extends Component {
       });
     });
   }
+
+//   fetchYelpData (title) {
+//     const credentials = {
+//      appId: YelpConfig.appId,
+//      appSecret: YelpConfig.appSecret
+//     };
+//     const yelp = new YelpApi(credentials);
+//     var lat = this.state.latitude;
+//     var lng = this.state.longitude;
+//     var latlng = String(lat) + ',' + String(lng);
+//     let params = {
+//      term: title,
+//      location: latlng,
+//      limit: '55',
+//     };
+//     yelp.search(params)
+//      .then((data) => {
+//       this.props.navigation.navigate('CategoryView', {
+//        data: data.businesses,
+//        category: title })
+//      })
+//      .catch((err) => console.log(err));
+//    }
 
   // fetchYelpData (title) {
   //   const credentials = {
