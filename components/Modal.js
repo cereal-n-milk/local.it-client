@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, View, TouchableHighlight } from 'react-native';
+import { Modal, Text, View, TouchableHighlight, StyleSheet } from 'react-native';
 
 export default class Modally extends Component {
   constructor (props) {
@@ -16,21 +16,23 @@ export default class Modally extends Component {
 
   render () {
     return (
-      <View style={{marginTop: 22}}>
+      <View style={styles.container}>
         <Modal
-          animationType="slide"
-          transparent={false}
+          animationType="fade"
+          animationIn={'slideInLeft'}
+          animationOut={'slideOutRight'}
+          transparent={true}
           visible={this.state.isVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}
+          //onRequestClose={() => {alert("Modal has been closed.")}}
           >
-         <View style={{marginTop: 22}}>
+         <View style={styles.modalContent}>
           <View>
-            <Text>Hello World!</Text>
-
+            <Text>swipe right to save</Text>
+            <Text>swipe left to pass</Text>
             <TouchableHighlight onPress={() => {
               this.visibleModal(!this.state.isVisible)
             }}>
-              <Text>Hide Modal</Text>
+              <Text style={styles.gotIt}>Got it.</Text>
             </TouchableHighlight>
 
           </View>
@@ -40,10 +42,32 @@ export default class Modally extends Component {
         <TouchableHighlight onPress={() => {
           this.visibleModal(true)
         }}>
-          <Text>Show Modal</Text>
+        <Text style={styles.hint}>Hint</Text>
         </TouchableHighlight>
 
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 15,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  hint: {
+    fontWeight: 'bold',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'black'
+  },
+  gotIt: {
+    fontWeight: 'bold',
+  }
+})
