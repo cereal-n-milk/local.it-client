@@ -10,6 +10,7 @@ import CategoryView from '../CategoryView';
 import InterestsByCity from '../InterestsByCity';
 import Login from '../Login';
 import Map from '../Map';
+import Demo from '../Demo';
 
 export const CategoryStack = StackNavigator({
   Discover: {
@@ -20,14 +21,10 @@ export const CategoryStack = StackNavigator({
   },
   CategoryView: {
     screen: CategoryView,
-    navigationOptions: ({ navigation }) => ({
-      //console.log('navigation: ', navigation);
-      //TODO: Finish connecting CategoryView to Discover
-      // get data.title from Discover to display instead of hard code
-      // title: ({ state }) => `${state.params.title.toUpperCase()}`,
+    navigationOptions: {
       title: 'Category'
-    })
-  },
+    },
+  }
 });
 
 export const SavedStack = StackNavigator({

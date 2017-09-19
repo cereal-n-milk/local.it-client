@@ -22,10 +22,6 @@ export default class Discover extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        // let key = googleAPI.googleAPI;
-        // var coordinatesData;
-        // let lat = position.coords.latitude;
-        // let long = position.coords.longitude;
         this.setState({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
