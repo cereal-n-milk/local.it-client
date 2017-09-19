@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, View, Text, Image, FlatList, TouchableOpacity, ScrollView, TextInput, Animated, Keyboard, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Dimensions, View, Text, Image, FlatList, TouchableOpacity, ScrollView, TextInput, Animated, Keyboard, KeyboardAvoidingView, DeviceEventEmitter } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
 import InterestsItem from './InterestsItem';
 
@@ -56,7 +56,10 @@ export default class InterestByCity extends Component {
         savedInterests: savedInterests
       })
     })
-    .then(console.log)
+    .then((result) => {
+      let data = JSON.parse(result._bodyInit);
+      DeviceEventEmitter.emit('newItinerary',  { data: data })
+    })
     .catch(console.log);
   }
 
