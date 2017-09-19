@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, TextInput, ScrollView, Linking, DeviceEventEmitter } from 'react-native';
-import Item from './Item.js';
+import Item from './Item';
+import Modally from './Modal';
 
 export default class CategoryView extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ export default class CategoryView extends Component {
         flex: 1,
         backgroundColor: '#fff',
       }}>
+      <Modally />
         <Text style={
           { marginTop: 10,
             fontSize: 20,
