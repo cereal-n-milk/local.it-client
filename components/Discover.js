@@ -40,63 +40,27 @@ export default class Discover extends Component {
 
   //Yelp Fetch that goes through Python
   fetchYelpData (title) {
-    console.log('line 38')
-    const credentials = {
-      appId: YelpConfig.appId,
-      appSecret: YelpConfig.appSecret
-    };
-    console.log('props: ', this.props);
-    const yelp = new YelpApi(credentials);
-    let lat = this.state.latitude;
-    let lng = this.state.longitude;
-    let latlng = String(lat) + ',' + String(lng);
-    let userdata = null;
-    let userid = this.props.screenProps.fbID;
-    let params = {
-      term: title,
-      location: latlng,
-      limit: '15',
-    };
-
-    fetch(`http://localhost:3000/api/${userid}`, {
-          method: 'GET',
+    console.log('about to fetch');
+    fetch('http://localhost:3000/api/yelp', {
+          method: 'POST',
           headers: {'Content-Type': 'application/json'},
-        })
+          body: JSON.stringify({
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
+            fbID: this.props.screenProps.fbID,
+            title: title
+          })
+    })
     .then((response) => {
-      userdata = response;
-      yelp.search(params)
-      .then((data) => {
-        var usercheck = JSON.parse(userdata._bodyInit);
-        console.log('yelp data: ', data);
-        console.log('userdata: ', usercheck);
-        if (usercheck.interestsByCity.length > 0) {
-          if (usercheck.interestsByCity[0].interests.length > 3 && usercheck.interestsByCity[0].dislikedInterests.length > 3) {
-              fetch('http://localhost:3000/python', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({yelp: data, user: userdata._bodyInit})
-              })
-              .then((data) => {
-                var target = JSON.parse(data._bodyInit);
-                target = JSON.parse(target[0]);
-                console.log('retreived from python api: ', target);
-                this.props.navigation.navigate('CategoryView', {
-                  data: target,
-                  category: title });
-              })
-              .catch((err) => console.log(err));
-          } else {
-            this.props.navigation.navigate('CategoryView', {
-            data: data.businesses,
-            category: title });
-          }
-        } else {
-          this.props.navigation.navigate('CategoryView', {
-          data: data.businesses,
-          category: title });
-        }
-      });
-    });
+      console.log(response);
+      var filtered = JSON.parse(response._bodyInit);
+      filtered = JSON.parse(filtered[0]);
+      console.log('retreived data: ', filtered);
+      this.props.navigation.navigate('CategoryView', {
+        data: filtered,
+        category: title
+      })
+    })
   }
 
   // fetchYelpData (title) {

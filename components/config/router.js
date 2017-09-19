@@ -66,9 +66,6 @@ export const ProfileStack = StackNavigator({
     navigationOptions: {
       title: 'Profile'
     }
-  },
-  Login: {
-    screen: Login,
   }
 });
 
