@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, Flatlist, TouchableOpacity } from 'react
 import { CheckBox } from 'react-native-elements';
 
 export default class InterestsItem extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -37,9 +37,12 @@ export default class InterestsItem extends Component {
             center
             style={{backgroundColor: '#eaeaea'}}
             checked={this.state.checked}
-            onPress={() => this.setState({
-              checked: !this.state.checked
-              })
+            onPress={() => {
+                this.setState({
+                  checked: !this.state.checked
+                });
+                this.props.getItineraries(this.props.item);
+              }
             }
           />
         </View>
