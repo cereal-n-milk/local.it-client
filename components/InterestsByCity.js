@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { StyleSheet, Dimensions, View, Text, Image, FlatList, TouchableOpacity, ScrollView, TextInput, Animated, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
-
 import InterestsItem from './InterestsItem';
+
+const window = Dimensions.get('window');
+export const IMAGE_HEIGHT = window.width / 2;
+export const IMAGE_HEIGHT_SMALL = window.width / 5;
 
 export default class InterestByCity extends Component {
 
@@ -14,15 +17,32 @@ export default class InterestByCity extends Component {
     };
     this.saveItinerary = this.saveItinerary.bind(this);
     this.getItineraries = this.getItineraries.bind(this);
+    this.imageHeight = new Animated.Value(IMAGE_HEIGHT);
   }
 
-  getItineraries = (business) => {
-    let prevState = this.state.savedInterests.slice();
-    prevState.push(business);
-    this.setState({
-      savedInterests: prevState
-    });
+  componentWillMount () {
+    this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.keyboardWillShow);
+    this.keyboardWillHideSub = Keyboard.addListener('keyboardWillHide', this.keyboardWillHide);
   }
+
+  componentWillUnmount() {
+    this.keyboardWillShowSub.remove();
+    this.keyboardWillHideSub.remove();
+  }
+
+  keyboardWillShow = (event) => {
+    Animated.timing(this.imageHeight, {
+      duration: event.duration,
+      toValue: IMAGE_HEIGHT_SMALL,
+    }).start();
+  };
+
+  keyboardWillHide = (event) => {
+    Animated.timing(this.imageHeight, {
+      duration: event.duration,
+      toValue: IMAGE_HEIGHT,
+    }).start();
+  };
 
   saveItinerary = () => {
     let userId = this.props.screenProps.fbID;
@@ -38,8 +58,14 @@ export default class InterestByCity extends Component {
     })
     .then(console.log)
     .catch(console.log);
+  }
 
-    //TODO: Check each item's state, if its changed to true, push them into an array. at submission, add array and input text to ItineraryList in data. Have API take care of adding info to db.
+  getItineraries = (business) => {
+    let prevState = this.state.savedInterests.slice();
+    prevState.push(business);
+    this.setState({
+      savedInterests: prevState
+    });
   }
 
   render() {
@@ -47,20 +73,24 @@ export default class InterestByCity extends Component {
     let interests = this.props.navigation.state.params.interests[0].interests;
     return (
       <View>
-        <View style={{backgroundColor: '#ffffff', marginBottom: 5}}>
-          <Text style={{marginLeft: 15, marginRight: 15, marginTop: 5, marginBottom: 5}}>Name your Itinerary</Text>
-          <TextInput
-            style={{height: 40, marginLeft: 15, marginRight: 15, borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}
-            onChangeText={(text) => this.setState({text})}
-            placeholder="ex. The Art Lover's Itinerary"
-            value={this.state.text}
-          />
-          <Button
-            style={{marginTop: 5, marginBottom:5, backgroundColor: '#B9F6CA'}}
-            onPress={() => this.saveItinerary()}
-            title="Save.it"
-          />
-        </View>
+        <KeyboardAvoidingView
+          behavior="padding"
+        >
+          <View style={{backgroundColor: '#ffffff', marginBottom: 5}}>
+            <Text style={{marginLeft: 15, marginRight: 15, marginTop: 5, marginBottom: 5}}>Name your Itinerary</Text>
+            <TextInput
+              style={{height: 40, marginLeft: 15, marginRight: 15, borderColor: 'gray', borderWidth: 1, paddingLeft: 10}}
+              onChangeText={(text) => this.setState({text})}
+              placeholder="ex. The Art Lover's Itinerary"
+              value={this.state.text}
+            />
+            <Button
+              style={{marginTop: 5, marginBottom:5, backgroundColor: '#B9F6CA'}}
+              onPress={() => this.saveItinerary()}
+              title="Save.it"
+            />
+          </View>
+        </KeyboardAvoidingView>
         <ScrollView>
           <FlatList
             data={interests}
@@ -71,7 +101,6 @@ export default class InterestByCity extends Component {
             }
           />
         </ScrollView>
-
       </View>
     )
   }
