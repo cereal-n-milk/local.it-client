@@ -10,7 +10,6 @@ import CategoryView from '../CategoryView';
 import InterestsByCity from '../InterestsByCity';
 import Login from '../Login';
 import Map from '../Map';
-import Demo from '../Demo';
 
 export const CategoryStack = StackNavigator({
   Discover: {

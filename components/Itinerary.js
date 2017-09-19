@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity, DeviceEventEmitter } from 'react-native';
 import axios from 'axios';
 
 export default class Itinerary extends Component {
@@ -22,6 +22,11 @@ export default class Itinerary extends Component {
 
   componentWillMount() {
     this.getInitialData();
+    DeviceEventEmitter.addListener('newItinerary', (event) => {
+      this.setState({
+        itineraryData: event.data.itineraryByCity
+      });
+    });
   }
 
   viewItinerary = () => {
