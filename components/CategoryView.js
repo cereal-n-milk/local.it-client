@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, TextInput, ScrollView, Linking, DeviceEventEmitter } from 'react-native';
+import { Button, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, TextInput, ScrollView, Linking, DeviceEventEmitter,TouchableHighlight } from 'react-native';
 import Item from './Item';
 import Hint from './Modal';
 
@@ -11,6 +11,7 @@ export default class CategoryView extends Component {
       data: this.props.navigation.state.params.data,
       // keep item below?
       item: "Suggestion",
+      hint: true,
     };
     this.handleYup = this.handleYup.bind(this);
   }
@@ -31,12 +32,24 @@ export default class CategoryView extends Component {
     })
   }
 
+  renderModal = (visible) => {
+    // render modal when the user is 'new'
+    // makes the modal hide when the user clicks 'got it' button
+    this.setState({ hint: visible })
+    <View>
+      <Hint />
+    </View>
+  }
+
+
   render() {
     const category = this.state.category;
     const data = this.state.data;
     return (
       <View style={styles.container}>
-      <Hint />
+      <TouchableHighlight onPress={() => this.renderModal(true)}>
+       <Text>Hi</Text>
+      </TouchableHighlight>
         <Text style={
           { marginTop: 10,
             fontSize: 20,
