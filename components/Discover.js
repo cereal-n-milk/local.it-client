@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
 import YelpApi from 'v3-yelp-api';
 
-import YelpConfig from '../auth/yelpConfig';
-
 import categories from '../data/categories.js';
 
 export default class Discover extends Component {
