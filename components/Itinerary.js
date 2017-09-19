@@ -34,6 +34,7 @@ export default class Itinerary extends Component {
   };
 
   render() {
+    console.log('data:', this.state.itineraryData);
     return (
       <View style={styles.container}>
         <FlatList
@@ -44,9 +45,9 @@ export default class Itinerary extends Component {
               style={styles.itineraryItem}
               onPress={() => this.viewItinerary()}>
                 <View style={{width: 400, marginLeft: 10}}>
-                  <Text style={styles.itineraryText}>City: {item.city}</Text>
-                  <Text style={styles.itineraryText}>Name: {item.name}</Text>
-                  <Text style={styles.itineraryText}># of Activities: 5</Text>
+                  <Text style={styles.itineraryText}>Name of Itinerary: {item.name}</Text>
+                  <Text style={styles.itineraryText}>Location: </Text>
+                  <Text style={styles.itineraryText}># of Activities: {item.itineraryList.length}</Text>
                 </View>
             </TouchableOpacity>
           }
