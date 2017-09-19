@@ -9,19 +9,31 @@ export default class InterestByCity extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      text: ''
+      text: '',
+      savedInterests: []
     };
     this.saveItinerary = this.saveItinerary.bind(this);
+    this.getItineraries = this.getItineraries.bind(this);
+  }
+
+  getItineraries = (business) => {
+    let prevState = this.state.savedInterests.slice();
+    prevState.push(business);
+    this.setState({
+      savedInterests: prevState
+    });
   }
 
   saveItinerary = () => {
     let userId = this.props.screenProps.fbID;
     let input = this.state.text;
+    let savedInterests = this.state.savedInterests;
     fetch('http://localhost:3000/api/interests/' + userId, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        itineraryName: input
+        itineraryName: input,
+        savedInterests: savedInterests
       })
     })
     .then(console.log)
@@ -33,7 +45,6 @@ export default class InterestByCity extends Component {
   render() {
     let city = this.props.navigation.state.params.interests.city;
     let interests = this.props.navigation.state.params.interests[0].interests;
-    console.log('this is interests ', interests)
     return (
       <View>
         <View style={{backgroundColor: '#ffffff', marginBottom: 5}}>
@@ -56,10 +67,11 @@ export default class InterestByCity extends Component {
             extraData={this.state}
             keyExtractor={(interest, index) => index }
             renderItem={ ({ item }) =>
-              <InterestsItem item={item}/>
+              <InterestsItem item={item} getItineraries={this.getItineraries}/>
             }
           />
         </ScrollView>
+
       </View>
     )
   }
