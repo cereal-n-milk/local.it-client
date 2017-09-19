@@ -18,8 +18,8 @@ const Card = (props) => {
         source={{ uri: card.image_url}} />
         <View>
           <Text>{card.name}</Text>
-          <Text>Rating: {card.rating}</Text>
-          <Text>Distance: {card.distance}</Text>
+          <Text>Rating: {card.rating}/5</Text>
+          <Text>Distance: {Math.round((card.distance * 0.00062137 + 0.00001) * 100) / 100} Miles</Text>
           <Text>Price: {card.price}</Text>
         </View>
       </View>
