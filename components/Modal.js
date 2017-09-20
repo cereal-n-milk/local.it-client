@@ -23,7 +23,6 @@ export default class Hint extends Component {
           animationOut={'slideOutRight'}
           transparent={true}
           visible={this.state.isVisible}
-          //onRequestClose={() => {alert("Modal has been closed.")}}
           >
          <View style={styles.modalContent}>
           <View>

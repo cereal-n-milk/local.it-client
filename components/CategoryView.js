@@ -69,8 +69,8 @@ export default class CategoryView extends Component {
     const data = this.state.data;
     return (
       <View style={styles.container}>
-        <Hint textLeft='Swipe left to Pass'/>
         <Hint textRight='Swipe right to Save'/>
+        <Hint textLeft='Swipe left to Pass'/>
         <Text style={styles.category}>{ category }</Text>
         <Item handleYup={this.handleYup} userData={this.props.screenProps} data={data}/>
       </View>
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   hints: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    //alignItems: 'right',
   },
   hint: {
     color: 'gray',
