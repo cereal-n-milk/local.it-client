@@ -30,9 +30,8 @@ export default class Itinerary extends Component {
     });
   }
 
-  viewItinerary = () => {
-    console.log('data:', this.state.itineraryData);
-    this.props.navigation.navigate('MapView', {list: this.state.itineraryData});
+  viewItinerary = (name) => {
+    this.props.navigation.navigate('MapView', {list: name});
   };
 
   render() {
@@ -44,7 +43,7 @@ export default class Itinerary extends Component {
           renderItem={({ item }) =>
             <TouchableOpacity
               style={styles.itineraryItem}
-              onPress={() => this.viewItinerary()}>
+              onPress={() => this.viewItinerary(item.itineraryList)}>
                 <View style={{width: 400, marginLeft: 10}}>
                   <Text style={styles.itineraryText}>Name of Itinerary: {item.name}</Text>
                   <Text style={styles.itineraryText}>Location: </Text>
