@@ -32,6 +32,12 @@ export default class Map extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // find your origin and destination point coordinates and pass it to our method.
+    // I am using Bursa,TR -> Istanbul,TR for this example
+            Linking.openURL('http://maps.apple.com/?daddr=San+Francisco&dirflg=d&t=h');
+    }
+
   render() {
     console.log('props:', this.props.navigation.state.params.list);
     return (
