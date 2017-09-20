@@ -36,6 +36,8 @@ export default class Profile extends Component {
       cities.push(city[obj].city);
     }
     return cities;
+  getCities () {
+    console.log(this.props.screenProps.itineraryByCity);
   }
 
   render() {
@@ -53,6 +55,9 @@ export default class Profile extends Component {
             </Text>
             <Text style={styles.text}>
               {this.props.screenProps.itineraryByCity.length} Itineraries
+            </Text>
+            <Text style={styles.text}>
+              Itineraries: {this.props.screenProps.itineraryByCity.length}
             </Text>
             <Text style={styles.text}>
               Cities: {cities}
