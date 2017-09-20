@@ -8,6 +8,7 @@
     "react-devtools": "react-devtools"
   },
   "dependencies": {
+    "@mapbox/polyline": "^0.2.0",
     "@tonybadguy/call-me-maybe": "^2.0.1",
     "axios": "^0.16.2",
     "react": "16.0.0-alpha.12",

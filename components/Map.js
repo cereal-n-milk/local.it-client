@@ -3,10 +3,13 @@ import {
   StyleSheet,
   View,
   Text,
-  Dimensions
+  Dimensions,
+  Linking,
+  Card
 } from 'react-native';
 import MapView from 'react-native-maps';
 import store from '../store/locationStore';
+import itinerary from '../data/itinerary-data.js';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
