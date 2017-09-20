@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  DeviceEventEmitter
+} from 'react-native';
+
+/* Import local files */
 import Login from './Login';
+
 
 export default class Profile extends Component {
 
@@ -11,7 +21,7 @@ export default class Profile extends Component {
       user: null,
       photo: null,
       loggedIn: true,
-    }
+    };
   }
 
   // emit a logout event
@@ -21,6 +31,7 @@ export default class Profile extends Component {
       .catch(console.log);
   }
 
+  // provides a list of cities a user has saved/disliked cards for
   getCities () {
     let cities = [];
     let city = this.props.screenProps.interestsByCity;
@@ -29,7 +40,6 @@ export default class Profile extends Component {
     }
     return cities;
   }
-
 
   render() {
     let user = this.props.screenProps.fbID;
