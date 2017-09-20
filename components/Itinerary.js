@@ -7,6 +7,7 @@ export default class Itinerary extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      itineraryData: null
     }
   }
 
@@ -30,11 +31,11 @@ export default class Itinerary extends Component {
   }
 
   viewItinerary = () => {
-    this.props.navigation.navigate('MapView');
+    console.log('data:', this.state.itineraryData);
+    this.props.navigation.navigate('MapView', {list: this.state.itineraryData});
   };
 
   render() {
-    console.log('data:', this.state.itineraryData);
     return (
       <View style={styles.container}>
         <FlatList
