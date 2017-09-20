@@ -7,11 +7,7 @@ import {
   TouchableOpacity,
   DeviceEventEmitter
 } from 'react-native';
-
-/* Import local files */
 import Login from './Login';
-//import Raleway from './Raleway.ttf';
-
 
 export default class Profile extends Component {
 

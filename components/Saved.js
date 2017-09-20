@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, View, Text, FlatList, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  DeviceEventEmitter
+} from 'react-native';
 import axios from 'axios';
 
 export default class Saved extends Component {
+
   constructor (props) {
     super(props);
-
     this.state = {
-      user: {interestsByCity: []}
+      user: {
+        interestsByCity: []
+      }
     };
   }
 

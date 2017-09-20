@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  DeviceEventEmitter
+} from 'react-native';
 import axios from 'axios';
 
 export default class Itinerary extends Component {

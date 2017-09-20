@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image} from 'react-native';
 import SwipeCards from 'react-native-swipe-cards';
 import Saved from './Saved';
 import Modal from './Modal';
@@ -8,11 +12,7 @@ const Card = (props) => {
   let card = props;
   return (
     <View style={styles.card}>
-      <View style={
-        {
-          marginTop: 20
-        }
-      }>
+      <View style={{marginTop: 20}}>
         <Text>{card.name}</Text>
         <Image
         style={{width: 300, height: 300}}

@@ -11,13 +11,6 @@ import {
 } from 'react-native';
 import { Tabs } from './config/router';
 
-
-/*
-TODO:
-Handle authentication so that it doesn't keep sending you to login page at each hard reload
-Look into AsyncStorage and saving tokens
-*/
-
 export default class Login extends Component {
 
   state = {
@@ -70,8 +63,8 @@ export default class Login extends Component {
 
 
   render() {
-    const { user } = this.state;
-    const pic = {
+    let { user } = this.state;
+    let pic = {
       uri: 'https://i.imgur.com/wLw80Wv.png'
     };
     return (

@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, TextInput, ScrollView, Linking, DeviceEventEmitter,TouchableHighlight } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Keyboard,
+  TextInput,
+  ScrollView,
+  Linking,
+  DeviceEventEmitter,
+  TouchableHighlight
+} from 'react-native';
 import Item from './Item';
 
 class Hint extends Component {
@@ -26,12 +39,12 @@ class Hint extends Component {
 }
 
 export default class CategoryView extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       category: this.props.navigation.state.params.category,
       data: this.props.navigation.state.params.data,
-      // keep item below?
       item: "Suggestion",
       //hint: true,
     };

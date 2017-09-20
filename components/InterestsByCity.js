@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions, View, Text, Image, FlatList, TouchableOpacity, ScrollView, TextInput, Animated, Keyboard, KeyboardAvoidingView, DeviceEventEmitter } from 'react-native';
+import {
+  StyleSheet,
+  Dimensions,
+  View,
+  Text,
+  Image,
+  FlatList,
+  TouchableOpacity,
+  ScrollView,
+  TextInput,
+  Animated,
+  Keyboard,
+  KeyboardAvoidingView,
+  DeviceEventEmitter } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
 import InterestsItem from './InterestsItem';
 
