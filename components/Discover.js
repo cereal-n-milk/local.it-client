@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
 import YelpApi from 'v3-yelp-api';
-
 import categories from '../data/categories.js';
+import store from '../store/locationStore';
 
 export default class Discover extends Component {
 
@@ -10,8 +10,6 @@ export default class Discover extends Component {
     super(props);
 
     this.state = {
-      latitude: null,
-      longitude: null,
       error: null,
       categories: categories,
     };
@@ -20,10 +18,10 @@ export default class Discover extends Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        this.setState({
+        store.dispatch({
+          type: 'GET_LOCATION',
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          error: null,
+          longitude: position.coords.longitude
         });
       },
       (error) => this.setState({ error: error.message }),
@@ -31,16 +29,15 @@ export default class Discover extends Component {
     );
   }
 
-
   //Yelp Fetch that goes through Python
   fetchYelpData (title) {
-    console.log('about to fetch');
+    // console.log('about to fetch');
     fetch('http://localhost:3000/api/yelp', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
-            latitude: this.state.latitude,
-            longitude: this.state.longitude,
+            latitude: store.getState().latitude,
+            longitude: store.getState().longitude,
             fbID: this.props.screenProps.fbID,
             title: title
           })
