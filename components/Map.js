@@ -6,13 +6,10 @@ import {
   Dimensions
 } from 'react-native';
 import MapView from 'react-native-maps';
-import itinerary from '../data/itinerary-data.js';
+import store from '../store/locationStore';
 
 const { width, height } = Dimensions.get('window');
-
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.733795;
-const LONGITUDE = -122.446747;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
@@ -23,16 +20,17 @@ export default class Map extends React.Component {
 
     this.state = {
       region: {
-        latitude: LATITUDE,
-        longitude: LONGITUDE,
+        latitude: store.getState().latitude,
+        longitude: store.getState().longitude,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
       },
-      itineraries: itinerary,
+      itineraries: [],
     };
   }
 
   render() {
+    console.log('props:', this.props);
     return (
       <View style={styles.container}>
         <MapView
@@ -59,7 +57,6 @@ export default class Map extends React.Component {
       </View>
     )
   }
-
 }
 
 Map.propTypes = {
