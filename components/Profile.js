@@ -21,8 +21,13 @@ export default class Profile extends Component {
       .catch(console.log);
   }
 
+  getCities () {
+    console.log(this.props.screenProps.itineraryByCity);
+  }
+
   render() {
     let user = this.props.screenProps.fbID;
+    let cities = this.props.screenProps.itineraryByCity.length
     return (
       <View style={styles.container}>
         <View style={styles.content}>
@@ -36,7 +41,10 @@ export default class Profile extends Component {
             <Text style={styles.text}>
             </Text>
             <Text style={styles.text}>
-              Saved: {this.props.screenProps.itineraryByCity.length}
+              Itineraries: {this.props.screenProps.itineraryByCity.length}
+            </Text>
+            <Text style={styles.text}>
+              Cities: {cities}
             </Text>
           </View>
           <View style={styles.buttonContainer}>
