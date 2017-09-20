@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View, TouchableOpacity, Image, Keyboard, TextInput, ScrollView, Linking, DeviceEventEmitter,TouchableHighlight } from 'react-native';
 import Item from './Item';
-import Hint from './Modal';
+
+class Hint extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { showText: true }
+
+    setTimeout (() => {
+      this.setState({ showText: false });
+    }, 10000);
+  }
+
+
+  render () {
+    let display = this.state.showText ? this.props.text : ' ';
+    return (
+      <Text style={styles.hint}>{display}</Text>
+    )
+  }
+}
 
 export default class CategoryView extends Component {
   constructor(props) {
@@ -11,7 +29,7 @@ export default class CategoryView extends Component {
       data: this.props.navigation.state.params.data,
       // keep item below?
       item: "Suggestion",
-      hint: true,
+      //hint: true,
     };
     this.handleYup = this.handleYup.bind(this);
   }
@@ -32,14 +50,14 @@ export default class CategoryView extends Component {
     })
   }
 
-  renderModal = (visible) => {
-    // render modal when the user is 'new'
-    // makes the modal hide when the user clicks 'got it' button
-    this.setState({ hint: visible })
-    <View>
-      <Hint />
-    </View>
-  }
+  // renderModal = (visible) => {
+  //   // render modal when the user is 'new'
+  //   // makes the modal hide when the user clicks 'got it' button
+  //   this.setState({ hint: visible })
+  //   <View>
+  //     <Hint />
+  //   </View>
+  // }
 
 
   render() {
@@ -47,16 +65,9 @@ export default class CategoryView extends Component {
     const data = this.state.data;
     return (
       <View style={styles.container}>
-      <TouchableHighlight onPress={() => this.renderModal(true)}>
-       <Text>Hi</Text>
-      </TouchableHighlight>
-        <Text style={
-          { marginTop: 10,
-            fontSize: 20,
-            fontWeight: 'bold',
-            textAlign: 'center'}
-        }
-        >{ category }</Text>
+        <Hint text='Swipe left to Pass'/>
+        <Hint text='Swipe right to Save'/>
+        <Text style={styles.category}>{ category }</Text>
         <Item handleYup={this.handleYup} userData={this.props.screenProps} data={data}/>
       </View>
     );
@@ -68,4 +79,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  category: {
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  hint: {
+    color: 'gray',
+  }
 })
