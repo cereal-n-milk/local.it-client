@@ -16,12 +16,14 @@ export const CategoryStack = StackNavigator({
     screen: Discover,
     navigationOptions: {
       title: 'Choose Category',
+      headerTintColor: '#161B2D',
     },
   },
   CategoryView: {
     screen: CategoryView,
     navigationOptions: {
-      title: 'Category'
+      title: 'Category',
+      headerTintColor: '#161B2D',
     },
   }
 });
@@ -30,13 +32,15 @@ export const SavedStack = StackNavigator({
   Saved: {
     screen: Saved,
     navigationOptions: {
-      title: 'Cities'
+      title: 'Cities',
+      headerTintColor: '#161B2D',
     },
   },
   InterestsByCity: {
     screen: InterestsByCity,
     navigationOptions: {
-      title: 'Create Itinerary'
+      title: 'Create Itinerary',
+      headerTintColor: '#161B2D',
     },
   }
 });
@@ -45,13 +49,15 @@ export const ItineraryStack = StackNavigator({
   Itinerary: {
     screen: Itinerary,
     navigationOptions: {
-      title: 'Itinerary'
+      title: 'Itinerary',
+      headerTintColor: '#161B2D',
     }
   },
   MapView: {
     screen: Map,
     navigationOptions: {
-      title: 'Map'
+      title: 'Map',
+      headerTintColor: '#161B2D',
     }
   }
 });
@@ -72,7 +78,7 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Discover',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="search" size={28} color={tintColor}/>
+        <Icon name="search" size={28} color='#748BC4'/>
       ),
     }
   },
@@ -82,7 +88,7 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Saved',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="favorite" size={28} color={tintColor}/>
+        <Icon name="favorite" size={28} color='#748BC4'/>
       ),
     }
   },
@@ -92,7 +98,7 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Itinerary',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="work" size={28} color={tintColor}/>
+        <Icon name="work" size={28} color='#748BC4'/>
       ),
     }
   },
@@ -102,7 +108,7 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Profile',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="account-circle" size={28} color={tintColor}/>
+        <Icon name="account-circle" size={28} color='#748BC4'/>
       ),
     }
   }
