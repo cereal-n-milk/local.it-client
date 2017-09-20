@@ -14,9 +14,13 @@ class Hint extends Component {
 
 
   render () {
-    let display = this.state.showText ? this.props.text : ' ';
+    let displayLeft = this.state.showText ? this.props.textLeft : ' ';
+    let displayRight = this.state.showText ? this.props.textRight : ' ';
     return (
-      <Text style={styles.hint}>{display}</Text>
+      <View style={styles.hints}>
+        <Text style={styles.hint}>{displayLeft}</Text>
+        <Text style={styles.hint}>{displayRight}</Text>
+      </View>
     )
   }
 }
@@ -65,8 +69,8 @@ export default class CategoryView extends Component {
     const data = this.state.data;
     return (
       <View style={styles.container}>
-        <Hint text='Swipe left to Pass'/>
-        <Hint text='Swipe right to Save'/>
+        <Hint textLeft='Swipe left to Pass'/>
+        <Hint textRight='Swipe right to Save'/>
         <Text style={styles.category}>{ category }</Text>
         <Item handleYup={this.handleYup} userData={this.props.screenProps} data={data}/>
       </View>
@@ -84,6 +88,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  hints: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   hint: {
     color: 'gray',
