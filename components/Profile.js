@@ -22,12 +22,18 @@ export default class Profile extends Component {
   }
 
   getCities () {
-    console.log(this.props.screenProps.itineraryByCity);
+    let cities = [];
+    let city = this.props.screenProps.interestsByCity;
+    for (var obj in city) {
+      cities.push(city[obj].city);
+    }
+    return cities;
   }
+
 
   render() {
     let user = this.props.screenProps.fbID;
-    let cities = this.props.screenProps.itineraryByCity.length
+    let cities = this.getCities();
     return (
       <View style={styles.container}>
         <View style={styles.content}>
