@@ -6,7 +6,6 @@ const defaultState = {
 }
 
 function locationStore(state = defaultState, action) {
-  console.log('accessing state:', action);
   switch (action.type) {
     case 'GET_LOCATION':
       return Object.assign({}, state, {

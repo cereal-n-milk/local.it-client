@@ -30,7 +30,7 @@ export default class Map extends React.Component {
   }
 
   render() {
-    console.log('props:', this.props);
+    console.log('props:', this.props.navigation.state.params.list);
     return (
       <View style={styles.container}>
         <MapView
@@ -42,16 +42,19 @@ export default class Map extends React.Component {
             title="Current Location"
             coordinate={this.state.region}
           />
-          {this.state.itineraries.map((itinerary, index) => (
-            <MapView.Marker
-              key={index}
-              title={itinerary.name}
-              description={itinerary.categories[0].title}
-              coordinate={{
-                latitude: itinerary.coordinates.latitude,
-                longitude: itinerary.coordinates.longitude,
-              }}
-            />
+          {this.props.navigation.state.params.list.map((itinerary, index) => (
+            <View>
+              {console.log(itinerary)}
+              <MapView.Marker
+                key={itinerary.id}
+                title={itinerary.name}
+                description={itinerary.categories[0].title}
+                coordinate={{
+                  latitude: itinerary.coordinates.latitude,
+                  longitude: itinerary.coordinates.longitude,
+                }}
+              />
+            </View>
           ))}
         </MapView>
       </View>
