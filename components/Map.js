@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  Dimensions,
-  Linking,
-  Card
+  Text
 } from 'react-native';
 import MapView from 'react-native-maps';
 import store from '../store/locationStore';
-import itinerary from '../data/itinerary-data.js';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -31,13 +27,7 @@ export default class Map extends React.Component {
       itineraries: [],
     };
   }
-
-  componentDidMount() {
-    // find your origin and destination point coordinates and pass it to our method.
-    // I am using Bursa,TR -> Istanbul,TR for this example
-            Linking.openURL('http://maps.apple.com/?daddr=San+Francisco&dirflg=d&t=h');
-    }
-
+  
   render() {
     console.log('props:', this.props.navigation.state.params.list);
     return (
