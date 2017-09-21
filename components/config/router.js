@@ -19,7 +19,7 @@ export const CategoryStack = StackNavigator({
       headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         fontSize: 20
       },
       headerTintColor: '#2A4964',
@@ -32,7 +32,7 @@ export const CategoryStack = StackNavigator({
       headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         fontSize: 20
       },
       headerTintColor: '#2A4964',
@@ -48,7 +48,7 @@ export const SavedStack = StackNavigator({
       headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         fontSize: 20
       },
       headerTintColor: '#2A4964',
@@ -61,7 +61,7 @@ export const SavedStack = StackNavigator({
       headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         fontSize: 20
       },
       headerTintColor: '#2A4964',
@@ -77,7 +77,7 @@ export const ItineraryStack = StackNavigator({
       headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         fontSize: 20
       },
       headerTintColor: '#2A4964',
@@ -90,7 +90,7 @@ export const ItineraryStack = StackNavigator({
       headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         fontSize: 20
       },
       headerTintColor: '#2A4964',
@@ -103,10 +103,10 @@ export const ProfileStack = StackNavigator({
     screen: Profile,
     navigationOptions: {
       title: 'Profile',
-      headerTintColor: 'blue',
+      headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
-        fontWeight: 'normal',
+        fontWeight: 'bold',
         fontSize: 20
       },
       headerTintColor: '#2A4964',
@@ -116,10 +116,10 @@ export const ProfileStack = StackNavigator({
 
 const tabBarConfiguration = {
   tabBarOptions: {
-    activeTintColor: '#F7F7F7',
-    inactiveTintColor: '#2A4964',
-    activeBackgroundColor: '#2A4964',
-    inactiveBackgroundColor: '#F7F7F7',
+    activeTintColor: '#2A4964',
+    inactiveTintColor: '#F7F7F7',
+    activeBackgroundColor: '#F7F7F7',
+    inactiveBackgroundColor: '#2A4964',
   }
 }
 

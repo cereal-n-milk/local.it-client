@@ -5,6 +5,7 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  ImageBackground,
   DeviceEventEmitter
 } from 'react-native';
 import axios from 'axios';
@@ -41,20 +42,8 @@ export default class Itinerary extends Component {
     this.props.navigation.navigate('MapView', {list: name});
   };
 
-  getPhotoByCIty () {
-    let cities = this.props.screenProps.interestsByCity;
-    return cities.map(city => {
-      return city.interests[0].image_url;
-    });
-  }
-
   render() {
-    let location;
-    if (this.props.screenProps.itineraryByCity[0] === undefined) {
-      location = null;
-    } else {
-      location = this.props.screenProps.interestsByCity[0].city;
-    }
+    let location = this.props.screenProps.interestsByCity[0].city;
     return (
       <View style={styles.container}>
         <FlatList
@@ -64,17 +53,17 @@ export default class Itinerary extends Component {
             <TouchableOpacity
               style={styles.itineraryItem}
               onPress={() => this.viewItinerary(item.itineraryList)}>
-               <ImageBackground
+              <ImageBackground
                 style={styles.image}
-                source={{ uri: photos[0] }}
+                source={{ uri: item.itineraryList[0].image_url }}
               >
-                <View style={{width: 400, marginLeft: 10}}>
+                <View style={styles.textContainer}>
                   <Text style={styles.itineraryTextName}>{item.name}
-                  <Text style={styles.itineraryText}>  {item.itineraryList.length} Saved</Text>
+                    <Text style={styles.itineraryText}>  {item.itineraryList.length} Saved</Text>
                   </Text>
                   <Text style={styles.itineraryText}>{location}</Text>
                 </View>
-                </ImageBackground>
+              </ImageBackground>
             </TouchableOpacity>
           }
         />
@@ -84,29 +73,36 @@ export default class Itinerary extends Component {
 }
 
 const styles = StyleSheet.create({
-  itineraryItem: {
+  textContainer: {
+    backgroundColor: 'rgba(0,0,0,.4)',
+    height:100,
+    width: 400,
+    padding: 10
+  },
+  itineraryTextName: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontWeight: 'bold',
+    color: '#F7F7F7',
+    fontFamily: 'Avenir Light',
+    fontSize: 18,
+  },
+  itineraryText: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontWeight: 'normal',
+    color: '#F7F7F7',
+    fontFamily: 'Avenir Light',
+    fontSize: 16
+  },
+  image: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 25,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    backgroundColor: '#fff'
+    borderBottomWidth: 1,
+    borderColor: 'gray',
+    height: 100,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderLeftColor: 'gray',
+    borderRightColor: 'gray',
   },
-  itineraryTextName: {
-    color: '#596A7F',
-    fontFamily: 'Avenir Light',
-    fontWeight: 'bold',
-    fontSize: 16
-  },
-  itineraryText: {
-    color: '#596A7F',
-    fontFamily: 'Avenir Light',
-    fontWeight: 'normal',
-    fontSize: 16
-  },
-  picker: {
-    width: 1000,
-    height: 1000,
-  }
 })

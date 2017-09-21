@@ -16,6 +16,7 @@ import {
 import Item from './Item';
 
 class Hint extends Component {
+
   constructor(props) {
     super(props)
     this.state = { showText: true }
@@ -24,7 +25,6 @@ class Hint extends Component {
       this.setState({ showText: false });
     }, 5000);
   }
-
 
   render () {
     let displayLeft = this.state.showText ? this.props.textLeft : ' ';
@@ -66,18 +66,9 @@ export default class CategoryView extends Component {
     })
   }
 
-  // renderModal = (visible) => {
-  //   // render modal when the user is 'new'
-  //   // makes the modal hide when the user clicks 'got it' button
-  //   this.setState({ hint: visible })
-  //   <View>
-  //     <Hint />
-  //   </View>
-  // }
-
   render() {
-    const category = this.state.category;
-    const data = this.state.data;
+    let category = this.state.category;
+    let data = this.state.data;
     return (
       <View style={styles.container}>
         <Text style={styles.category}>{ category }</Text>
@@ -102,25 +93,25 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#04263F',
-    margin: 20
+    marginTop: 20
   },
   hintContainer: {
     flexDirection: 'row',
     height: 25,
-    width: 235
+    width: 230
   },
   hints: {
     flexDirection: 'row',
-    margin: 5
+    margin: 10
   },
   leftHint: {
     fontFamily: 'Avenir Light',
     fontWeight: 'bold',
-    color: '#d72b27'
+    color: '#d72b27',
   },
   rightHint: {
     fontFamily: 'Avenir Light',
     fontWeight: 'bold',
-    color: '#89da3e'
+    color: '#89da3e',
   }
 })
