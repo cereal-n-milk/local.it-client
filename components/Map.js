@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  Dimensions
 } from 'react-native';
 import MapView from 'react-native-maps';
 import store from '../store/locationStore';
