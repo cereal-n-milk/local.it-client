@@ -78,7 +78,7 @@ export default class Saved extends Component {
               onPress={ () => this.getInterestsByCity(item.city) }>
               <ImageBackground
                 style={styles.image}
-                source={{ uri: photos[0] }}
+                source={{ uri: item.interests[0].image_url }}
               >
                 <View style={styles.textContainer}>
                   <Text style={styles.text}>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderBottomWidth: 2,
+    borderBottomWidth: 1,
     borderColor: 'gray',
     height: 100,
     borderLeftWidth: 5,
