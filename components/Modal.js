@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Modal, Text, View, TouchableHighlight, StyleSheet } from 'react-native';
+import {
+  Modal,
+  Text,
+  View,
+  TouchableHighlight,
+  StyleSheet
+} from 'react-native';
 
 export default class Hint extends Component {
   constructor (props) {
@@ -26,14 +32,15 @@ export default class Hint extends Component {
           >
          <View style={styles.modalContent}>
           <View>
-            <Text>swipe right to save</Text>
-            <Text>swipe left to pass</Text>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <Text style={{width: 50, height: 50}}>swipe right to save</Text>
+              <Text style={{width: 50, height: 50}}>swipe left to pass</Text>
+            </View>
             <TouchableHighlight onPress={() => {
               this.visibleModal(!this.state.isVisible)
             }}>
               <Text style={styles.gotIt}>Got it.</Text>
             </TouchableHighlight>
-
           </View>
          </View>
         </Modal>
