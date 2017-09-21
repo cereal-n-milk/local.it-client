@@ -10,6 +10,7 @@ import {
 
 /* Import local files */
 import Login from './Login';
+//import Raleway from './Raleway.ttf';
 
 
 export default class Profile extends Component {
@@ -108,10 +109,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 16,
+    fontFamily: 'Avenir Light'
   },
   text: { marginTop: 10,
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Avenir Light'
   }
 });

@@ -35,6 +35,8 @@ export default class Itinerary extends Component {
   };
 
   render() {
+    console.log('STATE', this.props.screenProps.interestsByCity[0].city);
+    let location = this.props.screenProps.interestsByCity[0].city;
     return (
       <View style={styles.container}>
         <FlatList
@@ -45,9 +47,9 @@ export default class Itinerary extends Component {
               style={styles.itineraryItem}
               onPress={() => this.viewItinerary(item.itineraryList)}>
                 <View style={{width: 400, marginLeft: 10}}>
-                  <Text style={styles.itineraryText}>Name of Itinerary: {item.name}</Text>
-                  <Text style={styles.itineraryText}>Location: </Text>
-                  <Text style={styles.itineraryText}># of Activities: {item.itineraryList.length}</Text>
+                  <Text style={styles.itineraryTextName}>{item.name}</Text>
+                  <Text style={styles.itineraryText}>{location}</Text>
+                  <Text style={styles.itineraryText}>{item.itineraryList.length} Saved</Text>
                 </View>
             </TouchableOpacity>
           }
@@ -69,6 +71,12 @@ const styles = StyleSheet.create({
   },
   itineraryText: {
     color: '#596A7F',
+    fontFamily: 'Avenir Light'
+  },
+  itineraryTextName: {
+    color: '#596A7F',
+    fontFamily: 'Avenir Light',
+    fontWeight: 'bold'
   },
   picker: {
     width: 1000,
