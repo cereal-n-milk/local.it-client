@@ -51,6 +51,7 @@ export default class Discover extends Component {
     .then((response) => {
       var filtered = JSON.parse(response._bodyInit);
       filtered = JSON.parse(filtered[0]);
+      console.log('parsed filter: ', filtered);
       this.props.navigation.navigate('CategoryView', {
         data: filtered,
         category: title

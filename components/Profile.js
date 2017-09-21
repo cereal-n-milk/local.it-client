@@ -42,15 +42,18 @@ export default class Profile extends Component {
     let user = this.props.screenProps.fbID;
     let cities = this.getCities();
     return (
-      <View style={styles.container}>
+      //<View style={styles.container}>
+      <Image source={{uri: this.props.screenProps.photo}} style={styles.container} blurRadius={1}>
         <View style={styles.content}>
-          <View style={styles.avatar}>
-            <Image source={{uri: this.props.screenProps.photo}} style={styles.avatarImage} />
-          </View>
           <View style={styles.description}>
             <Text style={styles.userText}>
               {this.props.screenProps.user}
             </Text>
+          </View>
+          <View style={styles.avatar}>
+            <Image source={{uri: this.props.screenProps.photo}} style={styles.avatarImage} />
+          </View>
+          <View style={styles.description}>
             <Text style={styles.text}>
               {this.props.screenProps.itineraryByCity.length} Itineraries
             </Text>
@@ -69,7 +72,7 @@ export default class Profile extends Component {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
+      </Image>
     )
   }
 }
@@ -79,12 +82,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff'
+    //backgroundColor: '#04263F'
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#fff',
   },
   avatar: {
     margin: 20,
@@ -119,5 +123,9 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     textAlign: 'center',
     fontFamily: 'Avenir Light'
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover'
   }
 });
