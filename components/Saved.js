@@ -81,5 +81,7 @@ const styles = StyleSheet.create({
   },
   cityText: {
     color: '#596a7f',
+    fontFamily: 'Avenir Light',
+    fontSize: 16
   }
 })

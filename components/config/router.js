@@ -16,6 +16,11 @@ export const CategoryStack = StackNavigator({
     screen: Discover,
     navigationOptions: {
       title: 'Choose Category',
+      headerTitleStyle: {
+        fontFamily: 'Avenir Light',
+        fontWeight: 'normal',
+        fontSize: 20
+      },
       headerTintColor: '#161B2D',
     },
   },
@@ -23,6 +28,11 @@ export const CategoryStack = StackNavigator({
     screen: CategoryView,
     navigationOptions: {
       title: 'Category',
+      headerTitleStyle: {
+        fontFamily: 'Avenir Light',
+        fontWeight: 'normal',
+        fontSize: 20
+      },
       headerTintColor: '#161B2D',
     },
   }
@@ -33,6 +43,11 @@ export const SavedStack = StackNavigator({
     screen: Saved,
     navigationOptions: {
       title: 'Cities',
+      headerTitleStyle: {
+        fontFamily: 'Avenir Light',
+        fontWeight: 'normal',
+        fontSize: 20
+      },
       headerTintColor: '#161B2D',
     },
   },
@@ -40,6 +55,11 @@ export const SavedStack = StackNavigator({
     screen: InterestsByCity,
     navigationOptions: {
       title: 'Create Itinerary',
+      headerTitleStyle: {
+        fontFamily: 'Avenir Light',
+        fontWeight: 'normal',
+        fontSize: 20
+      },
       headerTintColor: '#161B2D',
     },
   }
@@ -50,6 +70,11 @@ export const ItineraryStack = StackNavigator({
     screen: Itinerary,
     navigationOptions: {
       title: 'Itinerary',
+      headerTitleStyle: {
+        fontFamily: 'Avenir Light',
+        fontWeight: 'normal',
+        fontSize: 20
+      },
       headerTintColor: '#161B2D',
     }
   },
@@ -57,6 +82,11 @@ export const ItineraryStack = StackNavigator({
     screen: Map,
     navigationOptions: {
       title: 'Map',
+      headerTitleStyle: {
+        fontFamily: 'Avenir Light',
+        fontWeight: 'normal',
+        fontSize: 20
+      },
       headerTintColor: '#161B2D',
     }
   }
@@ -66,7 +96,13 @@ export const ProfileStack = StackNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: {
-      title: 'Profile'
+      title: 'Profile',
+      headerTintColor: 'blue',
+      headerTitleStyle: {
+        fontFamily: 'Avenir Light',
+        fontWeight: 'normal',
+        fontSize: 20
+      }
     }
   }
 });
@@ -76,9 +112,9 @@ export const Tabs = TabNavigator({
     screen: CategoryStack,
     title: 'Category',
     navigationOptions: {
-      tabBarLabel: 'Discover',
+      tabBarLabel: 'DISCOVER',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="search" size={28} color='#748BC4'/>
+        <Icon name="search" size={34} color={tintColor}/>
       ),
     }
   },
@@ -86,9 +122,9 @@ export const Tabs = TabNavigator({
     screen: SavedStack,
     title: 'Saved',
     navigationOptions: {
-      tabBarLabel: 'Saved',
+      tabBarLabel: 'SAVED',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="favorite" size={28} color='#748BC4'/>
+        <Icon name="favorite-border" size={34} color={tintColor}/>
       ),
     }
   },
@@ -96,9 +132,9 @@ export const Tabs = TabNavigator({
     screen: ItineraryStack,
     title: 'Itinerary',
     navigationOptions: {
-      tabBarLabel: 'Itinerary',
+      tabBarLabel: 'ITINERARY',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="work" size={28} color='#748BC4'/>
+        <Icon name="motorcycle" size={34} color={tintColor}/>
       ),
     }
   },
@@ -106,9 +142,9 @@ export const Tabs = TabNavigator({
     screen: ProfileStack,
     title: 'Profile',
     navigationOptions: {
-      tabBarLabel: 'Profile',
+      tabBarLabel: 'PROFILE',
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="account-circle" size={28} color='#748BC4'/>
+        <Icon name="face" size={34} color={tintColor}/>
       ),
     }
   }

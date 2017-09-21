@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import SwipeCards from 'react-native-swipe-cards';
 import Saved from './Saved';
+import Modal from './Modal';
 
 const Card = (props) => {
   let card = props;

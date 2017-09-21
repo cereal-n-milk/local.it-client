@@ -17,6 +17,7 @@
     "react-native-swipe-cards": "^0.1.0",
     "react-native-vector-icons": "^4.3.0",
     "react-navigation": "^1.0.0-beta.11",
+    "redux": "^3.7.2",
     "v3-yelp-api": "^1.0.2",
     "yelp-fusion": "^1.0.3"
   },

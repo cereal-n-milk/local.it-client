@@ -122,10 +122,12 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
+    fontFamily: 'Avenir Light',
     textAlign: 'center',
     margin: 10,
   },
   text: {
+    fontFamily: 'Avenir Light',
     textAlign: 'center',
     color: '#333',
     marginBottom: 5,
@@ -141,6 +143,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     textAlign: 'center',
+    fontFamily: 'Avenir Light',
     fontSize: 16,
   }
 });

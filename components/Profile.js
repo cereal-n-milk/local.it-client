@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  DeviceEventEmitter
+} from 'react-native';
+
+/* Import local files */
 import Login from './Login';
+//import Raleway from './Raleway.ttf';
+
 
 export default class Profile extends Component {
 
@@ -11,7 +22,7 @@ export default class Profile extends Component {
       user: null,
       photo: null,
       loggedIn: true,
-    }
+    };
   }
 
   // emit a logout event
@@ -21,8 +32,19 @@ export default class Profile extends Component {
       .catch(console.log);
   }
 
+  // provides a list of cities a user has saved/disliked cards for
+  getCities () {
+    let cities = [];
+    let city = this.props.screenProps.interestsByCity;
+    for (var obj in city) {
+      cities.push(city[obj].city);
+    }
+    return cities;
+  }
+
   render() {
     let user = this.props.screenProps.fbID;
+    let cities = this.getCities();
     return (
       <View style={styles.container}>
         <View style={styles.content}>
@@ -30,13 +52,14 @@ export default class Profile extends Component {
             <Image source={{uri: this.props.screenProps.photo}} style={styles.avatarImage} />
           </View>
           <View style={styles.description}>
-            <Text style={styles.text}>
+            <Text style={styles.userText}>
               {this.props.screenProps.user}
             </Text>
             <Text style={styles.text}>
+              {this.props.screenProps.itineraryByCity.length} Itineraries
             </Text>
             <Text style={styles.text}>
-              Saved: {this.props.screenProps.itineraryByCity.length}
+              Cities: {cities}
             </Text>
           </View>
           <View style={styles.buttonContainer}>
@@ -84,10 +107,18 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     fontSize: 16,
+    fontFamily: 'Avenir Light'
   },
-  text: { marginTop: 10,
+  userText: { marginTop: 10,
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: 'Avenir Light'
+  },
+  text: { marginTop: 10,
+    fontSize: 16,
+    fontWeight: 'normal',
+    textAlign: 'center',
+    fontFamily: 'Avenir Light'
   }
 });

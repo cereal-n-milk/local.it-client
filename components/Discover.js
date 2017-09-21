@@ -31,7 +31,6 @@ export default class Discover extends Component {
 
   //Yelp Fetch that goes through Python
   fetchYelpData (title) {
-    // console.log('about to fetch');
     fetch('http://localhost:3000/api/yelp', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
@@ -43,41 +42,17 @@ export default class Discover extends Component {
           })
     })
     .then((response) => {
-      console.log(response);
+      //console.log(response);
       var filtered = JSON.parse(response._bodyInit);
       filtered = JSON.parse(filtered[0]);
-      console.log('retreived data: ', filtered);
+      //console.log('retreived data: ', filtered);
       this.props.navigation.navigate('CategoryView', {
         data: filtered,
         category: title
-      })
-    })
+      });
+    });
     .catch(err => console.log)
   }
-
-  // fetchYelpData (title) {
-  //   const credentials = {
-  //     appId: YelpConfig.appId,
-  //     appSecret: YelpConfig.appSecret
-  //   }
-  //   const yelp = new YelpApi(credentials);
-  //   var lat = this.state.latitude;
-  //   var lng = this.state.longitude;
-  //   var latlng = String(lat) + ',' + String(lng);
-  //   let params = {
-  //     term: title,
-  //     location: latlng,
-  //     limit: '30',
-  //   };
-  //   yelp.search(params)
-  //     .then((data) => {
-  //       this.props.navigation.navigate('CategoryView', {
-  //         data: data.businesses,
-  //         category: title })
-  //       //console.log('State: ',this.state);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
 
   render () {
     return (
