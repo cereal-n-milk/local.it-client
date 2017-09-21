@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity, Image, ImageBackground } from 'react-native';
-import YelpApi from 'v3-yelp-api';
-import categories from '../data/categories.js';
-import store from '../store/locationStore';
 
 export default class Discover extends Component {
 
@@ -86,18 +83,21 @@ export default class Discover extends Component {
           data={this.state.categories}
           keyExtractor={(category, index) => index }
           renderItem={({ item }) =>
-            <TouchableOpacity
-              onPress={ () =>  this.fetchYelpData(item.title) }>
-              <ImageBackground
-                style={styles.image}
-                source={{uri: item.image_url}}
-              >
-                <View style={styles.textContainer}>
-                    <Text style={styles.text}>{item.title}</Text>
+            <View style={styles.container}>
+              <View style={styles.image}>
+                <Image
+                  source={{uri: item.image_url}}
+                />
+              </View>
+              <View style={{
+                 height:100, width:400}}>
+                <TouchableOpacity
+                  onPress={ () =>  this.fetchYelpData(item.title) }>
+                  <Text style={styles.text}>{item.title}</Text>
 
-                </View>
-              </ImageBackground>
-            </TouchableOpacity>
+                </TouchableOpacity>
+              </View>
+            </View>
           }
         />
       </View>
@@ -109,25 +109,21 @@ const styles = StyleSheet.create({
   toolbarTab: {
     fontSize: 20
   },
-  image: {
+  container: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  image: {
+    flex: 1,
     borderBottomWidth: 1,
     borderColor: 'gray',
     height: 100,
   },
-  textContainer: {
-    backgroundColor: 'rgba(0,0,0,.4)',
-    height:100,
-    width: 400,
-    padding: 10
-  },
   text: {
     backgroundColor: 'rgba(0,0,0,0)',
     fontWeight: 'bold',
-    color: '#F7F7F7',
-    fontFamily: 'Avenir Light',
-    fontSize: 18
+    color: 'black',
+    opacity: 1
   },
 })
