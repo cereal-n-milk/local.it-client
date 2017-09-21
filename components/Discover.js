@@ -54,9 +54,9 @@ export default class Discover extends Component {
       this.props.navigation.navigate('CategoryView', {
         data: filtered,
         category: title
-    .catch(err => console.log)
-      });
-    });
+      })
+    })
+    .catch(err => console.log);
   }
 
   render () {
