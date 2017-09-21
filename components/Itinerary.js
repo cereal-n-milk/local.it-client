@@ -16,7 +16,7 @@ export default class Itinerary extends Component {
     super(props);
     this.state = {
       itineraryData: null
-    }
+    };
   }
 
   getInitialData () {
@@ -25,8 +25,8 @@ export default class Itinerary extends Component {
       .then((data) => {
         this.setState({
           itineraryData: data.data.itineraryByCity
-        })
-      })
+        });
+      });
   }
 
   componentWillMount() {
@@ -39,7 +39,7 @@ export default class Itinerary extends Component {
   }
 
   viewItinerary = (name) => {
-    this.props.navigation.navigate('MapView', {list: name});
+    this.props.navigation.navigate('MapView', {list: name})
   };
 
   render() {
@@ -51,7 +51,7 @@ export default class Itinerary extends Component {
           keyExtractor={(itinerary, index) => index }
           renderItem={({ item }) =>
             <TouchableOpacity
-              style={styles.itineraryItem}
+              style={styles.touch}
               onPress={() => this.viewItinerary(item.itineraryList)}>
               <ImageBackground
                 style={styles.image}

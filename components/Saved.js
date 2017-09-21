@@ -27,7 +27,7 @@ export default class Saved extends Component {
       var data = JSON.parse(event.data._bodyInit);
       this.setState({
         user: data
-      })
+      });
     });
   }
 
@@ -37,8 +37,8 @@ export default class Saved extends Component {
       .then((data) => {
         this.setState({
           user: data.data
-        })
-      })
+        });
+      });
   }
 
   getInterestsByCity (city) {
@@ -58,15 +58,7 @@ export default class Saved extends Component {
     .catch(err => console.log('ERROR!', err));
   }
 
-  getPhotoByCity () {
-    let cities = this.props.screenProps.interestsByCity;
-    return cities.map(city => {
-      return city.interests[0].image_url;
-    });
-  }
-
   render() {
-    let photos = this.getPhotoByCity();
     return (
       <View style={styles.container}>
         <FlatList

@@ -5,7 +5,8 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  ImageBackground
 } from 'react-native';
 import Login from './Login';
 
@@ -30,20 +31,24 @@ export default class Profile extends Component {
 
   // provides a list of cities a user has saved/disliked cards for
   getCities () {
-    let cities = [];
-    let city = this.props.screenProps.interestsByCity;
-    for (var obj in city) {
-      cities.push(city[obj].city);
-    }
-    return cities;
+    let cities = this.props.screenProps.interestsByCity;
+
+    return cities.reduce((collection, city, index) => {
+      if (city[index] !== cities.length) {
+       return city.city.slice(0, -4).concat(' ');
+      } else {
+        return city.city.slice(0, -4).concat(', ');
+      }
+    }, []);
   }
+
 
   render() {
     let user = this.props.screenProps.fbID;
     let cities = this.getCities();
     return (
       //<View style={styles.container}>
-      <Image source={{uri: this.props.screenProps.photo}} style={styles.container} blurRadius={1}>
+      <ImageBackground source={{uri: this.props.screenProps.photo}} style={styles.container} blurRadius={1}>
         <View style={styles.content}>
           <View style={styles.description}>
             <Text style={styles.userText}>
@@ -57,12 +62,6 @@ export default class Profile extends Component {
             <Text style={styles.text}>
               {this.props.screenProps.itineraryByCity.length} Itineraries
             </Text>
-            <Text style={styles.text}>
-              Itineraries: {this.props.screenProps.itineraryByCity.length}
-            </Text>
-            <Text style={styles.text}>
-              Cities: {cities}
-            </Text>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={ () => this.logout() }>
@@ -72,7 +71,7 @@ export default class Profile extends Component {
             </TouchableOpacity>
           </View>
         </View>
-      </Image>
+      </ImageBackground>
     )
   }
 }
