@@ -20,19 +20,20 @@ export default class InterestsItem extends Component {
 
   render() {
     return(
-      <View style={{flex: 1, flexDirection: 'row'}}>
+      <View style={{flex: 1, flexDirection: 'row', borderBottomWidth: 1,
+      borderColor: 'gray'}}>
         <View style={{width: 100, height: 100}}>
           <Image
             style={{width: 100, height: 100}}
             source={{ uri: this.props.item.image_url}}
           />
         </View>
-        <View style={{width: 200, marginLeft: 10}}>
-          <Text style={{fontWeight: 'bold'}}>{this.props.item.name}</Text>
-          <Text>{this.props.item.location.address1}</Text>
-          <Text>{this.props.item.location.city} {this.props.item.location.state}, {this.props.item.location.zip_code}</Text>
-          <Text>Rating: {this.props.item.rating}</Text>
-          <Text>Category: {this.props.item.categories[0].title}</Text>
+        <View style={styles.interestContainer}>
+          <Text style={styles.interestTitle}>{this.props.item.name}</Text>
+          <Text style={styles.interestText}>{this.props.item.location.address1}</Text>
+          <Text style={styles.interestText}>{this.props.item.location.city} {this.props.item.location.state}, {this.props.item.location.zip_code}</Text>
+          <Text style={styles.interestText}>{this.props.item.categories[0].title}</Text>
+          <Text style={styles.interestText}>Rating: {this.props.item.rating}</Text>
         </View>
         <View style={{
           flex: 1,
@@ -57,3 +58,17 @@ export default class InterestsItem extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  interestContainer: {
+    width: 245,
+    marginLeft: 10,
+  },
+  interestTitle: {
+    fontFamily: 'Avenir Light',
+    fontWeight: 'bold',
+  },
+  interestText: {
+    fontFamily: 'Avenir Light'
+  }
+});
