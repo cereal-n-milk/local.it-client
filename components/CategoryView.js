@@ -22,7 +22,7 @@ class Hint extends Component {
 
     setTimeout (() => {
       this.setState({ showText: false });
-    }, 10000);
+    }, 5000);
   }
 
 
@@ -30,9 +30,9 @@ class Hint extends Component {
     let displayLeft = this.state.showText ? this.props.textLeft : ' ';
     let displayRight = this.state.showText ? this.props.textRight : ' ';
     return (
-      <View style={styles.hints}>
-        <Text style={styles.hint}>{displayLeft}</Text>
-        <Text style={styles.hint}>{displayRight}</Text>
+      <View style={styles.hintContainer}>
+        <Text style={styles.leftHint}>{displayLeft}</Text>
+        <Text style={styles.rightHint}>{displayRight}</Text>
       </View>
     )
   }
@@ -46,7 +46,6 @@ export default class CategoryView extends Component {
       category: this.props.navigation.state.params.category,
       data: this.props.navigation.state.params.data,
       item: "Suggestion",
-      //hint: true,
     };
     this.handleYup = this.handleYup.bind(this);
   }
@@ -76,15 +75,16 @@ export default class CategoryView extends Component {
   //   </View>
   // }
 
-
   render() {
     const category = this.state.category;
     const data = this.state.data;
     return (
       <View style={styles.container}>
-        <Hint textRight='Swipe right to Save'/>
-        <Hint textLeft='Swipe left to Pass'/>
         <Text style={styles.category}>{ category }</Text>
+        <View style={styles.hints}>
+          <Hint textLeft='Swipe Left to Pass'/>
+          <Hint textRight='Swipe Right to Save'/>
+        </View>
         <Item handleYup={this.handleYup} userData={this.props.screenProps} data={data}/>
       </View>
     );
@@ -94,20 +94,33 @@ export default class CategoryView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F7F7F7'
   },
   category: {
-    marginTop: 10,
+    fontFamily: 'Avenir Light',
     fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#04263F',
+    margin: 20
+  },
+  hintContainer: {
+    flexDirection: 'row',
+    height: 25,
+    width: 235
   },
   hints: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    //alignItems: 'right',
+    margin: 5
   },
-  hint: {
-    color: 'gray',
+  leftHint: {
+    fontFamily: 'Avenir Light',
+    fontWeight: 'bold',
+    color: '#d72b27'
+  },
+  rightHint: {
+    fontFamily: 'Avenir Light',
+    fontWeight: 'bold',
+    color: '#89da3e'
   }
 })
