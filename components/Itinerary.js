@@ -51,7 +51,7 @@ export default class Itinerary extends Component {
           keyExtractor={(itinerary, index) => index }
           renderItem={({ item }) =>
             <TouchableOpacity
-              style={styles.itineraryItem}
+              style={styles.touch}
               onPress={() => this.viewItinerary(item.itineraryList)}>
               <ImageBackground
                 style={styles.image}
