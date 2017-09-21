@@ -10,7 +10,7 @@ import MapView from 'react-native-maps';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.0922;
+const LATITUDE_DELTA = 0.1500;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class Map extends React.Component {
@@ -38,11 +38,13 @@ export default class Map extends React.Component {
           initialRegion={this.state.region}
         >
           <MapView.Marker
+            pinColor='#04263F'
             title="Current Location"
             coordinate={this.state.region}
           />
           {this.props.navigation.state.params.list.map((itinerary, index) => (
             <MapView.Marker
+              pinColor='#04263F'
               key={itinerary.id}
               title={itinerary.name}
               description={itinerary.categories[0].title}

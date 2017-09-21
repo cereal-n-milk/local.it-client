@@ -43,12 +43,6 @@ export default class Itinerary extends Component {
   };
 
   render() {
-    let location;
-    if (this.props.screenProps.itineraryByCity[0] === undefined) {
-      location = null;
-    } else {
-      location = this.props.screenProps.interestsByCity[0].city;
-    }
     return (
       <View style={styles.container}>
         <FlatList
@@ -62,11 +56,12 @@ export default class Itinerary extends Component {
                 style={styles.image}
                 source={{ uri: item.itineraryList[0].image_url }}
               >
+                {console.log('item:', item)}
                 <View style={styles.textContainer}>
                   <Text style={styles.itineraryTextName}>{item.name}
                     <Text style={styles.itineraryText}>  {item.itineraryList.length} Saved</Text>
                   </Text>
-                  <Text style={styles.itineraryText}>{location}</Text>
+                  <Text style={styles.itineraryText}>{item.location}</Text>
                 </View>
               </ImageBackground>
             </TouchableOpacity>
