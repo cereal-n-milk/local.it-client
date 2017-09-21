@@ -43,7 +43,12 @@ export default class Itinerary extends Component {
   };
 
   render() {
-    let location = this.props.screenProps.interestsByCity[0].city;
+    let location;
+    if (this.props.screenProps.itineraryByCity[0] === undefined) {
+      location = null;
+    } else {
+      location = this.props.screenProps.interestsByCity[0].city;
+    }
     return (
       <View style={styles.container}>
         <FlatList

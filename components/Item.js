@@ -69,8 +69,10 @@ export default class Item extends Component {
         renderNoMoreCards={() => <NoMoreCards />}
         handleYup={this.props.handleYup}
         handleNope={this.handleNope.bind(this)}
-        showYup={false}
-        showNope={false}
+        showYup={true}
+        showNope={true}
+        yupText='Save'
+        nopeText='Pass'
       />
     )
   }
