@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  BackgroundImage
 } from 'react-native';
 import Saved from './Saved';
 import Modal from './Modal';
@@ -14,16 +15,20 @@ const Card = (props) => {
   return (
     <View style={styles.card}>
       <View>
-        <Text>{card.name}</Text>
         <Image
-        style={{width: 300, height: 300}}
-        source={{ uri: card.image_url}} />
-        <View>
-          <Text>{card.name}</Text>
-          <Text>Rating: {card.rating}/5</Text>
-          <Text>Distance: {Math.round((card.distance * 0.00062137 + 0.00001) * 100) / 100} Miles</Text>
-          <Text>Price: {card.price}</Text>
-        </View>
+        style={styles.image}
+        source={{ uri: card.image_url}} >
+          <View style={styles.container} >
+          <View style={{width: 300}}>
+          </View>
+            <View style={{width: 300, backgroundColor: 'rgba(255,255,255,.8)'}}>
+              <Text style={styles.cardTitle}>{card.name}</Text>
+              <Text style={styles.cardText}>Rating: {card.rating}/5</Text>
+              <Text style={styles.cardText}>Distance: {Math.round((card.distance * 0.00062137 + 0.00001) * 100) / 100} Miles</Text>
+              <Text style={styles.cardText}>Price: {card.price}</Text>
+              </View>
+          </View>
+        </Image>
       </View>
     </View>
   )
@@ -66,6 +71,8 @@ export default class Item extends Component {
         renderNoMoreCards={() => <NoMoreCards />}
         handleYup={this.props.handleYup}
         handleNope={this.handleNope.bind(this)}
+        showYup={false}
+        showNope={false}
       />
     )
   }
@@ -76,5 +83,26 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 300,
     height: 300,
+  },
+  image: {
+    width: 300,
+    height: 425
+  },
+  container: {
+    flex: 1,
+    alignItems: 'flex-end',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  cardTitle: {
+    fontFamily: 'Avenir Light',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: 'black'
+  },
+  cardText: {
+    fontFamily: 'Avenir Light',
+    bottom: 1,
+    color: 'black'
   }
 })
