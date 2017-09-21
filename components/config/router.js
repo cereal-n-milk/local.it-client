@@ -102,7 +102,8 @@ export const ProfileStack = StackNavigator({
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
         fontSize: 20
-      }
+      },
+      headerTintColor: '#161B2D',
     }
   }
 });
