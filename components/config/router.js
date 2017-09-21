@@ -16,6 +16,7 @@ export const CategoryStack = StackNavigator({
     screen: Discover,
     navigationOptions: {
       title: 'Choose Category',
+      headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
@@ -28,6 +29,7 @@ export const CategoryStack = StackNavigator({
     screen: CategoryView,
     navigationOptions: {
       title: 'Category',
+      headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
@@ -43,6 +45,7 @@ export const SavedStack = StackNavigator({
     screen: Saved,
     navigationOptions: {
       title: 'Cities',
+      headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
@@ -55,6 +58,7 @@ export const SavedStack = StackNavigator({
     screen: InterestsByCity,
     navigationOptions: {
       title: 'Create Itinerary',
+      headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
@@ -70,6 +74,7 @@ export const ItineraryStack = StackNavigator({
     screen: Itinerary,
     navigationOptions: {
       title: 'Itinerary',
+      headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
@@ -82,6 +87,7 @@ export const ItineraryStack = StackNavigator({
     screen: Map,
     navigationOptions: {
       title: 'Map',
+      headerTintColor: '#161B2D',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
