@@ -12,7 +12,8 @@ import {
   Animated,
   Keyboard,
   KeyboardAvoidingView,
-  DeviceEventEmitter } from 'react-native';
+  DeviceEventEmitter
+} from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
 import InterestsItem from './InterestsItem';
 import store from '../store/locationStore';

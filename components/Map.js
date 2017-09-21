@@ -5,8 +5,8 @@ import {
   Text,
   Dimensions
 } from 'react-native';
-import MapView from 'react-native-maps';
 import store from '../store/locationStore';
+import MapView from 'react-native-maps';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -28,7 +28,7 @@ export default class Map extends React.Component {
       itineraries: [],
     };
   }
-  
+
   render() {
     return (
       <View style={styles.container}>

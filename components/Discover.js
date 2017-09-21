@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
   ImageBackground
 } from 'react-native';
-import YelpApi from 'v3-yelp-api';
 import categories from '../data/categories.js';
 import store from '../store/locationStore';
+import YelpApi from 'v3-yelp-api';
 
 export default class Discover extends Component {
 
