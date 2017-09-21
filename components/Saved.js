@@ -20,7 +20,7 @@ export default class Saved extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getInitialData();
     DeviceEventEmitter.addListener('refreshFunc', (event)=> {
       var data = JSON.parse(event.data._bodyInit);

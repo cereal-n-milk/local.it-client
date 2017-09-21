@@ -15,6 +15,7 @@ import {
   DeviceEventEmitter } from 'react-native';
 import { CheckBox, Button } from 'react-native-elements';
 import InterestsItem from './InterestsItem';
+import store from '../store/locationStore';
 
 const window = Dimensions.get('window');
 export const IMAGE_HEIGHT = window.width / 2;
@@ -58,6 +59,7 @@ export default class InterestByCity extends Component {
   };
 
   saveItinerary = () => {
+    console.log('saved');
     let userId = this.props.screenProps.fbID;
     let input = this.state.text;
     let savedInterests = this.state.savedInterests;
@@ -65,8 +67,11 @@ export default class InterestByCity extends Component {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        itineraryName: input,
-        savedInterests: savedInterests
+        name: input,
+        location: savedInterests[0].location.city,
+        latitude: store.getState().latitude,
+        longitude: store.getState().longitude,
+        itineraryList: savedInterests,
       })
     })
     .then((result) => {
@@ -85,13 +90,12 @@ export default class InterestByCity extends Component {
   }
 
   render() {
+    console.log('line 91:', this.state.savedInterests)
     let city = this.props.navigation.state.params.interests.city;
     let interests = this.props.navigation.state.params.interests[0].interests;
     return (
       <View>
-        <KeyboardAvoidingView
-          behavior="padding"
-        >
+        <KeyboardAvoidingView behavior="padding">
           <View style={{backgroundColor: '#ffffff', marginBottom: 5}}>
             <Text style={{marginLeft: 15, marginRight: 15, marginTop: 5, marginBottom: 5}}>Name your Itinerary</Text>
             <TextInput
@@ -106,17 +110,17 @@ export default class InterestByCity extends Component {
               title="Save.it"
             />
           </View>
+          <ScrollView>
+            <FlatList
+              data={interests}
+              extraData={this.state}
+              keyExtractor={(interest, index) => index }
+              renderItem={ ({ item }) =>
+                <InterestsItem item={item} getItineraries={this.getItineraries}/>
+              }
+            />
+          </ScrollView>
         </KeyboardAvoidingView>
-        <ScrollView>
-          <FlatList
-            data={interests}
-            extraData={this.state}
-            keyExtractor={(interest, index) => index }
-            renderItem={ ({ item }) =>
-              <InterestsItem item={item} getItineraries={this.getItineraries}/>
-            }
-          />
-        </ScrollView>
       </View>
     )
   }

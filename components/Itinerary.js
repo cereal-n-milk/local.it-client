@@ -54,11 +54,9 @@ export default class Itinerary extends Component {
               style={styles.itineraryItem}
               onPress={() => this.viewItinerary(item.itineraryList)}>
                 <View style={{width: 400, marginLeft: 10}}>
-                  <Text style={styles.itineraryTextName}>{item.name}
-                  <Text style={styles.itineraryText}>  {item.itineraryList.length} Saved</Text>
-                  </Text>
-                  <Text style={styles.itineraryText}>{location}</Text>
-
+                  <Text style={styles.itineraryTextName}>{item.name}</Text>
+                  <Text style={styles.itineraryText}>Location: {item.location}</Text>
+                  <Text style={styles.itineraryText}>{item.itineraryList.length} Saved</Text>
                 </View>
             </TouchableOpacity>
           }

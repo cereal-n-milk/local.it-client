@@ -49,22 +49,15 @@ export default class Discover extends Component {
           })
     })
     .then((response) => {
-<<<<<<< HEAD
       //console.log(response);
       var filtered = JSON.parse(response._bodyInit);
       filtered = JSON.parse(filtered[0]);
       //console.log('retreived data: ', filtered);
-=======
-      // console.log(response);
-      var filtered = JSON.parse(response._bodyInit);
-      filtered = JSON.parse(filtered[0]);
-      // console.log('retreived data: ', filtered);
->>>>>>> Code cleanup
       this.props.navigation.navigate('CategoryView', {
         data: filtered,
         category: title
-      });
-    });
+      })
+    })
     .catch(err => console.log)
   }
 
