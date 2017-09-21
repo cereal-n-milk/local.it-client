@@ -7,7 +7,6 @@ import {
   BackgroundImage
 } from 'react-native';
 import Saved from './Saved';
-import Modal from './Modal';
 import SwipeCards from 'react-native-swipe-cards';
 
 const Card = (props) => {

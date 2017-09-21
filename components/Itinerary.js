@@ -5,6 +5,7 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  ImageBackground,
   DeviceEventEmitter
 } from 'react-native';
 import axios from 'axios';

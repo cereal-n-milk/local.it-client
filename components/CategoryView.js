@@ -16,6 +16,7 @@ import {
 import Item from './Item';
 
 class Hint extends Component {
+
   constructor(props) {
     super(props)
     this.state = { showText: true }
@@ -24,7 +25,6 @@ class Hint extends Component {
       this.setState({ showText: false });
     }, 5000);
   }
-
 
   render () {
     let displayLeft = this.state.showText ? this.props.textLeft : ' ';
@@ -66,18 +66,9 @@ export default class CategoryView extends Component {
     })
   }
 
-  // renderModal = (visible) => {
-  //   // render modal when the user is 'new'
-  //   // makes the modal hide when the user clicks 'got it' button
-  //   this.setState({ hint: visible })
-  //   <View>
-  //     <Hint />
-  //   </View>
-  // }
-
   render() {
-    const category = this.state.category;
-    const data = this.state.data;
+    let category = this.state.category;
+    let data = this.state.data;
     return (
       <View style={styles.container}>
         <Text style={styles.category}>{ category }</Text>
