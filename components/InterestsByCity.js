@@ -59,7 +59,6 @@ export default class InterestByCity extends Component {
   };
 
   saveItinerary = () => {
-    console.log('saved');
     let userId = this.props.screenProps.fbID;
     let input = this.state.text;
     let savedInterests = this.state.savedInterests;
@@ -90,7 +89,6 @@ export default class InterestByCity extends Component {
   }
 
   render() {
-    console.log('line 91:', this.state.savedInterests)
     let city = this.props.navigation.state.params.interests.city;
     let interests = this.props.navigation.state.params.interests[0].interests;
     return (

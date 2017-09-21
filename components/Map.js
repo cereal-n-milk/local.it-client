@@ -20,8 +20,8 @@ export default class Map extends React.Component {
 
     this.state = {
       region: {
-        latitude: store.getState().latitude,
-        longitude: store.getState().longitude,
+        latitude: this.props.navigation.state.params.list[0].coordinates.latitude,
+        longitude: this.props.navigation.state.params.list[0].coordinates.longitude,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
       },
