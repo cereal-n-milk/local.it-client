@@ -58,7 +58,7 @@ export default class Saved extends Component {
     .catch(err => console.log('ERROR!', err));
   }
 
-  getPhotoByCIty () {
+  getPhotoByCity () {
     let cities = this.props.screenProps.interestsByCity;
     return cities.map(city => {
       return city.interests[0].image_url;
@@ -66,8 +66,7 @@ export default class Saved extends Component {
   }
 
   render() {
-    let photos = this.getPhotoByCIty();
-    console.log('PHOTOS',photos);
+    let photos = this.getPhotoByCity();
     return (
       <View style={styles.container}>
         <FlatList
