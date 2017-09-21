@@ -52,13 +52,11 @@ export default class Profile extends Component {
             <Image source={{uri: this.props.screenProps.photo}} style={styles.avatarImage} />
           </View>
           <View style={styles.description}>
-            <Text style={styles.text}>
+            <Text style={styles.userText}>
               {this.props.screenProps.user}
             </Text>
             <Text style={styles.text}>
-            </Text>
-            <Text style={styles.text}>
-              Itineraries: {this.props.screenProps.itineraryByCity.length}
+              {this.props.screenProps.itineraryByCity.length} Itineraries
             </Text>
             <Text style={styles.text}>
               Cities: {cities}
@@ -111,9 +109,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Avenir Light'
   },
-  text: { marginTop: 10,
+  userText: { marginTop: 10,
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
+    fontFamily: 'Avenir Light'
+  },
+  text: { marginTop: 10,
+    fontSize: 16,
+    fontWeight: 'normal',
     textAlign: 'center',
     fontFamily: 'Avenir Light'
   }

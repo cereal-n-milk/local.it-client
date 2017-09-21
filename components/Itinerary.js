@@ -47,9 +47,11 @@ export default class Itinerary extends Component {
               style={styles.itineraryItem}
               onPress={() => this.viewItinerary(item.itineraryList)}>
                 <View style={{width: 400, marginLeft: 10}}>
-                  <Text style={styles.itineraryTextName}>{item.name}</Text>
+                  <Text style={styles.itineraryTextName}>{item.name}
+                  <Text style={styles.itineraryText}>  {item.itineraryList.length} Saved</Text>
+                  </Text>
                   <Text style={styles.itineraryText}>{location}</Text>
-                  <Text style={styles.itineraryText}>{item.itineraryList.length} Saved</Text>
+
                 </View>
             </TouchableOpacity>
           }
@@ -69,14 +71,17 @@ const styles = StyleSheet.create({
     borderColor: '#d6d7da',
     backgroundColor: '#fff'
   },
-  itineraryText: {
-    color: '#596A7F',
-    fontFamily: 'Avenir Light'
-  },
   itineraryTextName: {
     color: '#596A7F',
     fontFamily: 'Avenir Light',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 16
+  },
+  itineraryText: {
+    color: '#596A7F',
+    fontFamily: 'Avenir Light',
+    fontWeight: 'normal',
+    fontSize: 16
   },
   picker: {
     width: 1000,
