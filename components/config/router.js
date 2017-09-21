@@ -16,24 +16,24 @@ export const CategoryStack = StackNavigator({
     screen: Discover,
     navigationOptions: {
       title: 'Choose Category',
-      headerTintColor: 'blue',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
         fontSize: 20
-      }
+      },
+      headerTintColor: '#161B2D',
     },
   },
   CategoryView: {
     screen: CategoryView,
     navigationOptions: {
       title: 'Category',
-      headerTintColor: 'blue',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
         fontSize: 20
-      }
+      },
+      headerTintColor: '#161B2D',
     },
   }
 });
@@ -43,24 +43,24 @@ export const SavedStack = StackNavigator({
     screen: Saved,
     navigationOptions: {
       title: 'Cities',
-      headerTintColor: 'blue',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
         fontSize: 20
-      }
+      },
+      headerTintColor: '#161B2D',
     },
   },
   InterestsByCity: {
     screen: InterestsByCity,
     navigationOptions: {
       title: 'Create Itinerary',
-      headerTintColor: 'blue',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
         fontSize: 20
-      }
+      },
+      headerTintColor: '#161B2D',
     },
   }
 });
@@ -70,24 +70,24 @@ export const ItineraryStack = StackNavigator({
     screen: Itinerary,
     navigationOptions: {
       title: 'Itinerary',
-      headerTintColor: 'blue',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
         fontSize: 20
-      }
+      },
+      headerTintColor: '#161B2D',
     }
   },
   MapView: {
     screen: Map,
     navigationOptions: {
       title: 'Map',
-      headerTintColor: 'blue',
       headerTitleStyle: {
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
         fontSize: 20
-      }
+      },
+      headerTintColor: '#161B2D',
     }
   }
 });

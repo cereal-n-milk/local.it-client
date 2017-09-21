@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import YelpApi from 'v3-yelp-api';
 import categories from '../data/categories.js';
 import store from '../store/locationStore';
@@ -51,6 +51,7 @@ export default class Discover extends Component {
         category: title
       });
     });
+    .catch(err => console.log)
   }
 
   render () {
@@ -61,9 +62,16 @@ export default class Discover extends Component {
           keyExtractor={(category, index) => index }
           renderItem={({ item }) =>
             <TouchableOpacity
-              style={styles.categoryItem}
               onPress={ () =>  this.fetchYelpData(item.title) }>
-              <Text>{item.title}</Text>
+              <ImageBackground
+                style={styles.image}
+                source={{uri: item.image_url}}
+              >
+                <View style={styles.textContainer}>
+                    <Text style={styles.text}>{item.title}</Text>
+
+                </View>
+              </ImageBackground>
             </TouchableOpacity>
           }
         />
@@ -76,16 +84,25 @@ const styles = StyleSheet.create({
   toolbarTab: {
     fontSize: 20
   },
-  categoryItem: {
+  image: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 25,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    backgroundColor: '#fff'
+    borderBottomWidth: 1,
+    borderColor: 'gray',
+    height: 100,
   },
-  categoryText: {
-    color: '#596a7f',
-  }
+  textContainer: {
+    backgroundColor: 'rgba(0,0,0,.4)',
+    height:100,
+    width: 400,
+    padding: 10
+  },
+  text: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontWeight: 'bold',
+    color: '#F7F7F7',
+    fontFamily: 'Avenir Light',
+    fontSize: 18
+  },
 })

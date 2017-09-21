@@ -28,7 +28,7 @@ export default class Map extends React.Component {
       itineraries: [],
     };
   }
-
+  
   render() {
     console.log('props:', this.props.navigation.state.params.list);
     return (
