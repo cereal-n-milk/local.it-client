@@ -5,7 +5,8 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  ImageBackground
 } from 'react-native';
 import axios from 'axios';
 
@@ -57,7 +58,16 @@ export default class Saved extends Component {
     .catch(err => console.log('ERROR!', err));
   }
 
+  getPhotoByCIty () {
+    let cities = this.props.screenProps.interestsByCity;
+    return cities.map(city => {
+      return city.interests[0].image_url;
+    });
+  }
+
   render() {
+    let photos = this.getPhotoByCIty();
+    console.log('PHOTOS',photos);
     return (
       <View style={styles.container}>
         <FlatList
@@ -65,11 +75,20 @@ export default class Saved extends Component {
           keyExtractor={(city, index) => index }
           renderItem={({ item }) =>
             <TouchableOpacity
-              style={styles.cityItem}
               onPress={ () => this.getInterestsByCity(item.city) }>
-                <Text style={styles.cityText}>
-                  {item.city}
-                </Text>
+              <ImageBackground
+                style={styles.image}
+                source={{ uri: photos[0] }}
+              >
+                <View style={styles.textContainer}>
+                  <Text style={styles.text}>
+                    {item.city.slice(0, -4)}
+                  </Text>
+                  <Text style={styles.text}>
+                    {item.interests.length} Saved Items
+                  </Text>
+                </View>
+              </ImageBackground>
             </TouchableOpacity>
           }
         />
@@ -79,18 +98,29 @@ export default class Saved extends Component {
 }
 
 const styles = StyleSheet.create({
-  cityItem: {
+  textContainer: {
+    backgroundColor: 'rgba(0,0,0,.4)',
+    height:100,
+    width: 400,
+    padding: 10
+  },
+  text: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontWeight: 'bold',
+    color: '#F7F7F7',
+    fontFamily: 'Avenir Light',
+    fontSize: 18
+  },
+  image: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 25,
-    borderWidth: 0.5,
-    borderColor: '#d6d7da',
-    backgroundColor: '#fff'
+    borderBottomWidth: 2,
+    borderColor: 'gray',
+    height: 100,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderLeftColor: 'gray',
+    borderRightColor: 'gray',
   },
-  cityText: {
-    color: '#596a7f',
-    fontFamily: 'Avenir Light',
-    fontSize: 16
-  }
 })

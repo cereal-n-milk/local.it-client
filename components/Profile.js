@@ -55,6 +55,9 @@ export default class Profile extends Component {
               {this.props.screenProps.itineraryByCity.length} Itineraries
             </Text>
             <Text style={styles.text}>
+              Itineraries: {this.props.screenProps.itineraryByCity.length}
+            </Text>
+            <Text style={styles.text}>
               Cities: {cities}
             </Text>
           </View>

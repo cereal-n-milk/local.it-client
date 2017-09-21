@@ -41,8 +41,16 @@ export default class Itinerary extends Component {
     this.props.navigation.navigate('MapView', {list: name});
   };
 
+  getPhotoByCIty () {
+    let cities = this.props.screenProps.interestsByCity;
+    return cities.map(city => {
+      return city.interests[0].image_url;
+    });
+  }
+
   render() {
-    console.log('STATE', this.props.screenProps.interestsByCity[0].city);
+    let photos = this.getPhotoByCIty();
+    console.log();
     let location = this.props.screenProps.interestsByCity[0].city;
     return (
       <View style={styles.container}>
@@ -53,11 +61,17 @@ export default class Itinerary extends Component {
             <TouchableOpacity
               style={styles.itineraryItem}
               onPress={() => this.viewItinerary(item.itineraryList)}>
+               <ImageBackground
+                style={styles.image}
+                source={{ uri: photos[0] }}
+              >
                 <View style={{width: 400, marginLeft: 10}}>
-                  <Text style={styles.itineraryTextName}>{item.name}</Text>
-                  <Text style={styles.itineraryText}>Location: {item.location}</Text>
-                  <Text style={styles.itineraryText}>{item.itineraryList.length} Saved</Text>
+                  <Text style={styles.itineraryTextName}>{item.name}
+                  <Text style={styles.itineraryText}>  {item.itineraryList.length} Saved</Text>
+                  </Text>
+                  <Text style={styles.itineraryText}>{location}</Text>
                 </View>
+                </ImageBackground>
             </TouchableOpacity>
           }
         />

@@ -56,7 +56,7 @@ export default class Discover extends Component {
         category: title
       })
     })
-    .catch(err => console.log)
+    .catch(err => console.log);
   }
 
   render () {
@@ -93,9 +93,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     borderColor: 'gray',
     height: 100,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderLeftColor: 'gray',
+    borderRightColor: 'gray',
   },
   textContainer: {
     backgroundColor: 'rgba(0,0,0,.4)',
