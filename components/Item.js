@@ -3,8 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  BackgroundImage
+  ImageBackground
 } from 'react-native';
 import Saved from './Saved';
 import SwipeCards from 'react-native-swipe-cards';
@@ -14,7 +13,7 @@ const Card = (props) => {
   return (
     <View style={styles.card}>
       <View>
-        <Image
+        <ImageBackground
         style={styles.image}
         source={{ uri: card.image_url}} >
           <View style={styles.container} >
@@ -27,7 +26,7 @@ const Card = (props) => {
               <Text style={styles.cardText}>Price: {card.price}</Text>
               </View>
           </View>
-        </Image>
+        </ImageBackground>
       </View>
     </View>
   )
@@ -86,23 +85,22 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 425,
-    borderRadius: 2
   },
   container: {
     flex: 1,
     alignItems: 'flex-end',
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   cardTitle: {
     fontFamily: 'Avenir Light',
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'black'
+    color: '#04263F',
   },
   cardText: {
     fontFamily: 'Avenir Light',
     bottom: 1,
-    color: 'black'
+    color: '#04263F'
   }
 })

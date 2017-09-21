@@ -93,25 +93,25 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#04263F',
-    margin: 20
+    marginTop: 20
   },
   hintContainer: {
     flexDirection: 'row',
     height: 25,
-    width: 235
+    width: 230
   },
   hints: {
     flexDirection: 'row',
-    margin: 5
+    margin: 10
   },
   leftHint: {
     fontFamily: 'Avenir Light',
     fontWeight: 'bold',
-    color: '#d72b27'
+    color: '#d72b27',
   },
   rightHint: {
     fontFamily: 'Avenir Light',
     fontWeight: 'bold',
-    color: '#89da3e'
+    color: '#89da3e',
   }
 })
