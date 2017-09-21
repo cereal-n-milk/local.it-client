@@ -30,13 +30,17 @@ export default class Profile extends Component {
 
   // provides a list of cities a user has saved/disliked cards for
   getCities () {
-    let cities = [];
-    let city = this.props.screenProps.interestsByCity;
-    for (var obj in city) {
-      cities.push(city[obj].city);
-    }
-    return cities;
+    let cities = this.props.screenProps.interestsByCity;
+
+    return cities.reduce((collection, city, index) => {
+      if (city[index] !== cities.length) {
+       return city.city.slice(0, -4).concat(' ');
+      } else {
+        return city.city.slice(0, -4).concat(', ');
+      }
+    }, []);
   }
+
 
   render() {
     let user = this.props.screenProps.fbID;
