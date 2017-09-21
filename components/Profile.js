@@ -5,7 +5,8 @@ import {
   Text,
   Image,
   TouchableOpacity,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  ImageBackground
 } from 'react-native';
 import Login from './Login';
 
@@ -47,7 +48,7 @@ export default class Profile extends Component {
     let cities = this.getCities();
     return (
       //<View style={styles.container}>
-      <Image source={{uri: this.props.screenProps.photo}} style={styles.container} blurRadius={1}>
+      <ImageBackground source={{uri: this.props.screenProps.photo}} style={styles.container} blurRadius={1}>
         <View style={styles.content}>
           <View style={styles.description}>
             <Text style={styles.userText}>
@@ -61,12 +62,6 @@ export default class Profile extends Component {
             <Text style={styles.text}>
               {this.props.screenProps.itineraryByCity.length} Itineraries
             </Text>
-            <Text style={styles.text}>
-              Itineraries: {this.props.screenProps.itineraryByCity.length}
-            </Text>
-            <Text style={styles.text}>
-              Cities: {cities}
-            </Text>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={ () => this.logout() }>
@@ -76,7 +71,7 @@ export default class Profile extends Component {
             </TouchableOpacity>
           </View>
         </View>
-      </Image>
+      </ImageBackground>
     )
   }
 }
