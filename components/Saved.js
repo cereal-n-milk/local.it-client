@@ -63,7 +63,6 @@ export default class Saved extends Component {
     return cities.map(city => {
       return city.interests[0].image_url;
     });
-    //console.log('YUP', photos);
   }
 
   render() {
@@ -86,7 +85,7 @@ export default class Saved extends Component {
                     {item.city.slice(0, -4)}
                   </Text>
                   <Text style={styles.text}>
-                    {item.interests.length} Saved
+                    {item.interests.length} Saved Items
                   </Text>
                 </View>
               </ImageBackground>
@@ -99,15 +98,6 @@ export default class Saved extends Component {
 }
 
 const styles = StyleSheet.create({
-  // cityItem: {
-  //   flex: 1,
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   padding: 25,
-  //   borderWidth: 0.5,
-  //   borderColor: '#d6d7da',
-  //   backgroundColor: '#fff'
-  // },
   textContainer: {
     backgroundColor: 'rgba(0,0,0,.4)',
     height:100,
@@ -115,16 +105,22 @@ const styles = StyleSheet.create({
     padding: 10
   },
   text: {
-    color: '#596a7f',
+    backgroundColor: 'rgba(0,0,0,0)',
+    fontWeight: 'bold',
+    color: '#F7F7F7',
     fontFamily: 'Avenir Light',
-    fontSize: 16
+    fontSize: 18
   },
   image: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderBottomWidth: 1,
+    borderBottomWidth: 2,
     borderColor: 'gray',
     height: 100,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderLeftColor: 'gray',
+    borderRightColor: 'gray',
   },
 })
