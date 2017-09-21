@@ -21,7 +21,7 @@ export const CategoryStack = StackNavigator({
         fontWeight: 'normal',
         fontSize: 20
       },
-      headerTintColor: '#161B2D',
+      headerTintColor: '#2A4964',
     },
   },
   CategoryView: {
@@ -33,7 +33,7 @@ export const CategoryStack = StackNavigator({
         fontWeight: 'normal',
         fontSize: 20
       },
-      headerTintColor: '#161B2D',
+      headerTintColor: '#2A4964',
     },
   }
 });
@@ -48,7 +48,7 @@ export const SavedStack = StackNavigator({
         fontWeight: 'normal',
         fontSize: 20
       },
-      headerTintColor: '#161B2D',
+      headerTintColor: '#2A4964',
     },
   },
   InterestsByCity: {
@@ -60,7 +60,7 @@ export const SavedStack = StackNavigator({
         fontWeight: 'normal',
         fontSize: 20
       },
-      headerTintColor: '#161B2D',
+      headerTintColor: '#2A4964',
     },
   }
 });
@@ -75,7 +75,7 @@ export const ItineraryStack = StackNavigator({
         fontWeight: 'normal',
         fontSize: 20
       },
-      headerTintColor: '#161B2D',
+      headerTintColor: '#2A4964',
     }
   },
   MapView: {
@@ -87,7 +87,7 @@ export const ItineraryStack = StackNavigator({
         fontWeight: 'normal',
         fontSize: 20
       },
-      headerTintColor: '#161B2D',
+      headerTintColor: '#2A4964',
     }
   }
 });
@@ -102,10 +102,20 @@ export const ProfileStack = StackNavigator({
         fontFamily: 'Avenir Light',
         fontWeight: 'normal',
         fontSize: 20
-      }
+      },
+      headerTintColor: '#2A4964',
     }
   }
 });
+
+const tabBarConfiguration = {
+  tabBarOptions: {
+    activeTintColor: '#F7F7F7',
+    inactiveTintColor: '#2A4964',
+    activeBackgroundColor: '#2A4964',
+    inactiveBackgroundColor: '#F7F7F7',
+  }
+}
 
 export const Tabs = TabNavigator({
   Discover: {
@@ -148,4 +158,4 @@ export const Tabs = TabNavigator({
       ),
     }
   }
-})
+}, tabBarConfiguration)

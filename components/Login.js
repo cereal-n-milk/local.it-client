@@ -11,13 +11,6 @@ import {
 } from 'react-native';
 import { Tabs } from './config/router';
 
-
-/*
-TODO:
-Handle authentication so that it doesn't keep sending you to login page at each hard reload
-Look into AsyncStorage and saving tokens
-*/
-
 export default class Login extends Component {
 
   state = {
@@ -67,12 +60,10 @@ export default class Login extends Component {
     Linking.openURL(url);
   };
 
-
-
   render() {
-    const { user } = this.state;
-    const pic = {
-      uri: 'https://i.imgur.com/wLw80Wv.png'
+    let { user } = this.state;
+    let pic = {
+      uri: 'https://i.imgur.com/seUVCVH.png'
     };
     return (
       <View style={styles.container}>
@@ -88,8 +79,8 @@ export default class Login extends Component {
                 Welcome to Local.it!
               </Text>
               <Text style={styles.text}>
-                Please log in to begin {'\n'}
-                building your next adventure
+                Log in to begin building{'\n'}
+                your next adventure.
               </Text>
               <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={this.loginWithFacebook}>
@@ -106,30 +97,28 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#7f8c8d',
+    backgroundColor: '#2A4964',
   },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  avatar: {
-    margin: 20,
-  },
   avatarImage: {
-    height: 100,
-    width: 100,
+    height: 200,
+    width: 200,
   },
   header: {
-    fontSize: 20,
+    color: '#FFFFFF',
+    fontSize: 24,
     fontFamily: 'Avenir Light',
     textAlign: 'center',
-    margin: 10,
+    marginBottom: 10,
   },
   text: {
     fontFamily: 'Avenir Light',
     textAlign: 'center',
-    color: '#333',
+    color: '#FFFFFF',
     marginBottom: 5,
   },
   buttonContainer: {
@@ -137,11 +126,11 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#3B5998',
-    padding: 20,
-    borderRadius: 4
+    padding: 15,
+    borderRadius: 2
   },
   buttonText: {
-    color: '#fff',
+    color: '#FFFFFF',
     textAlign: 'center',
     fontFamily: 'Avenir Light',
     fontSize: 16,

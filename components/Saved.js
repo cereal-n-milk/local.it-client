@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, View, Text, FlatList, TouchableOpacity, DeviceEventEmitter } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  DeviceEventEmitter
+} from 'react-native';
 import axios from 'axios';
 
 export default class Saved extends Component {
+
   constructor (props) {
     super(props);
-
     this.state = {
-      user: {interestsByCity: []}
+      user: {
+        interestsByCity: []
+      }
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getInitialData();
     DeviceEventEmitter.addListener('refreshFunc', (event)=> {
       var data = JSON.parse(event.data._bodyInit);

@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Button, FlatList, TouchableOpacity, Image, ImageBackground } from 'react-native';
-import YelpApi from 'v3-yelp-api';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  FlatList,
+  TouchableOpacity,
+  ImageBackground
+} from 'react-native';
 import categories from '../data/categories.js';
 import store from '../store/locationStore';
+import YelpApi from 'v3-yelp-api';
 
 export default class Discover extends Component {
 
   constructor (props) {
     super(props);
-
     this.state = {
       error: null,
       categories: categories,
@@ -42,15 +49,13 @@ export default class Discover extends Component {
           })
     })
     .then((response) => {
-      //console.log(response);
       var filtered = JSON.parse(response._bodyInit);
       filtered = JSON.parse(filtered[0]);
-      //console.log('retreived data: ', filtered);
       this.props.navigation.navigate('CategoryView', {
         data: filtered,
         category: title
-      });
-    });
+      })
+    })
     .catch(err => console.log)
   }
 

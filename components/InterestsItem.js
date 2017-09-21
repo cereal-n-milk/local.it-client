@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image, Flatlist, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Flatlist,
+  TouchableOpacity
+} from 'react-native';
 import { CheckBox } from 'react-native-elements';
 
 export default class InterestsItem extends Component {

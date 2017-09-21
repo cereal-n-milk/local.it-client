@@ -5,8 +5,8 @@ import {
   Text,
   Dimensions
 } from 'react-native';
-import MapView from 'react-native-maps';
 import store from '../store/locationStore';
+import MapView from 'react-native-maps';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -20,17 +20,16 @@ export default class Map extends React.Component {
 
     this.state = {
       region: {
-        latitude: store.getState().latitude,
-        longitude: store.getState().longitude,
+        latitude: this.props.navigation.state.params.list[0].coordinates.latitude,
+        longitude: this.props.navigation.state.params.list[0].coordinates.longitude,
         latitudeDelta: LATITUDE_DELTA,
         longitudeDelta: LONGITUDE_DELTA,
       },
       itineraries: [],
     };
   }
-  
+
   render() {
-    console.log('props:', this.props.navigation.state.params.list);
     return (
       <View style={styles.container}>
         <MapView
@@ -43,18 +42,15 @@ export default class Map extends React.Component {
             coordinate={this.state.region}
           />
           {this.props.navigation.state.params.list.map((itinerary, index) => (
-            <View>
-              {console.log(itinerary)}
-              <MapView.Marker
-                key={itinerary.id}
-                title={itinerary.name}
-                description={itinerary.categories[0].title}
-                coordinate={{
-                  latitude: itinerary.coordinates.latitude,
-                  longitude: itinerary.coordinates.longitude,
-                }}
-              />
-            </View>
+            <MapView.Marker
+              key={itinerary.id}
+              title={itinerary.name}
+              description={itinerary.categories[0].title}
+              coordinate={{
+                latitude: itinerary.coordinates.latitude,
+                longitude: itinerary.coordinates.longitude,
+              }}
+            />
           ))}
         </MapView>
       </View>

@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import SwipeCards from 'react-native-swipe-cards';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image
+} from 'react-native';
 import Saved from './Saved';
 import Modal from './Modal';
+import SwipeCards from 'react-native-swipe-cards';
 
 const Card = (props) => {
   let card = props;
   return (
     <View style={styles.card}>
-      <View style={
-        {
-          marginTop: 20
-        }
-      }>
+      <View>
         <Text>{card.name}</Text>
         <Image
         style={{width: 300, height: 300}}
@@ -73,8 +74,6 @@ export default class Item extends Component {
 const styles = StyleSheet.create({
   card: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     width: 300,
     height: 300,
   }
