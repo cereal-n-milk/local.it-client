@@ -33,7 +33,7 @@ Once the project moves into development, the press release can be used as a touc
   > "Our app provides good informtion in an easy to navigate format you'll be sure to love"
 
 ## How to Get Started ##
-  > Follow the installations instructions in ______
+  > Follow the installations instructions in [README](https://github.com/cereal-n-milk/local.it-client/blob/master/README.md)
 
 ## Our Satisfied Customers ##
   > "I don't even bother to think anymore, this app makes all my decisions for me"
