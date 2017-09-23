@@ -41,7 +41,7 @@ export default class InterestByCity extends Component {
     this.setState({
       modalVisible: visible,
       text: ''
-    })
+    });
   }
 
   componentWillMount () {
@@ -89,7 +89,7 @@ export default class InterestByCity extends Component {
       DeviceEventEmitter.emit('newItinerary',  { data: data })
     })
     .catch(console.log);
-  }
+  };
 
   getItineraries = (business) => {
     let prevState = this.state.savedInterests.slice();
@@ -97,7 +97,7 @@ export default class InterestByCity extends Component {
     this.setState({
       savedInterests: prevState
     });
-  }
+  };
 
   render() {
     let city = this.props.navigation.state.params.interests.city;

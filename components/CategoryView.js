@@ -15,12 +15,14 @@ import {
 } from 'react-native';
 import Item from './Item';
 
+
 class Hint extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { showText: true }
+    this.state = { showText: true };
 
+    // Removes the hint for which direction to swipe after 5 seconds
     setTimeout (() => {
       this.setState({ showText: false });
     }, 5000);
@@ -45,7 +47,6 @@ export default class CategoryView extends Component {
     this.state = {
       category: this.props.navigation.state.params.category,
       data: this.props.navigation.state.params.data,
-      item: "Suggestion",
     };
     this.handleYup = this.handleYup.bind(this);
   }

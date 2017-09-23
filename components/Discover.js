@@ -11,6 +11,7 @@ import {
 import categories from '../data/categories.js';
 import store from '../store/locationStore';
 import YelpApi from 'v3-yelp-api';
+//import IP from './config.js';
 
 export default class Discover extends Component {
 
@@ -36,7 +37,7 @@ export default class Discover extends Component {
     );
   }
 
-  //Yelp Fetch that goes through Python
+  //Yelp Fetch which goes through Python
   fetchYelpData (title) {
     fetch('http://localhost:3000/api/yelp', {
           method: 'POST',
