@@ -9,6 +9,7 @@ import {
   ImageBackground
 } from 'react-native';
 import Login from './Login';
+//import IP from './config.js';
 
 export default class Profile extends Component {
 
@@ -32,7 +33,6 @@ export default class Profile extends Component {
   // provides a list of cities a user has saved/disliked cards for
   getCities () {
     let cities = this.props.screenProps.interestsByCity;
-
     return cities.reduce((collection, city, index) => {
       if (city[index] !== cities.length) {
        return city.city.slice(0, -4).concat(' ');
@@ -47,7 +47,6 @@ export default class Profile extends Component {
     let user = this.props.screenProps.fbID;
     let cities = this.getCities();
     return (
-      //<View style={styles.container}>
       <ImageBackground source={{uri: this.props.screenProps.photo}} style={styles.container} blurRadius={1}>
         <View style={styles.content}>
           <View style={styles.description}>
@@ -81,7 +80,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    //backgroundColor: '#04263F'
   },
   content: {
     flex: 1,

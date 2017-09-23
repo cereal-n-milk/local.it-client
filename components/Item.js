@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import Saved from './Saved';
 import SwipeCards from 'react-native-swipe-cards';
+//import IP from './config.js';
 
 const Card = (props) => {
   let card = props;

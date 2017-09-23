@@ -9,6 +9,7 @@ import {
   DeviceEventEmitter
 } from 'react-native';
 import axios from 'axios';
+//import IP from './config.js';
 
 export default class Itinerary extends Component {
 

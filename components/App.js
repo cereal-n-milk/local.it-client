@@ -5,6 +5,6 @@ console.disableYellowBox = true;
 
 const App = () => {
   return <Login/>
-}
+};
 
 export default App;

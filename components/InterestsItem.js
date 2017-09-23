@@ -15,7 +15,7 @@ export default class InterestsItem extends Component {
     super(props);
     this.state = {
       checked: false,
-    }
+    };
   }
 
   render() {

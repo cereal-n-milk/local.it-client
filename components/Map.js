@@ -64,7 +64,6 @@ Map.propTypes = {
   provider: MapView.ProviderPropType,
 };
 
-
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,

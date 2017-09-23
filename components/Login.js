@@ -10,11 +10,13 @@ import {
   DeviceEventEmitter
 } from 'react-native';
 import { Tabs } from './config/router';
+//import IP from './config';
 
 export default class Login extends Component {
 
   state = {
-    user: undefined, // user has not logged in yet
+    // user has not logged in yet
+    user: undefined,
   };
 
   // set up Linking
